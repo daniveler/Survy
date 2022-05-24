@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".Authentication.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="412dp"
+        android:layout_height="607dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            tools:src="@drawable/ic_launcher_foreground" />
+
+        <Button
+            android:id="@+id/btGoogleLogin"
+            android:layout_width="240dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/lightPurple"
+            android:drawableLeft="@drawable/ic_google_brands"
+            android:fontFamily="@font/poppins_semibold"
+            android:letterSpacing="0"
+            android:text="Google"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            />
+
+        <Button
+            android:id="@+id/btFacebookLogin"
+            android:layout_width="240dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/lightPurple"
+            android:drawableLeft="@drawable/ic_facebook_brands"
+            android:fontFamily="@font/poppins_semibold"
+            android:letterSpacing="0"
+            android:text="Facebook"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            app:cornerRadius="8dp"
+            app:strokeColor="@color/darkPurple"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/btEmailLogin"
+            android:layout_width="240dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/lightPurple"
+            android:drawableLeft="@drawable/ic_mail_solid"
+            android:fontFamily="@font/poppins_semibold"
+            android:letterSpacing="0"
+            android:text="@string/loginMail"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            app:cornerRadius="8dp"
+            app:strokeColor="@color/darkPurple"
+            app:strokeWidth="2dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/loginRegister"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btRegisterMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/poppins_semibold"
+            android:letterSpacing="0"
+            android:text="@string/loginRegisterButton"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:cornerRadius="8dp"
+            app:strokeColor="@color/darkPurple"
+            app:strokeWidth="2dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

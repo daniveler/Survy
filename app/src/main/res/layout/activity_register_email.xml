@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".Authentication.RegisterEmailActivity">
+
+    <LinearLayout
+        android:layout_width="408dp"
+        android:layout_height="562dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/registerMailTV1"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="44dp" />
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@color/lightPurple"
+            android:hint="@string/registerMailET1"
+            android:textColor="@color/black"
+            android:textColorHint="#546E7A" />
+
+        <EditText
+            android:id="@+id/etApellidos"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@color/lightPurple"
+            android:hint="@string/registerMailET2"
+            android:textColor="@color/black"
+            android:textColorHint="#546E7A" />
+
+        <EditText
+            android:id="@+id/etCurso"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@color/lightPurple"
+            android:hint="@string/registerMailET3"
+            android:textColor="@color/black"
+            android:textColorHint="#546E7A" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@color/lightPurple"
+            android:hint="@string/registerMailET4"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            android:textColorHint="#546E7A" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@color/lightPurple"
+            android:hint="@string/registerMailET5"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHint="#546E7A" />
+
+        <Button
+            android:id="@+id/btRegister"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:background="@color/yellowButton"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/registerMailBT1"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

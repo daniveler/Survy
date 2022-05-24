@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Survy</string>
+
+    <!--> Autenticación con Facebook <!-->
+    <string name="facebook_app_id">3157895871143929</string>
+    <string name="fb_login_protocol_scheme">fb3157895871143929</string>
+    <string name="facebook_client_token">e0e11e05ce16a73282e29567fe58fc88</string>
+
+    <!--> Autenticación con Google <!-->
+    <string name="default_web_client_id_fixed">479369958909-g2j83umqt7g55gpll89g7g9dls1pij63.apps.googleusercontent.com</string>
+
+    <!--> LOGIN <!-->
+    <string name="loginMail">Iniciar sesión con email</string>
+    <string name="loginRegister">¿Aún no tienes cuenta?</string>
+    <string name="loginRegisterButton"><u>Regístrate</u></string>
+
+    <!--> REGISTER <!-->
+    <string name="registerTV1">Elija un método de registro</string>
+    <string name="registerTV2">¿Ya tienes una cuenta?</string>
+    <string name="registerLogin"><u>Volver a Inciar Sesión</u></string>
+    <string name="registerMail">Registrar con email</string>
+
+    <!--> LOGIN MAIL <!-->
+    <string name="loginMailTV1">Iniciar sesión con email</string>
+    <string name="loginMailTV2"><u>¿Olvidaste tu contraseña?</u></string>
+    <string name="loginMailBT">Iniciar sesión</string>
+    <string name="loginMailET1">Correo</string>
+    <string name="loginMailET2">Contraseña</string>
+
+    <!--> REGISTER MAIL <!-->
+    <string name="registerMailTV1">Registrar con email</string>
+    <string name="registerMailET1">Nombre</string>
+    <string name="registerMailET2">Apellidos</string>
+    <string name="registerMailET3">Curso</string>
+    <string name="registerMailET4">Correo</string>
+    <string name="registerMailET5">Contraseña</string>
+    <string name="registerMailBT1">Registrarse</string>
+
+    <!--> HOME <!-->
+    <string name="abierto">Abierto</string>
+    <string name="cerrado">Cerrado</string>
+    <string name="titleHome">Home</string>
+
+</resources>
