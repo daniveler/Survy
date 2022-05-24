@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "576137766231",
+    "project_id": "survy-793ad",
+    "storage_bucket": "survy-793ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576137766231:android:de7d21fcec9e6e2be88a12",
+        "android_client_info": {
+          "package_name": "com.android.survy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "576137766231-v7kj9f1e2rloltm4894cn11bcrveof8s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.survy",
+            "certificate_hash": "7def5fc90fd42b4f0c3a7af77adfa29080bf02e0"
+          }
+        },
+        {
+          "client_id": "576137766231-vvd6r7b7fb6a03u78dujp436m07fvsrm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4ODpz8_6SVEb2LYcu9bn7uBeq19UMSHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "576137766231-vvd6r7b7fb6a03u78dujp436m07fvsrm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

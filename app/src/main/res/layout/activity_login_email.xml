@@ -37,7 +37,7 @@
             android:background="@color/lightPurple"
             android:hint="@string/loginMailET1"
             android:textColor="@color/black"
-            android:textColorHint="@color/lightGray" />
+            android:textColorHint="#546E7A" />
 
         <EditText
             android:id="@+id/btPassword"
@@ -48,7 +48,7 @@
             android:background="@color/lightPurple"
             android:hint="@string/loginMailET2"
             android:textColor="@color/black"
-            android:textColorHint="@color/lightGray" />
+            android:textColorHint="#546E7A" />
 
         <Button
             android:id="@+id/btLogin"

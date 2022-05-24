@@ -7,7 +7,7 @@
     <string name="facebook_client_token">e0e11e05ce16a73282e29567fe58fc88</string>
 
     <!--> Autenticación con Google <!-->
-    <string name="default_web_client_id_fixed">479369958909-g2j83umqt7g55gpll89g7g9dls1pij63.apps.googleusercontent.com</string>
+    <string name="default_web_client_id_fixed">576137766231-v7kj9f1e2rloltm4894cn11bcrveof8s.apps.googleusercontent.com</string>
 
     <!--> LOGIN <!-->
     <string name="loginMail">Iniciar sesión con email</string>

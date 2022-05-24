@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/font/poppins.xml" value="0.23177083333333334" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/font/poppins_semibold.xml" value="0.4171875" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/font/poppins_thin.xml" value="0.4171875" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_login_email.xml" value="0.25" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_main.xml" value="0.38697916666666665" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.209" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2625" />
         <entry key="..\:/TFG/Android Studio/Survy/app/src/main/res/drawable-v24/gradient_background.xml" value="0.2345" />
         <entry key="..\:/TFG/Android Studio/Survy/app/src/main/res/font/poppins.xml" value="0.4107692307692308" />
         <entry key="..\:/TFG/Android Studio/Survy/app/src/main/res/layout/activity_login.xml" value="0.358695652173913" />
