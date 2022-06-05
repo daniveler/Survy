@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+
 <item
     android:title="Home"
     android:id="@+id/itemHome"
@@ -18,14 +19,20 @@
     android:id="@+id/itemMisAlumnos"
     android:icon="@drawable/ic_users_solid">
 </item>
+    <item
+        android:title="Mi Perfil"
+        android:id="@+id/itemMiPerfil"
+        android:icon="@drawable/ic_user_solid">
+    </item>
 <item
     android:title="Resultados"
     android:id="@+id/itemResultados"
     android:icon="@drawable/ic_chart_line_solid">
 </item>
+
 <item
-    android:title="Mi Perfil"
-    android:id="@+id/itemMiPerfil"
-    android:icon="@drawable/ic_user_solid">
+    android:title="Cerrar Sesión"
+    android:id="@+id/itemCerrarSesion"
+    android:icon="@drawable/ic_arrow_right_from_bracket_solid">
 </item>
 </menu>

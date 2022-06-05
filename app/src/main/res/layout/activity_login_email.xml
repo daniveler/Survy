@@ -53,12 +53,14 @@
         <Button
             android:id="@+id/btLogin"
             android:layout_width="250dp"
-            android:layout_height="50dp"
+            android:layout_height="64dp"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
-            android:background="@color/yellowButton"
+            android:backgroundTint="@color/yellowButton"
+
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/loginMailBT"
+            android:letterSpacing="0"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="16dp" />
@@ -71,6 +73,7 @@
             android:background="?android:attr/selectableItemBackground"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/loginMailTV2"
+            android:letterSpacing="0"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"

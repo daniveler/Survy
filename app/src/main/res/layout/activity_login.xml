@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".Authentication.LoginActivity">
+    tools:context=".Authentication.LoginActivity"
+    android:theme="@style/Theme.AppCompat.NoActionBar">
 
     <LinearLayout
         android:layout_width="412dp"
@@ -25,8 +26,10 @@
             android:layout_gravity="center"
             android:paddingTop="0dp"
             android:paddingBottom="0dp"
-            tools:src="@drawable/survy_logo"
-
+            android:src="@drawable/survy_logo"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/darkPurple"
+            android:visibility="visible"
             />
 
         <Button
@@ -34,7 +37,7 @@
             android:layout_width="240dp"
             android:layout_height="64dp"
             android:layout_gravity="center"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="54dp"
             android:backgroundTint="@color/lightPurple"
             android:drawableLeft="@drawable/ic_google_brands"
             android:fontFamily="@font/poppins_semibold"
@@ -104,8 +107,6 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20dp"
-            app:cornerRadius="8dp"
-            app:strokeColor="@color/darkPurple"
             app:strokeWidth="2dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

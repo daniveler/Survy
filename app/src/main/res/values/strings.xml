@@ -7,7 +7,7 @@
     <string name="facebook_client_token">e0e11e05ce16a73282e29567fe58fc88</string>
 
     <!--> Autenticación con Google <!-->
-    <string name="default_web_client_id_fixed">576137766231-v7kj9f1e2rloltm4894cn11bcrveof8s.apps.googleusercontent.com</string>
+    <string name="default_web_client_id_fixed">576137766231-vvd6r7b7fb6a03u78dujp436m07fvsrm.apps.googleusercontent.com</string>
 
     <!--> LOGIN <!-->
     <string name="loginMail">Iniciar sesión con email</string>
@@ -35,10 +35,25 @@
     <string name="registerMailET4">Correo</string>
     <string name="registerMailET5">Contraseña</string>
     <string name="registerMailBT1">Registrarse</string>
+    <string-array name="cursos">
+        <item>Curso</item>
+        <item>1º ESO</item>
+        <item>2º ESO</item>
+        <item>3º ESO</item>
+        <item>4º ESO</item>
+        <item>1º BACH</item>
+        <item>2º BACH</item>
+        <item>1º CURSO</item>
+        <item>2º CURSO</item>
+        <item>3º CURSO</item>
+        <item>4º CURSO</item>
+    </string-array>
 
     <!--> HOME <!-->
     <string name="abierto">Abierto</string>
     <string name="cerrado">Cerrado</string>
     <string name="titleHome">Home</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

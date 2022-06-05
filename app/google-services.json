@@ -14,14 +14,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "576137766231-v7kj9f1e2rloltm4894cn11bcrveof8s.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.android.survy",
-            "certificate_hash": "7def5fc90fd42b4f0c3a7af77adfa29080bf02e0"
-          }
-        },
-        {
           "client_id": "576137766231-vvd6r7b7fb6a03u78dujp436m07fvsrm.apps.googleusercontent.com",
           "client_type": 3
         }

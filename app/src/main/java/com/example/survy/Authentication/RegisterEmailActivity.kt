@@ -1,11 +1,12 @@
 package com.example.survy.Authentication
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.view.ViewGroup
+import android.widget.*
 import com.example.survy.MainActivity
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
@@ -25,12 +26,30 @@ class RegisterEmailActivity : AppCompatActivity()
 
         var etNombre = findViewById<EditText>(R.id.etNombre)
         var etApellidos = findViewById<EditText>(R.id.etApellidos)
-        //var etCurso = findViewById<EditText>(R.id.etApellidos)
+        var spinnerCursos = findViewById<Spinner>(R.id.spinner)
         var etEmail = findViewById<EditText>(R.id.etEmail)
         var etPassword = findViewById<EditText>(R.id.etPassword)
 
         var btRegister = findViewById<Button>(R.id.btRegister)
 
+        val cursos = resources.getStringArray(R.array.cursos)
+        val spinnerAdapter = object  : ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, cursos)
+        {
+            override fun isEnabled(position: Int): Boolean = position != 0
+
+            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View
+            {
+                val view: TextView = super.getDropDownView(position, convertView, parent) as TextView
+                //set the color of first item in the drop down list to gray
+                if(position == 0)
+                {
+                    view.setTextColor(Color.GRAY)
+                }
+                return view
+            }
+        }
+
+        spinnerCursos.adapter = spinnerAdapter
 
         btRegister.setOnClickListener{
             var nombre = etNombre.text.toString()
@@ -51,6 +70,11 @@ class RegisterEmailActivity : AppCompatActivity()
             else if (email.isBlank())
             {
                 Toast.makeText(this, "Por favor, introduzca su correo electónico",
+                    Toast.LENGTH_LONG).show()
+            }
+            else if (spinnerCursos.selectedItem == "Curso")
+            {
+                Toast.makeText(this, "Por favor, introduzca su curso",
                     Toast.LENGTH_LONG).show()
             }
             else if (password.isBlank())

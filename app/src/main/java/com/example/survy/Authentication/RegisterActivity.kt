@@ -41,7 +41,7 @@ class RegisterActivity : AppCompatActivity()
 
         btGoogle.setOnClickListener{
             val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id_fixed))
+                .requestIdToken("576137766231-vvd6r7b7fb6a03u78dujp436m07fvsrm.apps.googleusercontent.com")
                 .requestEmail()
                 .build()
 
@@ -99,8 +99,7 @@ class RegisterActivity : AppCompatActivity()
         }
 
         btRegister.setOnClickListener {
-            val i = Intent(this, LoginActivity::class.java)
-            startActivity(i)
+            finish()
         }
     }
 

@@ -50,16 +50,15 @@
             android:textColor="@color/black"
             android:textColorHint="#546E7A" />
 
-        <EditText
-            android:id="@+id/etCurso"
+        <Spinner
+            android:id="@+id/spinner"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
+            android:spinnerMode="dropdown"
             android:background="@color/lightPurple"
-            android:hint="@string/registerMailET3"
-            android:textColor="@color/black"
-            android:textColorHint="#546E7A" />
+            />
 
         <EditText
             android:id="@+id/etEmail"
@@ -88,14 +87,16 @@
         <Button
             android:id="@+id/btRegister"
             android:layout_width="250dp"
-            android:layout_height="50dp"
+            android:layout_height="64dp"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
-            android:background="@color/yellowButton"
+            android:backgroundTint="@color/yellowButton"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/registerMailBT1"
+            android:letterSpacing="0"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="16dp" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
