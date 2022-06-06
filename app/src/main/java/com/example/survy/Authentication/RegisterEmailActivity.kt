@@ -2,6 +2,7 @@ package com.example.survy.Authentication
 
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.survy.MainActivity
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
 
 class RegisterEmailActivity : AppCompatActivity()
@@ -97,9 +99,19 @@ class RegisterEmailActivity : AppCompatActivity()
                                 Toast.LENGTH_LONG).show()
 
                             var intent = Intent(applicationContext, MainActivity::class.java)
+                            intent.putExtra("email", email)
+                            //intent.putExtra("nombre", nombre)
                             startActivity(intent)
 
-                            val user = auth.currentUser
+                            var user = auth.currentUser
+
+                            val profileUpdates = userProfileChangeRequest {
+                                displayName = nombre
+
+                                /*var uri = Uri.parse("android.resource://com.example.survy/drawable/default_profile_image.png")
+                                //var stream = contentResolver.openInputStream(uri)
+                                setPhotoUri(uri)*/
+                            }
 
                             //updateUI(user)
                         } else {

@@ -47,6 +47,7 @@
             android:layout_marginTop="16dp"
             android:background="@color/lightPurple"
             android:hint="@string/loginMailET2"
+            android:inputType="textPassword"
             android:textColor="@color/black"
             android:textColorHint="#546E7A" />
 
