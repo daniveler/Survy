@@ -1,22 +1,25 @@
 package com.example.survy
 
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceActivity
+import android.os.Handler
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.survy.Authentication.LoginActivity
-import com.example.survy.Fragments.*
+import com.example.survy.Fragments.Home.HomeFragment
+import com.example.survy.Fragments.MiPerfil.MiPerfilFragment
+import com.example.survy.Fragments.MisAlumnos.MisAlumnosFragment
+import com.example.survy.Fragments.MisAsignaturas.MisAsignaturasFragment
+import com.example.survy.Fragments.MisResultados.MisResultadosFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -25,6 +28,8 @@ class MainActivity : AppCompatActivity()
     lateinit var toggle : ActionBarDrawerToggle
     lateinit var drawerLayout : DrawerLayout
     lateinit var header : View
+
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -44,11 +49,22 @@ class MainActivity : AppCompatActivity()
         navView.setNavigationItemSelectedListener {
             when(it.itemId)
             {
-                R.id.itemHome -> cambiarFragment(HomeFragment())
-                R.id.itemMisAsignaturas -> cambiarFragment(MisAsignaturasFragment())
-                R.id.itemMisAlumnos -> cambiarFragment(MisAlumnosFragment())
-                R.id.itemResultados -> cambiarFragment(MisResultadosFragment())
-                R.id.itemMiPerfil -> cambiarFragment(MiPerfilFragment())
+                R.id.itemHome ->
+                {
+                    cambiarFragment(HomeFragment(), email)
+                    supportActionBar?.title = getString(R.string.titleHome)
+                }
+                R.id.itemMisAsignaturas ->
+                {
+                    cambiarFragment(MisAsignaturasFragment(), email)
+                }
+                R.id.itemMisAlumnos -> cambiarFragment(MisAlumnosFragment(), email)
+                R.id.itemResultados -> cambiarFragment(MisResultadosFragment(), email)
+                R.id.itemMiPerfil ->
+                {
+                    cambiarFragment(MiPerfilFragment(), email)
+                    supportActionBar?.title = getString(R.string.titleMiPerfil)
+                }
                 R.id.itemCerrarSesion ->
                 {
                     Firebase.auth.signOut()
@@ -62,7 +78,7 @@ class MainActivity : AppCompatActivity()
         }
     }
 
-    private fun setupMainActivity(email : String)
+    private fun setupMainActivity(email: String?)
     {
         drawerLayout  = findViewById(R.id.drawerLayout)
 
@@ -76,24 +92,28 @@ class MainActivity : AppCompatActivity()
         val fragment = supportFragmentManager.beginTransaction()
         fragment.replace(R.id.fragmentContainer, HomeFragment()).commit()
 
-        supportActionBar?.title = "Home"
+        supportActionBar?.title = getString(R.string.titleHome)
 
-        var civFotoPerfil = header.findViewById<CircleImageView>(R.id.circleImageView)
-        var tvEmailHeader = header.findViewById<TextView>(R.id.tvEmailHeader)
+        if (email.isNullOrBlank())
+        {
+            Toast.makeText(this, "Error al iniciar sesión", Toast.LENGTH_LONG).show()
+            finish()
+        }
+        else
+        {
+            var civFotoPerfil = header.findViewById<CircleImageView>(R.id.circleImageView)
+            var tvEmailHeader = header.findViewById<TextView>(R.id.tvEmailHeader)
+            var tvNombreHeader = header.findViewById<TextView>(R.id.tvNombreHeader)
 
-        tvEmailHeader.text = email
+            //civFotoPerfil.setImageURI(null)
 
-        //tvNombreHeader.text = nombre
-
-
-        //val user = Firebase.auth.currentUser
-
-        /*tvNombreHeader.text = user?.displayName
-        tvEmailHeader.text = user?.email
-        civFotoPerfil.setImageURI(user?.photoUrl)*/
-
-        //civFotoPerfil.setImageResource(R.drawable.default_profile_image)
-
+            db.collection("users").document(email).get().addOnSuccessListener {
+                tvNombreHeader.setText(it.get("nombre") as String?)
+                //civFotoPerfil.setImageURI(it.get("fotoDePerfil") as Uri?)
+            }
+            civFotoPerfil.setImageResource(R.drawable.default_profile_image)
+            tvEmailHeader.setText(email)
+        }
     }
 
     override fun onBackPressed()
@@ -110,12 +130,22 @@ class MainActivity : AppCompatActivity()
         return super.onOptionsItemSelected(item)
     }
 
-    private fun cambiarFragment (fragmentCambiar : Fragment)
+    private fun cambiarFragment (fragmentCambiar : Fragment, email: String?)
     {
+        var args = Bundle()
+        args.putString("email", email)
+
+        fragmentCambiar.arguments = args
+
         var fragmentManager = supportFragmentManager
-        var fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainer, fragmentCambiar)
-        fragmentTransaction.commit()
-        drawerLayout.closeDrawers()
+
+        fragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragmentCambiar)
+            .commit()
+
+
+        drawerLayout.postDelayed({
+            drawerLayout.closeDrawers()
+        }, 200)
     }
 }

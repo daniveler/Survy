@@ -12,12 +12,13 @@ import com.example.survy.MainActivity
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.auth.ktx.userProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class RegisterEmailActivity : AppCompatActivity()
 {
     private lateinit var auth: FirebaseAuth
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -26,11 +27,11 @@ class RegisterEmailActivity : AppCompatActivity()
 
         auth = Firebase.auth
 
-        var etNombre = findViewById<EditText>(R.id.etNombre)
-        var etApellidos = findViewById<EditText>(R.id.etApellidos)
-        var spinnerCursos = findViewById<Spinner>(R.id.spinner)
-        var etEmail = findViewById<EditText>(R.id.etEmail)
-        var etPassword = findViewById<EditText>(R.id.etPassword)
+        var etNombre = findViewById<EditText>(R.id.etNombreRegister)
+        var etApellidos = findViewById<EditText>(R.id.etApellidosRegister)
+        var spinnerCursos = findViewById<Spinner>(R.id.spinnerRegister)
+        var etEmail = findViewById<EditText>(R.id.etEmailRegister)
+        var etPassword = findViewById<EditText>(R.id.etPasswordRegister)
 
         var btRegister = findViewById<Button>(R.id.btRegister)
 
@@ -58,6 +59,7 @@ class RegisterEmailActivity : AppCompatActivity()
             var apellidos = etApellidos.text.toString()
             var email = etEmail.text.toString()
             val password = etPassword.text.toString()
+            val uriFoto = Uri.parse("android.resource://" + packageName + "/" + R.drawable.default_profile_image)
 
             if (nombre.isBlank())
             {
@@ -98,27 +100,22 @@ class RegisterEmailActivity : AppCompatActivity()
                             Toast.makeText(this, "createUserWithEmail:success",
                                 Toast.LENGTH_LONG).show()
 
+                            db.collection("users").document(email).set(
+                                hashMapOf("nombre" to nombre,
+                                            "apellidos" to apellidos,
+                                            "fotoDePerfil" to uriFoto,
+                                            "curso" to spinnerCursos.selectedItem.toString()),
+                            )
+
                             var intent = Intent(applicationContext, MainActivity::class.java)
                             intent.putExtra("email", email)
-                            //intent.putExtra("nombre", nombre)
+                            intent.putExtra("nombre", nombre)
                             startActivity(intent)
-
-                            var user = auth.currentUser
-
-                            val profileUpdates = userProfileChangeRequest {
-                                displayName = nombre
-
-                                /*var uri = Uri.parse("android.resource://com.example.survy/drawable/default_profile_image.png")
-                                //var stream = contentResolver.openInputStream(uri)
-                                setPhotoUri(uri)*/
                             }
-
-                            //updateUI(user)
-                        } else {
+                        else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(this, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show()
-                            //updateUI(null)
                         }
                     }
             }

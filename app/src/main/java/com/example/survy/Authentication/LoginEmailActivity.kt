@@ -10,7 +10,6 @@ import com.example.survy.MainActivity
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
 
 class LoginEmailActivity : AppCompatActivity()
@@ -24,8 +23,8 @@ class LoginEmailActivity : AppCompatActivity()
 
         auth = Firebase.auth
 
-        var etEmail = findViewById<EditText>(R.id.etEmail)
-        var etPassword = findViewById<EditText>(R.id.etPassword)
+        var etEmail = findViewById<EditText>(R.id.etEmailLogin)
+        var etPassword = findViewById<EditText>(R.id.etPasswordLogin)
         var btLogin = findViewById<Button>(R.id.btLogin)
 
         btLogin.setOnClickListener {
@@ -39,35 +38,37 @@ class LoginEmailActivity : AppCompatActivity()
                 Toast.makeText(this, "Por favor, introduzca su contraseña",
                     Toast.LENGTH_LONG).show()
             }
+            else
+            {
+                var email = etEmail.text.toString()
+                var password = etPassword.text.toString()
 
-            var email = etEmail.text.toString()
-            var password = etPassword.text.toString()
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful)
+                        {
+                            // Sign in success, update UI with the signed-in user's information
+                            Toast.makeText(
+                                this, "signInUserWithEmail:success",
+                                Toast.LENGTH_LONG
+                            ).show()
 
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful)
-                    {
-                        // Sign in success, update UI with the signed-in user's information
-                        Toast.makeText(
-                            this, "signInUserWithEmail:success",
-                            Toast.LENGTH_LONG
-                        ).show()
+                            var user = auth.currentUser
 
-                        var user = auth.currentUser
-
-                        var intent = Intent(applicationContext, MainActivity::class.java)
-                        intent.putExtra("email", email)
-                        //intent.putExtra("nombre", user?.displayName.toString())
-                        startActivity(intent)
-                    }
-                    else
-                    {
-                        // If sign in fails, display a message to the user.
-                        Toast.makeText(this, "Authentication failed.",
-                            Toast.LENGTH_SHORT).show()
-                        //updateUI(null)
-                    }
+                            var intent = Intent(applicationContext, MainActivity::class.java)
+                            intent.putExtra("email", email)
+                            //intent.putExtra("nombre", user?.displayName.toString())
+                            startActivity(intent)
+                        }
+                        else
+                        {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(this, "El usuario o contraseña son incorrectos",
+                                Toast.LENGTH_SHORT).show()
+                            //updateUI(null)
+                        }
                 }
+            }
         }
     }
 }

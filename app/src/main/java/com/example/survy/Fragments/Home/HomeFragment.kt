@@ -1,4 +1,4 @@
-package com.example.survy.Fragments
+package com.example.survy.Fragments.Home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

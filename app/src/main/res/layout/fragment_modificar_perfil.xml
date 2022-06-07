@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".Authentication.LoginEmailActivity">
+    tools:context=".Authentication.RegisterEmailActivity">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="445dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,70 +17,92 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/tvMainModificarPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:fontFamily="@font/poppins_semibold"
-            android:text="@string/loginMailTV1"
+            android:text="@string/tvMainModificarPerfil"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="44dp" />
 
         <EditText
-            android:id="@+id/etEmailLogin"
+            android:id="@+id/etNombreModificarPerfil"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:background="@color/lightPurple"
-            android:hint="@string/loginMailET1"
+            android:hint="@string/registerMailET1"
             android:textColor="@color/black"
             android:textColorHint="#546E7A" />
 
         <EditText
-            android:id="@+id/etPasswordLogin"
+            android:id="@+id/etApellidosModificarPerfil"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:background="@color/lightPurple"
-            android:hint="@string/loginMailET2"
-            android:inputType="textPassword"
+            android:hint="@string/registerMailET2"
             android:textColor="@color/black"
             android:textColorHint="#546E7A" />
 
-        <Button
-            android:id="@+id/btLogin"
+        <Spinner
+            android:id="@+id/spinnerModificarPerfil"
             android:layout_width="250dp"
-            android:layout_height="64dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="@color/yellowButton"
-
-            android:fontFamily="@font/poppins_semibold"
-            android:text="@string/loginMailBT"
-            android:letterSpacing="0"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="16dp" />
+            android:layout_marginTop="16dp"
+            android:spinnerMode="dropdown"
+            android:background="@color/lightPurple"
+            />
 
         <Button
-            android:id="@+id/tvMainRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:id="@+id/btPasswordModificarPerfil"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="22dp"
             android:background="?android:attr/selectableItemBackground"
+            android:text="@string/btPasswordModificarPerfil"
             android:fontFamily="@font/poppins_semibold"
-            android:text="@string/loginMailTV2"
+            android:textSize="16dp"
             android:letterSpacing="0"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             />
 
+        <Button
+            android:id="@+id/btAplicarCambiosModificarPerfil"
+            android:layout_width="250dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/yellowButton"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/btModificarPerfil"
+            android:letterSpacing="0"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/btCancelarModificarPerfil"
+            android:layout_width="250dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="@color/lightGray"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/btCancelarModificarPerfil"
+            android:letterSpacing="0"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

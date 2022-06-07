@@ -4,19 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.MiPerfilFragment"
+    tools:context=".Fragments.MiPerfil.MiPerfilFragment"
     android:background="@drawable/gradient_background">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayoutMiPerfil"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="MI PERFIL"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="50dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civMiPerfil"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:src="@drawable/default_profile_image"
+            app:civ_border_color="@color/darkPurple"
+            app:civ_border_width="12dp"/>
+
+        <TextView
+            android:id="@+id/tvNombreMiPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="48dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Nombre"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvApellidosMiPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Apellido1 Apellido 2"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvEmailMiPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins"
+            android:text="Email"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCursoMiPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Curso"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="42dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btModificarDatosMiPerfil"
+            android:layout_width="240dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/yellowButton"
+            android:fontFamily="@font/poppins_semibold"
+            android:letterSpacing="0"
+            android:text="@string/btMiPerfil"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

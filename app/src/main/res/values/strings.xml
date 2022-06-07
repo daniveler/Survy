@@ -53,7 +53,20 @@
     <string name="abierto">Abierto</string>
     <string name="cerrado">Cerrado</string>
     <string name="titleHome">Home</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--> MI PERFIL <!-->
+    <string name="titleMiPerfil">Mi Perfil</string>
+    <string name="btMiPerfil">Modificar mis datos</string>
+
+    <!--> Modificar perfil <!-->
+    <string name="tvMainModificarPerfil">Modificar Perfil</string>
+    <string name="btModificarPerfil">Aplicar Cambios</string>
+    <string name="btPasswordModificarPerfil"><u>Cambiar Contraseña</u></string>
+    <string name="btCancelarModificarPerfil">Cancelar</string>
+
+    <!--> Modificar password <!-->
+    <string name="tvMainModificarPassword">Modificar Contraseña</string>
+    <string name="etModificarPassword1">Contraseña</string>
+    <string name="etModificarPassword2">Repita la Contraseña</string>
 
 </resources>
