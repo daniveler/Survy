@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.example.survy.MainActivity
+import com.example.survy.MainActivityAlumno
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -107,7 +107,7 @@ class RegisterEmailActivity : AppCompatActivity()
                                             "curso" to spinnerCursos.selectedItem.toString()),
                             )
 
-                            var intent = Intent(applicationContext, MainActivity::class.java)
+                            var intent = Intent(applicationContext, MainActivityAlumno::class.java)
                             intent.putExtra("email", email)
                             intent.putExtra("nombre", nombre)
                             startActivity(intent)

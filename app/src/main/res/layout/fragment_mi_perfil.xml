@@ -24,7 +24,8 @@
             android:layout_gravity="center"
             android:src="@drawable/default_profile_image"
             app:civ_border_color="@color/darkPurple"
-            app:civ_border_width="12dp"/>
+            app:civ_border_width="12dp"
+            />
 
         <TextView
             android:id="@+id/tvNombreMiPerfil"
@@ -40,7 +41,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
             android:id="@+id/tvApellidosMiPerfil"
@@ -55,7 +57,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
             android:id="@+id/tvEmailMiPerfil"
@@ -71,7 +74,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
             android:id="@+id/tvCursoMiPerfil"
@@ -87,7 +91,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <Button
             android:id="@+id/btModificarDatosMiPerfil"
@@ -101,7 +106,8 @@
             android:text="@string/btMiPerfil"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            android:textSize="16dp" />
+            android:textSize="16dp"
+            />
 
 
     </LinearLayout>

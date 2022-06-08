@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
-import com.example.survy.MainActivity
+import com.example.survy.MainActivityAlumno
 import com.example.survy.R
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -52,7 +52,8 @@ class LoginActivity : AppCompatActivity()
         }
 
         btEmail.setOnClickListener {
-            val i = Intent(this, LoginEmailActivity::class.java)
+            val i = Intent(this, ElegirRolActivity::class.java)
+            i.putExtra("previousIntent", "Login")
             startActivity(i)
         }
 
@@ -124,7 +125,7 @@ class LoginActivity : AppCompatActivity()
                             Toast.makeText(this, "LogIn Success",
                                 Toast.LENGTH_LONG).show()
 
-                            val i = Intent(applicationContext, MainActivity::class.java)
+                            val i = Intent(applicationContext, MainActivityAlumno::class.java)
                             startActivity(i)
                         }
                         else

@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.survy.MainActivity
+import com.example.survy.MainActivityAlumno
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -26,6 +26,9 @@ class LoginEmailActivity : AppCompatActivity()
         var etEmail = findViewById<EditText>(R.id.etEmailLogin)
         var etPassword = findViewById<EditText>(R.id.etPasswordLogin)
         var btLogin = findViewById<Button>(R.id.btLogin)
+
+        etEmail.setText("daniel01velerdas@gmail.com")
+        etPassword.setText("20001000")
 
         btLogin.setOnClickListener {
             if(etEmail.text.isBlank())
@@ -55,7 +58,7 @@ class LoginEmailActivity : AppCompatActivity()
 
                             var user = auth.currentUser
 
-                            var intent = Intent(applicationContext, MainActivity::class.java)
+                            var intent = Intent(applicationContext, MainActivityAlumno::class.java)
                             intent.putExtra("email", email)
                             //intent.putExtra("nombre", user?.displayName.toString())
                             startActivity(intent)

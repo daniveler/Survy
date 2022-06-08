@@ -3,13 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable-v24/ic_bars_solid.xml" value="0.2675" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable-v24/ic_chalkboard_user_solid.xml" value="0.2675" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable-v24/ic_google_brands.xml" value="0.2675" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable/ic_arrow_right_from_bracket_solid.xml" value="0.198" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable/ic_chalkboard_user_solid.xml" value="0.2675" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable/ic_graduation_cap_solid.xml" value="0.2675" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/font/poppins.xml" value="0.23177083333333334" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/font/poppins_semibold.xml" value="0.4171875" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/font/poppins_thin.xml" value="0.4171875" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_elegir_rol.xml" value="0.31765711842667804" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_login_email.xml" value="0.25" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_main_profesor.xml" value="0.31765711842667804" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_register_email.xml" value="0.2" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_home.xml" value="0.1" />

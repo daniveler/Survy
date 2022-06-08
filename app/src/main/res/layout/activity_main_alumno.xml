@@ -5,7 +5,7 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".MainActivityAlumno"
     android:background="@drawable/gradient_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout

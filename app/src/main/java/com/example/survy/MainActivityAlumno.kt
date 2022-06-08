@@ -3,7 +3,6 @@ package com.example.survy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
@@ -23,7 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import de.hdodenhof.circleimageview.CircleImageView
 
-class MainActivity : AppCompatActivity()
+class MainActivityAlumno : AppCompatActivity()
 {
     lateinit var toggle : ActionBarDrawerToggle
     lateinit var drawerLayout : DrawerLayout
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_alumno)
 
         val bundle = intent.extras
         val email = bundle?.getString("email")
@@ -101,7 +100,7 @@ class MainActivity : AppCompatActivity()
         }
         else
         {
-            var civFotoPerfil = header.findViewById<CircleImageView>(R.id.circleImageView)
+            var civFotoPerfil = header.findViewById<CircleImageView>(R.id.civHeader)
             var tvEmailHeader = header.findViewById<TextView>(R.id.tvEmailHeader)
             var tvNombreHeader = header.findViewById<TextView>(R.id.tvNombreHeader)
 
@@ -147,5 +146,14 @@ class MainActivity : AppCompatActivity()
         drawerLayout.postDelayed({
             drawerLayout.closeDrawers()
         }, 200)
+    }
+
+    fun actualizarHeader(nombre: String)
+    {
+        var civFotoPerfil = header.findViewById<CircleImageView>(R.id.civHeader)
+        var tvNombreHeader = header.findViewById<TextView>(R.id.tvNombreHeader)
+
+        tvNombreHeader.setText(nombre)
+        //civFotoPerfil.setImageURI(fotoDePerfil)
     }
 }

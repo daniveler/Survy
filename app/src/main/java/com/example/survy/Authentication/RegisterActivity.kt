@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
-import com.example.survy.MainActivity
+import com.example.survy.MainActivityAlumno
 import com.example.survy.R
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -71,7 +71,7 @@ class RegisterActivity : AppCompatActivity()
                                         Toast.makeText(applicationContext, "Facebook SignIn Success",
                                             Toast.LENGTH_LONG).show()
 
-                                        var intent = Intent(applicationContext, MainActivity::class.java)
+                                        var intent = Intent(applicationContext, MainActivityAlumno::class.java)
                                         startActivity(intent)
                                     }
                                     else
@@ -94,7 +94,8 @@ class RegisterActivity : AppCompatActivity()
         }
 
         btEmail.setOnClickListener {
-            val i = Intent(this, RegisterEmailActivity::class.java)
+            val i = Intent(this, ElegirRolActivity::class.java)
+            i.putExtra("previousIntent", "Register")
             startActivity(i)
         }
 
@@ -128,7 +129,7 @@ class RegisterActivity : AppCompatActivity()
                                 Toast.makeText(this, "Google SignIn Success",
                                     Toast.LENGTH_LONG).show()
 
-                                var intent = Intent(applicationContext, MainActivity::class.java)
+                                var intent = Intent(applicationContext, MainActivityAlumno::class.java)
                                 startActivity(intent)
                             }
                             else

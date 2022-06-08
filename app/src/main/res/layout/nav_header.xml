@@ -10,13 +10,14 @@
     android:background="@color/darkPurple">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutHeader"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="32dp">
 
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/circleImageView"
+            android:id="@+id/civHeader"
             android:layout_width="80dp"
             android:layout_height="80dp"
             app:civ_border_color="@color/white"
@@ -36,7 +37,7 @@
             android:textSize="24dp"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintStart_toEndOf="@+id/civHeader"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -50,7 +51,7 @@
             android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintStart_toEndOf="@+id/civHeader"
             app:layout_constraintTop_toBottomOf="@+id/tvNombreHeader" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

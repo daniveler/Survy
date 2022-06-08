@@ -31,8 +31,10 @@ class ModificarPasswordFragment : Fragment()
 
         val etPassword1 = view.findViewById<EditText>(R.id.etModificarPassword1)
         val etPassword2 = view.findViewById<EditText>(R.id.etModificarPassword2)
-        val btModificarPassword = view.findViewById<Button>(R.id.btPasswordModificarPerfil)
+        val btModificarPassword = view.findViewById<Button>(R.id.btAplicarCambiosModificarPassword)
         val btCancelar = view.findViewById<Button>(R.id.btCancelarModificarPassword)
+
+        var email = arguments?.getString("email", "") ?: ""
 
         btModificarPassword.setOnClickListener {
             val user = FirebaseAuth.getInstance().currentUser
@@ -59,8 +61,13 @@ class ModificarPasswordFragment : Fragment()
             {
                 user!!.updatePassword(password1).addOnCompleteListener {
                     if (it.isSuccessful)
-                        Toast.makeText(context, "updatePassword: Succeed",
+                    {
+                        Toast.makeText(context, "Contraseña actualizada correctamente",
                             Toast.LENGTH_LONG).show()
+
+                        cambiarFragment(MiPerfilFragment(), email)
+                    }
+
                     else
                         Toast.makeText(context, "updatePassword: Failed",
                             Toast.LENGTH_LONG).show()
@@ -69,7 +76,22 @@ class ModificarPasswordFragment : Fragment()
         }
 
         btCancelar.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
+            cambiarFragment(ModificarPerfilFragment(), email)
         }
+    }
+
+    fun cambiarFragment(framentCambiar: Fragment, email: String)
+    {
+        var args = Bundle()
+        args.putString("email", email)
+
+        var fragment = framentCambiar
+        fragment.arguments = args
+
+        var fragmentManager = requireActivity().supportFragmentManager
+
+        fragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
     }
 }

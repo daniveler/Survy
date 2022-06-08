@@ -14,4 +14,6 @@
     <color name="veryDarkPurple">#2C3370</color>
     <color name="lightGray">#838383</color>
     <color name="yellowButton">#FFCC34</color>
+    <color name="greenStudent">#468E45</color>
+    <color name="pinkTeacher">#B85BB8</color>
 </resources>

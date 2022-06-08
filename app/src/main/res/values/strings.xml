@@ -20,6 +20,11 @@
     <string name="registerLogin"><u>Volver a Inciar Sesión</u></string>
     <string name="registerMail">Registrar con email</string>
 
+    <!--> ELEGIR ROL <!-->
+    <string name="tvMainElegirRol">Selecciona tu rol</string>
+    <string name="btAlumnoElegirRol">Alumno</string>
+    <string name="btProfesorElegirRol">Profesor</string>
+
     <!--> LOGIN MAIL <!-->
     <string name="loginMailTV1">Iniciar sesión con email</string>
     <string name="loginMailTV2"><u>¿Olvidaste tu contraseña?</u></string>
