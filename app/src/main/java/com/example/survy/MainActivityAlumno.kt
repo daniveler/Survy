@@ -2,6 +2,8 @@ package com.example.survy
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -89,6 +91,7 @@ class MainActivityAlumno : AppCompatActivity()
         fragment.replace(R.id.fragmentContainerAlumno, HomeFragmentProfesor()).commit()
 
         supportActionBar?.title = getString(R.string.titleHome)
+        supportActionBar!!.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.veryDarkPurple)))
 
         if (email.isNullOrBlank())
         {

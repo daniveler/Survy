@@ -23,19 +23,19 @@
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_main_alumno.xml" value="0.31765711842667804" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_main_profesor.xml" value="0.31765711842667804" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_register.xml" value="0.264" />
-        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_register_email.xml" value="0.2" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_register_email.xml" value="0.22" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/activity_splash.xml" value="0.31765711842667804" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_home_profesor.xml" value="0.31765711842667804" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_mi_perfil.xml" value="0.33" />
-        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_mi_perfil_alumno.xml" value="0.31765711842667804" />
-        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_mi_perfil_profesor.xml" value="0.31765711842667804" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_mi_perfil_alumno.xml" value="0.22" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_mi_perfil_profesor.xml" value="0.1" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_mis_alumnos.xml" value="0.27447916666666666" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_mis_asignaturas.xml" value="0.27447916666666666" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_mis_resultados.xml" value="0.27447916666666666" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_modificar_password.xml" value="0.22530996152201796" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_modificar_password_alumno.xml" value="0.31765711842667804" />
-        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_modificar_password_profesor.xml" value="0.1" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_modificar_password_profesor.xml" value="0.25" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_modificar_perfil.xml" value="0.264" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_modificar_perfil_alumno.xml" value="0.31765711842667804" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_modificar_perfil_profesor.xml" value="0.33" />

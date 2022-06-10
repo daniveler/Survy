@@ -37,7 +37,10 @@
             android:background="@color/lightPurple"
             android:hint="@string/registerMailET1"
             android:textColor="@color/black"
-            android:textColorHint="#546E7A" />
+            android:textColorHint="#546E7A"
+            android:maxLength="20"
+            android:maxLines="1"
+            />
 
         <EditText
             android:id="@+id/etApellidosModificarPerfilAlumno"
@@ -48,7 +51,10 @@
             android:background="@color/lightPurple"
             android:hint="@string/registerMailET2"
             android:textColor="@color/black"
-            android:textColorHint="#546E7A" />
+            android:textColorHint="#546E7A"
+            android:maxLength="50"
+            android:maxLines="1"
+            />
 
         <Spinner
             android:id="@+id/spinnerModificarPerfilAlumno"

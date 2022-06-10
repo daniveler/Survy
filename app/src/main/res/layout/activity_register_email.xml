@@ -37,7 +37,10 @@
             android:background="@color/lightPurple"
             android:hint="@string/registerMailET1"
             android:textColor="@color/black"
-            android:textColorHint="#546E7A" />
+            android:textColorHint="#546E7A"
+            android:maxLength="20"
+            android:maxLines="1"
+            />
 
         <EditText
             android:id="@+id/etApellidosRegister"
@@ -48,7 +51,10 @@
             android:background="@color/lightPurple"
             android:hint="@string/registerMailET2"
             android:textColor="@color/black"
-            android:textColorHint="#546E7A" />
+            android:textColorHint="#546E7A"
+            android:maxLength="50"
+            android:maxLines="1"
+            />
 
         <Spinner
             android:id="@+id/spinnerRegister"
@@ -70,7 +76,10 @@
             android:hint="@string/registerMailET4"
             android:inputType="textEmailAddress"
             android:textColor="@color/black"
-            android:textColorHint="#546E7A" />
+            android:textColorHint="#546E7A"
+            android:maxLength="50"
+            android:maxLines="1"
+            />
 
         <EditText
             android:id="@+id/etPasswordRegister"
@@ -82,7 +91,10 @@
             android:hint="@string/registerMailET5"
             android:inputType="textPassword"
             android:textColor="@color/black"
-            android:textColorHint="#546E7A" />
+            android:textColorHint="#546E7A"
+            android:maxLength="20"
+            android:maxLines="1"
+            />
 
         <Button
             android:id="@+id/btRegister"

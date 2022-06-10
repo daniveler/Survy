@@ -1,10 +1,12 @@
 package com.example.survy.Authentication
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.survy.MainActivityAlumno
 import com.example.survy.MainActivityProfesor
@@ -29,19 +31,19 @@ class LoginActivity : AppCompatActivity()
     private lateinit var auth: FirebaseAuth
     private val callbackManager = CallbackManager.Factory.create()
 
-    private val db = FirebaseFirestore.getInstance()
-
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
         val btGoogle = findViewById<Button>(R.id.btGoogleLogin)
         val btFacebook = findViewById<Button>(R.id.btFacebookLogin)
         val btEmail = findViewById<Button>(R.id.btEmailLogin)
         val btRegister = findViewById<Button>(R.id.btRegisterMail)
+
+        val bundle = intent.extras
+        val vieneDeRegistro = bundle?.getBoolean("vieneDeRegistro") ?: false
+        if (vieneDeRegistro) { mostrarAlerta() }
 
         btGoogle.setOnClickListener{
             val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -145,5 +147,18 @@ class LoginActivity : AppCompatActivity()
                 e.printStackTrace()
             }
         }
+    }
+
+    fun mostrarAlerta()
+    {
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setTitle("Usuario registrado correctamente")
+        dialogBuilder.setMessage("Se le ha enviado un correo electrónico de verificación. Será necesario verificar su email para iniciar sesión")
+        dialogBuilder.setNegativeButton("OK", DialogInterface.OnClickListener{
+                dialog, id -> dialog.cancel()
+        })
+
+        val alerta = dialogBuilder.create()
+        alerta.show()
     }
 }

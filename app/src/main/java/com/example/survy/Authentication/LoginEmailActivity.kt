@@ -1,11 +1,13 @@
 package com.example.survy.Authentication
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.survy.MainActivityAlumno
 import com.example.survy.MainActivityProfesor
 import com.example.survy.R
@@ -31,11 +33,10 @@ class LoginEmailActivity : AppCompatActivity()
         val bundle = intent.extras
         val rol = bundle?.getString("rol")
 
-
         if (rol == "Alumno") { etEmail.setText("daniel01velerdas@gmail.com") }
         else { etEmail.setText("daniveler@usal.es") }
 
-        etPassword.setText("20001000")
+        etPassword.setText("dani2000")
 
         btLogin.setOnClickListener {
             if(etEmail.text.isBlank())
@@ -58,22 +59,29 @@ class LoginEmailActivity : AppCompatActivity()
                         if (task.isSuccessful)
                         {
                             // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(this, "signInUserWithEmail:success",
-                                Toast.LENGTH_LONG).show()
 
-                            var user = auth.currentUser
+                            val user = auth.currentUser
 
-                            if (rol == "Alumno")
+                            if (user!!.isEmailVerified)
                             {
-                                var i = Intent(this, MainActivityAlumno::class.java)
-                                i.putExtra("email", email)
-                                startActivity(i)
+                                if (rol == "Alumno")
+                                {
+                                    var i = Intent(this, MainActivityAlumno::class.java)
+                                    i.putExtra("email", email)
+                                    startActivity(i)
+                                }
+                                else if (rol == "Profesor")
+                                {
+                                    var i = Intent(this, MainActivityProfesor::class.java)
+                                    i.putExtra("email", email)
+                                    startActivity(i)
+                                }
+
                             }
-                            else if (rol == "Profesor")
+                            else
                             {
-                                var i = Intent(this, MainActivityProfesor::class.java)
-                                i.putExtra("email", email)
-                                startActivity(i)
+                                Toast.makeText(this, "El usuario aún no ha sido verificado. Por favor, consulte su email",
+                                    Toast.LENGTH_LONG).show()
                             }
                         }
                         else

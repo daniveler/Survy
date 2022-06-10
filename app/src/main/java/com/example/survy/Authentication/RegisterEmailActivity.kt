@@ -1,5 +1,6 @@
 package com.example.survy.Authentication
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
@@ -8,6 +9,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import com.example.survy.MainActivityAlumno
 import com.example.survy.MainActivityProfesor
 import com.example.survy.R
@@ -104,8 +106,8 @@ class RegisterEmailActivity : AppCompatActivity()
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(this, "createUserWithEmail:success",
-                                Toast.LENGTH_LONG).show()
+                            val user = auth.currentUser
+                            user?.sendEmailVerification()
 
                             if (rol == "Alumno")
                             {
@@ -115,11 +117,6 @@ class RegisterEmailActivity : AppCompatActivity()
                                         "fotoDePerfil" to uriFoto,
                                         "curso" to spinnerCursos.selectedItem.toString()),
                                 )
-
-                                var intent = Intent(applicationContext, MainActivityAlumno::class.java)
-                                intent.putExtra("email", email)
-                                intent.putExtra("nombre", nombre)
-                                startActivity(intent)
                             }
                             else if (rol == "Profesor")
                             {
@@ -128,12 +125,14 @@ class RegisterEmailActivity : AppCompatActivity()
                                         "apellidos" to apellidos,
                                         "fotoDePerfil" to uriFoto)
                                 )
-
-                                var intent = Intent(applicationContext, MainActivityProfesor::class.java)
-                                intent.putExtra("email", email)
-                                intent.putExtra("nombre", nombre)
-                                startActivity(intent)
                             }
+
+                            var intent = Intent(applicationContext, LoginActivity::class.java)
+                            intent.putExtra("rol", rol)
+                            intent.putExtra("vieneDeRegistro", true)
+                            startActivity(intent)
+
+
                         }
                         else {
                             // If sign in fails, display a message to the user.
