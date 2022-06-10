@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.MiPerfil.MiPerfilFragment"
+    tools:context=".Fragments.MiPerfil.Profesor.MiPerfilFragmentProfesor"
     android:background="@drawable/gradient_background">
 
     <LinearLayout
-        android:id="@+id/linearLayoutMiPerfil"
+        android:id="@+id/linearLayoutMiPerfilProfesor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -18,17 +18,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civMiPerfil"
+            android:id="@+id/civMiPerfilProfesor"
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:layout_gravity="center"
             android:src="@drawable/default_profile_image"
             app:civ_border_color="@color/darkPurple"
-            app:civ_border_width="12dp"
-            />
+            app:civ_border_width="12dp" />
 
         <TextView
-            android:id="@+id/tvNombreMiPerfil"
+            android:id="@+id/tvNombreMiPerfilProfesor"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -41,11 +40,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvApellidosMiPerfil"
+            android:id="@+id/tvApellidosMiPerfilProfesor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -57,11 +55,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvEmailMiPerfil"
+            android:id="@+id/tvEmailMiPerfilProfesor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -74,28 +71,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-        <TextView
-            android:id="@+id/tvCursoMiPerfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Curso"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btModificarDatosMiPerfil"
+            android:id="@+id/btModificarDatosMiPerfilProfesor"
             android:layout_width="240dp"
             android:layout_height="64dp"
             android:layout_gravity="center"
@@ -106,11 +85,9 @@
             android:text="@string/btMiPerfil"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            android:textSize="16dp"
-            />
+            android:textSize="16dp" />
 
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

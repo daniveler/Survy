@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.survy.MainActivityAlumno
+import com.example.survy.MainActivityProfesor
 import com.example.survy.R
+import com.example.survy.Utils.Funciones
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -35,6 +37,9 @@ class RegisterEmailActivity : AppCompatActivity()
 
         var btRegister = findViewById<Button>(R.id.btRegister)
 
+        val bundle = intent.extras
+        val rol = bundle?.getString("rol")
+
         val cursos = resources.getStringArray(R.array.cursos)
         val spinnerAdapter = object  : ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, cursos)
         {
@@ -53,6 +58,8 @@ class RegisterEmailActivity : AppCompatActivity()
         }
 
         spinnerCursos.adapter = spinnerAdapter
+
+        if (rol == "Profesor") { spinnerCursos.visibility = View.GONE }
 
         btRegister.setOnClickListener{
             var nombre = etNombre.text.toString()
@@ -76,7 +83,7 @@ class RegisterEmailActivity : AppCompatActivity()
                 Toast.makeText(this, "Por favor, introduzca su correo electónico",
                     Toast.LENGTH_LONG).show()
             }
-            else if (spinnerCursos.selectedItem == "Curso")
+            else if (spinnerCursos.selectedItem == "Curso" && rol == "Alumno")
             {
                 Toast.makeText(this, "Por favor, introduzca su curso",
                     Toast.LENGTH_LONG).show()
@@ -100,18 +107,34 @@ class RegisterEmailActivity : AppCompatActivity()
                             Toast.makeText(this, "createUserWithEmail:success",
                                 Toast.LENGTH_LONG).show()
 
-                            db.collection("users").document(email).set(
-                                hashMapOf("nombre" to nombre,
-                                            "apellidos" to apellidos,
-                                            "fotoDePerfil" to uriFoto,
-                                            "curso" to spinnerCursos.selectedItem.toString()),
-                            )
+                            if (rol == "Alumno")
+                            {
+                                db.collection("alumnos").document(email).set(
+                                    hashMapOf("nombre" to nombre,
+                                        "apellidos" to apellidos,
+                                        "fotoDePerfil" to uriFoto,
+                                        "curso" to spinnerCursos.selectedItem.toString()),
+                                )
 
-                            var intent = Intent(applicationContext, MainActivityAlumno::class.java)
-                            intent.putExtra("email", email)
-                            intent.putExtra("nombre", nombre)
-                            startActivity(intent)
+                                var intent = Intent(applicationContext, MainActivityAlumno::class.java)
+                                intent.putExtra("email", email)
+                                intent.putExtra("nombre", nombre)
+                                startActivity(intent)
                             }
+                            else if (rol == "Profesor")
+                            {
+                                db.collection("profesores").document(email).set(
+                                    hashMapOf("nombre" to nombre,
+                                        "apellidos" to apellidos,
+                                        "fotoDePerfil" to uriFoto)
+                                )
+
+                                var intent = Intent(applicationContext, MainActivityProfesor::class.java)
+                                intent.putExtra("email", email)
+                                intent.putExtra("nombre", nombre)
+                                startActivity(intent)
+                            }
+                        }
                         else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(this, "Authentication failed.",

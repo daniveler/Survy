@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.MiPerfil.Profesor.ModificarPerfilFragmentProfesor"
+    android:background="@drawable/gradient_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvMainModificarPerfilProfesor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/tvMainModificarPerfil"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="44dp" />
+
+        <EditText
+            android:id="@+id/etNombreModificarPerfilProfesor"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@color/lightPurple"
+            android:hint="@string/registerMailET1"
+            android:textColor="@color/black"
+            android:textColorHint="#546E7A" />
+
+        <EditText
+            android:id="@+id/etApellidosModificarPerfilProfesor"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@color/lightPurple"
+            android:hint="@string/registerMailET2"
+            android:textColor="@color/black"
+            android:textColorHint="#546E7A" />
+
+        <Button
+            android:id="@+id/btPasswordModificarPerfilProfesor"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="22dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/poppins_semibold"
+            android:letterSpacing="0"
+            android:text="@string/btPasswordModificarPerfil"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/btAplicarCambiosModificarPerfilProfesor"
+            android:layout_width="250dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/yellowButton"
+            android:fontFamily="@font/poppins_semibold"
+            android:letterSpacing="0"
+            android:text="@string/btModificarPerfil"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/btCancelarModificarPerfilProfesor"
+            android:layout_width="250dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="@color/lightGray"
+            android:fontFamily="@font/poppins_semibold"
+            android:letterSpacing="0"
+            android:text="@string/btCancelarModificarPerfil"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

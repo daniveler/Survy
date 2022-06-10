@@ -1,4 +1,4 @@
-package com.example.survy.Fragments.MiPerfil
+package com.example.survy.Fragments.MiPerfil.Profesor
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,7 +11,7 @@ import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import de.hdodenhof.circleimageview.CircleImageView
 
-class MiPerfilFragment : Fragment()
+class MiPerfilFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()
 
@@ -20,38 +20,36 @@ class MiPerfilFragment : Fragment()
         savedInstanceState: Bundle?
     ): View?
     {
-        return inflater.inflate(R.layout.fragment_mi_perfil, container, false)
+        return inflater.inflate(R.layout.fragment_mi_perfil_profesor, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
 
-        var civFotoDePerfil = view.findViewById<CircleImageView>(R.id.civMiPerfil)
-        var tvNombre = view.findViewById<TextView>(R.id.tvNombreMiPerfil)
-        var tvApellidos = view.findViewById<TextView>(R.id.tvApellidosMiPerfil)
-        var tvEmail = view.findViewById<TextView>(R.id.tvEmailMiPerfil)
-        var tvCurso = view.findViewById<TextView>(R.id.tvCursoMiPerfil)
+        var civFotoDePerfil = view.findViewById<CircleImageView>(R.id.civMiPerfilProfesor)
+        var tvNombre = view.findViewById<TextView>(R.id.tvNombreMiPerfilProfesor)
+        var tvApellidos = view.findViewById<TextView>(R.id.tvApellidosMiPerfilProfesor)
+        var tvEmail = view.findViewById<TextView>(R.id.tvEmailMiPerfilProfesor)
 
         //var tvNombreHeader = view.findViewById<TextView>(R.id.tvNombreHeader)
         //var civFotoDePerfilHeader = view.findViewById<CircleImageView>(R.id.civHeader)
 
-        var btModificarMisDatos = view.findViewById<Button>(R.id.btModificarDatosMiPerfil)
+        var btModificarMisDatos = view.findViewById<Button>(R.id.btModificarDatosMiPerfilProfesor)
 
         var email = arguments?.getString("email", "") ?: ""
 
-        db.collection("users").document(email).get().addOnSuccessListener {
+        db.collection("profesores").document(email).get().addOnSuccessListener {
             //civFotoDePerfil.setImageURI(it.get("fotoDePerfil") as Uri?)
             //civHeader.setImageURI(it.get("fotoDePerfil") as Uri?)
             tvNombre.setText(it.get("nombre") as String?)
             //tvNombreHeader.setText(it.get("nombre") as String?)
             tvApellidos.setText(it.get("apellidos") as String?)
             tvEmail.setText(email)
-            tvCurso.setText(it.get("curso") as String?)
         }
 
         btModificarMisDatos.setOnClickListener {
-            cambiarFragment(ModificarPerfilFragment(), email)
+            cambiarFragment(ModificarPerfilFragmentProfesor(), email)
         }
     }
 
@@ -66,7 +64,7 @@ class MiPerfilFragment : Fragment()
         var fragmentManager = requireActivity().supportFragmentManager
 
         fragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, fragment)
+            .replace(R.id.fragmentContainerProfesor, fragment)
             .commit()
     }
 }

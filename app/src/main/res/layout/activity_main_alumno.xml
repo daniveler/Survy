@@ -2,7 +2,7 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawerLayout"
+    android:id="@+id/drawerLayoutAlumno"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivityAlumno"
@@ -15,22 +15,22 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/frameLayout" />
+            android:id="@+id/frameLayoutAlumno" />
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainer"
+            android:id="@+id/fragmentContainerAlumno"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
+        android:id="@+id/nav_view_alumno"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu="@menu/nav_menu"
+        app:menu="@menu/nav_menu_alumno"
         app:headerLayout="@layout/nav_header"
         app:itemTextColor="@color/white"
         app:itemIconTint="@color/white"

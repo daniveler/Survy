@@ -3,36 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-
 <item
     android:title="Home"
-    android:id="@+id/itemHome"
+    android:id="@+id/itemHomeProfesor"
     android:icon="@drawable/ic_house_solid">
 </item>
 <item
     android:title="Mis Asignaturas"
-    android:id="@+id/itemMisAsignaturas"
+    android:id="@+id/itemMisAsignaturasProfesor"
     android:icon="@drawable/ic_chalkboard_user_solid">
 </item>
 <item
     android:title="Mis Alumnos"
-    android:id="@+id/itemMisAlumnos"
+    android:id="@+id/itemMisAlumnosProfesor"
     android:icon="@drawable/ic_users_solid">
 </item>
     <item
         android:title="Mi Perfil"
-        android:id="@+id/itemMiPerfil"
+        android:id="@+id/itemMiPerfilProfesor"
         android:icon="@drawable/ic_user_solid">
     </item>
 <item
     android:title="Resultados"
-    android:id="@+id/itemResultados"
+    android:id="@+id/itemResultadosProfesor"
     android:icon="@drawable/ic_chart_line_solid">
 </item>
 
 <item
     android:title="Cerrar Sesión"
-    android:id="@+id/itemCerrarSesion"
+    android:id="@+id/itemCerrarSesionProfesor"
     android:icon="@drawable/ic_arrow_right_from_bracket_solid">
 </item>
 </menu>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+<item
+    android:title="Home"
+    android:id="@+id/itemHomeAlumno"
+    android:icon="@drawable/ic_house_solid">
+</item>
+<item
+    android:title="Mis Asignaturas"
+    android:id="@+id/itemMisAsignaturasAlumno"
+    android:icon="@drawable/ic_chalkboard_user_solid">
+</item>
+<item
+    android:title="Nueva Encuesta"
+    android:id="@+id/itemNuevaEncuestaAlumno"
+    android:icon="@drawable/ic_qrcode_solid">
+</item>
+    <item
+        android:title="Mi Perfil"
+        android:id="@+id/itemMiPerfilAlumno"
+        android:icon="@drawable/ic_user_solid">
+    </item>
+<item
+    android:title="Mis Resultados"
+    android:id="@+id/itemMisResultadosAlumno"
+    android:icon="@drawable/ic_chart_line_solid">
+</item>
+
+<item
+    android:title="Cerrar Sesión"
+    android:id="@+id/itemCerrarSesionAlumno"
+    android:icon="@drawable/ic_arrow_right_from_bracket_solid">
+</item>
+</menu>

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.survy.R
 
-class HomeFragment : Fragment()
+class HomeFragmentProfesor : Fragment()
 {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -15,6 +15,6 @@ class HomeFragment : Fragment()
     ): View?
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_home_profesor, container, false)
     }
 }

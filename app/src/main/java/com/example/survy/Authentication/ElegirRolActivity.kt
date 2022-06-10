@@ -32,7 +32,6 @@ class ElegirRolActivity : AppCompatActivity()
                 intent.putExtra("rol", "Alumno")
                 startActivity(intent)
             }
-
         }
 
         btProfesor.setOnClickListener {

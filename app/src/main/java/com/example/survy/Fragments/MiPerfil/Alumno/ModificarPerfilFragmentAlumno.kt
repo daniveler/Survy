@@ -1,4 +1,4 @@
-package com.example.survy.Fragments.MiPerfil
+package com.example.survy.Fragments.MiPerfil.Alumno
 
 import android.graphics.Color
 import android.os.Bundle
@@ -11,7 +11,7 @@ import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import de.hdodenhof.circleimageview.CircleImageView
 
-class ModificarPerfilFragment : Fragment()
+class ModificarPerfilFragmentAlumno : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()
 
@@ -21,20 +21,20 @@ class ModificarPerfilFragment : Fragment()
     ): View?
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_modificar_perfil, container, false)
+        return inflater.inflate(R.layout.fragment_modificar_perfil_alumno, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
 
-        var etNombre = view.findViewById<EditText>(R.id.etNombreModificarPerfil)
-        var etApellidos = view.findViewById<EditText>(R.id.etApellidosModificarPerfil)
-        var spinnerCurso = view.findViewById<Spinner>(R.id.spinnerModificarPerfil)
+        var etNombre = view.findViewById<EditText>(R.id.etNombreModificarPerfilAlumno)
+        var etApellidos = view.findViewById<EditText>(R.id.etApellidosModificarPerfilAlumno)
+        var spinnerCurso = view.findViewById<Spinner>(R.id.spinnerModificarPerfilAlumno)
 
-        var btPassword = view.findViewById<Button>(R.id.btPasswordModificarPerfil)
-        var btAplicarCambios = view.findViewById<Button>(R.id.btAplicarCambiosModificarPerfil)
-        var btCancelar = view.findViewById<Button>(R.id.btCancelarModificarPerfil)
+        var btPassword = view.findViewById<Button>(R.id.btPasswordModificarPerfilAlumno)
+        var btAplicarCambios = view.findViewById<Button>(R.id.btAplicarCambiosModificarPerfilAlumno)
+        var btCancelar = view.findViewById<Button>(R.id.btCancelarModificarPerfilAlumno)
 
         val cursos = resources.getStringArray(R.array.cursos)
         val spinnerAdapter = object  : ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, cursos)
@@ -56,13 +56,15 @@ class ModificarPerfilFragment : Fragment()
         spinnerCurso.adapter = spinnerAdapter
 
         var email = arguments?.getString("email", "") ?: ""
+        var rol = arguments?.getString("rol", "") ?: ""
 
-        db.collection("users").document(email).get().addOnSuccessListener {
+        db.collection("alumnos").document(email).get().addOnSuccessListener {
             //civFotoDePerfil.setImageURI(it.get("fotoDePerfil") as Uri?)
             etNombre.setText(it.get("nombre") as String?)
             etApellidos.setText(it.get("apellidos") as String?)
             spinnerCurso.setSelection(cursos.indexOf(it.get("curso") as String?))
         }
+
 
         btAplicarCambios.setOnClickListener {
             var nombre = etNombre.text.toString()
@@ -86,9 +88,9 @@ class ModificarPerfilFragment : Fragment()
             }
             else
             {
-                db.collection("users").document(email).update("nombre", nombre)
-                db.collection("users").document(email).update("apellidos", apellidos)
-                db.collection("users").document(email).update("curso", curso)
+                db.collection("alumnos").document(email).update("nombre", nombre)
+                db.collection("alumnos").document(email).update("apellidos", apellidos)
+                db.collection("alumnos").document(email).update("curso", curso)
 
                 var nombreHeader = requireActivity().findViewById<TextView>(R.id.tvNombreHeader)
                 var civHeader =  requireActivity().findViewById<CircleImageView>(R.id.civHeader)
@@ -99,23 +101,24 @@ class ModificarPerfilFragment : Fragment()
                 Toast.makeText(context, "Datos actualizados correctamente",
                     Toast.LENGTH_LONG).show()
 
-                cambiarFragment(MiPerfilFragment(), email)
+                cambiarFragment(MiPerfilFragmentAlumno(), email, rol)
 
             }
         }
 
         btCancelar.setOnClickListener {
-            cambiarFragment(MiPerfilFragment(), email)
+            cambiarFragment(MiPerfilFragmentAlumno(), email, rol)
         }
 
         btPassword.setOnClickListener {
-            cambiarFragment(ModificarPasswordFragment(), email)
+            cambiarFragment(ModificarPasswordFragmentAlumno(), email, rol)
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, email: String)
+    fun cambiarFragment(framentCambiar: Fragment, email: String, rol: String)
     {
         var args = Bundle()
+        args.putString("rol", rol)
         args.putString("email", email)
 
         var fragment = framentCambiar
@@ -124,7 +127,7 @@ class ModificarPerfilFragment : Fragment()
         var fragmentManager = requireActivity().supportFragmentManager
 
         fragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, fragment)
+            .replace(R.id.fragmentContainerAlumno, fragment)
             .commit()
     }
 }

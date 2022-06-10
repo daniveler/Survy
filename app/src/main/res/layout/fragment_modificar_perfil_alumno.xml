@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvMainModificarPerfil"
+            android:id="@+id/tvMainModificarPerfilAlumno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -29,7 +29,7 @@
             android:textSize="44dp" />
 
         <EditText
-            android:id="@+id/etNombreModificarPerfil"
+            android:id="@+id/etNombreModificarPerfilAlumno"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -40,7 +40,7 @@
             android:textColorHint="#546E7A" />
 
         <EditText
-            android:id="@+id/etApellidosModificarPerfil"
+            android:id="@+id/etApellidosModificarPerfilAlumno"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -51,7 +51,7 @@
             android:textColorHint="#546E7A" />
 
         <Spinner
-            android:id="@+id/spinnerModificarPerfil"
+            android:id="@+id/spinnerModificarPerfilAlumno"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -61,7 +61,7 @@
             />
 
         <Button
-            android:id="@+id/btPasswordModificarPerfil"
+            android:id="@+id/btPasswordModificarPerfilAlumno"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -77,7 +77,7 @@
             />
 
         <Button
-            android:id="@+id/btAplicarCambiosModificarPerfil"
+            android:id="@+id/btAplicarCambiosModificarPerfilAlumno"
             android:layout_width="250dp"
             android:layout_height="64dp"
             android:layout_gravity="center"
@@ -91,7 +91,7 @@
             android:textSize="16dp" />
 
         <Button
-            android:id="@+id/btCancelarModificarPerfil"
+            android:id="@+id/btCancelarModificarPerfilAlumno"
             android:layout_width="250dp"
             android:layout_height="64dp"
             android:layout_gravity="center"

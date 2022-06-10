@@ -1,4 +1,4 @@
-package com.example.survy.Fragments.MiPerfil
+package com.example.survy.Fragments.MiPerfil.Profesor
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,7 +12,7 @@ import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ModificarPasswordFragment : Fragment()
+class ModificarPasswordFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()
 
@@ -22,17 +22,17 @@ class ModificarPasswordFragment : Fragment()
     ): View?
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_modificar_password, container, false)
+        return inflater.inflate(R.layout.fragment_modificar_password_profesor, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val etPassword1 = view.findViewById<EditText>(R.id.etModificarPassword1)
-        val etPassword2 = view.findViewById<EditText>(R.id.etModificarPassword2)
-        val btModificarPassword = view.findViewById<Button>(R.id.btAplicarCambiosModificarPassword)
-        val btCancelar = view.findViewById<Button>(R.id.btCancelarModificarPassword)
+        val etPassword1 = view.findViewById<EditText>(R.id.etModificarPassword1Profesor)
+        val etPassword2 = view.findViewById<EditText>(R.id.etModificarPassword2Profesor)
+        val btModificarPassword = view.findViewById<Button>(R.id.btAplicarCambiosModificarPasswordProfesor)
+        val btCancelar = view.findViewById<Button>(R.id.btCancelarModificarPasswordProfesor)
 
         var email = arguments?.getString("email", "") ?: ""
 
@@ -65,7 +65,7 @@ class ModificarPasswordFragment : Fragment()
                         Toast.makeText(context, "Contraseña actualizada correctamente",
                             Toast.LENGTH_LONG).show()
 
-                        cambiarFragment(MiPerfilFragment(), email)
+                        cambiarFragment(MiPerfilFragmentProfesor(), email)
                     }
 
                     else
@@ -76,7 +76,7 @@ class ModificarPasswordFragment : Fragment()
         }
 
         btCancelar.setOnClickListener {
-            cambiarFragment(ModificarPerfilFragment(), email)
+            cambiarFragment(ModificarPerfilFragmentProfesor(), email)
         }
     }
 
@@ -91,7 +91,7 @@ class ModificarPasswordFragment : Fragment()
         var fragmentManager = requireActivity().supportFragmentManager
 
         fragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, fragment)
+            .replace(R.id.fragmentContainerProfesor, fragment)
             .commit()
     }
 }
