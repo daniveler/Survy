@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import com.example.survy.Clases.Alumno
+import com.example.survy.Clases.Profesor
 import com.example.survy.MainActivityAlumno
 import com.example.survy.MainActivityProfesor
 import com.example.survy.R
@@ -67,6 +69,7 @@ class RegisterEmailActivity : AppCompatActivity()
             var nombre = etNombre.text.toString()
             var apellidos = etApellidos.text.toString()
             var email = etEmail.text.toString()
+            val curso = spinnerCursos.selectedItem.toString()
             val password = etPassword.text.toString()
             val uriFoto = Uri.parse("android.resource://" + packageName + "/" + R.drawable.default_profile_image)
 
@@ -85,7 +88,7 @@ class RegisterEmailActivity : AppCompatActivity()
                 Toast.makeText(this, "Por favor, introduzca su correo electónico",
                     Toast.LENGTH_LONG).show()
             }
-            else if (spinnerCursos.selectedItem == "Curso" && rol == "Alumno")
+            else if (curso == "Curso" && rol == "Alumno")
             {
                 Toast.makeText(this, "Por favor, introduzca su curso",
                     Toast.LENGTH_LONG).show()
@@ -111,20 +114,14 @@ class RegisterEmailActivity : AppCompatActivity()
 
                             if (rol == "Alumno")
                             {
-                                db.collection("alumnos").document(email).set(
-                                    hashMapOf("nombre" to nombre,
-                                        "apellidos" to apellidos,
-                                        "fotoDePerfil" to uriFoto,
-                                        "curso" to spinnerCursos.selectedItem.toString()),
-                                )
+                                val alumno = Alumno(nombre, apellidos, email, curso, uriFoto)
+
+                                db.collection("alumnos").document(alumno.email).set(alumno)
                             }
                             else if (rol == "Profesor")
                             {
-                                db.collection("profesores").document(email).set(
-                                    hashMapOf("nombre" to nombre,
-                                        "apellidos" to apellidos,
-                                        "fotoDePerfil" to uriFoto)
-                                )
+                                val profesor = Profesor(nombre, apellidos, email, uriFoto)
+                                db.collection("profesores").document(email).set(profesor)
                             }
 
                             var intent = Intent(applicationContext, LoginActivity::class.java)

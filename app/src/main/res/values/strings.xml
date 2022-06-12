@@ -76,4 +76,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--> MIS ASIGNATURAS PROFESOR <!-->
+        <string name="titleMisAsignaturasProfesor">Mis Asignaturas</string>
+        <string name="btNuevaAsignaturaProfesor">Nueva Asignatura</string>
+        <string name="tvAsignaturasEmptyProfesor">Aún no hay ninguna asignatura</string>
+
 </resources>

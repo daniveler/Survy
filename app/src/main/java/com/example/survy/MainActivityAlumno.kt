@@ -2,7 +2,6 @@ package com.example.survy
 
 import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,10 +14,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.survy.Authentication.LoginActivity
+import com.example.survy.Clases.Alumno
 import com.example.survy.Fragments.Home.HomeFragmentProfesor
 import com.example.survy.Fragments.MiPerfil.Alumno.MiPerfilFragmentAlumno
 import com.example.survy.Fragments.MisAlumnos.MisAlumnosFragment
-import com.example.survy.Fragments.MisAsignaturas.MisAsignaturasFragment
+import com.example.survy.Fragments.MisAsignaturas.MisAsignaturasFragmentProfesor
 import com.example.survy.Fragments.Resultados.ResultadosFragmentProfesor
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
@@ -40,7 +40,19 @@ class MainActivityAlumno : AppCompatActivity()
         setContentView(R.layout.activity_main_alumno)
 
         val bundle = intent.extras
-        val email = bundle?.getString("email")
+        val email = bundle?.getString("email") ?: ""
+        var alumno = Alumno()
+
+        db.collection("alumnos").document(email).get().addOnCompleteListener{
+            if (it.isSuccessful)
+            {
+                val document = it.result
+                if (document.exists())
+                {
+                    alumno = document.toObject(Alumno::class.java)!!
+                }
+            }
+        }
 
         val rol = "Alumno"
         //val nombre = bundle?.getString("nombre")
@@ -49,7 +61,7 @@ class MainActivityAlumno : AppCompatActivity()
 
         header = navView.getHeaderView(0)
 
-        setupMainActivity(email ?: "")
+        setupMainActivity(email ?: "", alumno)
 
         navView.setNavigationItemSelectedListener {
             when(it.itemId)
@@ -61,7 +73,7 @@ class MainActivityAlumno : AppCompatActivity()
                 }
                 R.id.itemMisAsignaturasAlumno ->
                 {
-                    cambiarFragment(MisAsignaturasFragment(), email, rol)
+                    cambiarFragment(MisAsignaturasFragmentProfesor(), email, rol)
                 }
                 R.id.itemNuevaEncuestaAlumno -> cambiarFragment(MisAlumnosFragment(), email, rol)
                 R.id.itemMisResultadosAlumno -> cambiarFragment(ResultadosFragmentProfesor(), email, rol)
@@ -76,7 +88,7 @@ class MainActivityAlumno : AppCompatActivity()
         }
     }
 
-    private fun setupMainActivity(email: String?)
+    private fun setupMainActivity(email: String?, alumno: Alumno)
     {
         drawerLayout  = findViewById(R.id.drawerLayoutAlumno)
 
@@ -106,12 +118,9 @@ class MainActivityAlumno : AppCompatActivity()
 
             //civFotoPerfil.setImageURI(null)
 
-            db.collection("alumnos").document(email).get().addOnSuccessListener {
-                tvNombreHeader.setText(it.get("nombre") as String?)
-                //civFotoPerfil.setImageURI(it.get("fotoDePerfil") as Uri?)
-            }
             civFotoPerfil.setImageResource(R.drawable.default_profile_image)
-            tvEmailHeader.setText(email)
+            tvNombreHeader.setText(alumno.nombre)
+            tvEmailHeader.setText(alumno.email)
         }
     }
 
@@ -168,14 +177,5 @@ class MainActivityAlumno : AppCompatActivity()
 
         val alerta = dialogBuilder.create()
         alerta.show()
-    }
-
-    fun actualizarHeader(nombre: String)
-    {
-        var civFotoPerfil = header.findViewById<CircleImageView>(R.id.civHeader)
-        var tvNombreHeader = header.findViewById<TextView>(R.id.tvNombreHeader)
-
-        tvNombreHeader.setText(nombre)
-        //civFotoPerfil.setImageURI(fotoDePerfil)
     }
 }
