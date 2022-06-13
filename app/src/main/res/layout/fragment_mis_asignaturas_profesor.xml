@@ -41,18 +41,18 @@
         android:layout_height="0dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
         android:layout_marginRight="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/btRegister"
+        app:layout_constraintBottom_toTopOf="@+id/btNuevaAsignaturaMisAsignaturasProfesor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:layout_marginBottom="32dp"
         >
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
-        android:id="@+id/btRegister"
+        android:id="@+id/btNuevaAsignaturaMisAsignaturasProfesor"
         android:layout_width="250dp"
         android:layout_height="64dp"
         android:layout_gravity="center"

@@ -129,6 +129,7 @@ class RegisterEmailActivity : AppCompatActivity()
                                         "fotoDePerfil" to uriFoto)
                                 )
                             }
+
                             var intent = Intent(applicationContext, LoginActivity::class.java)
                             intent.putExtra("rol", rol)
                             intent.putExtra("vieneDeRegistro", true)

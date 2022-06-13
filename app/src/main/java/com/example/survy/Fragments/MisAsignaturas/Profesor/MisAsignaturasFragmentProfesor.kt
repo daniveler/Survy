@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.example.survy.MainActivityAlumno
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 import kotlin.concurrent.schedule
@@ -30,11 +32,13 @@ class MisAsignaturasFragmentProfesor : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val user = FirebaseAuth.getInstance().currentUser
+        var user = FirebaseAuth.getInstance().currentUser
 
-        if (user != null)
+        val btNuevaAsignatura = view.findViewById<Button>(R.id.btNuevaAsignaturaMisAsignaturasProfesor)
+
+        /*if (user != null)
         {
-            val userEmail = user.email
+            val userEmail = user!!.email
 
             db.collection("asignaturas").document(userEmail!!).get().addOnCompleteListener {
                 if (it.isSuccessful)
@@ -49,6 +53,26 @@ class MisAsignaturasFragmentProfesor : Fragment()
                     }
                 }
             }
+        }*/
+
+        btNuevaAsignatura.setOnClickListener {
+            val email = user!!.email ?: ""
+            cambiarFragment(NuevaAsignaturaFragmentProfesor(), email)
         }
+    }
+
+    fun cambiarFragment(framentCambiar: Fragment, email: String)
+    {
+        var args = Bundle()
+        args.putString("email", email)
+
+        var fragment = framentCambiar
+        fragment.arguments = args
+
+        var fragmentManager = requireActivity().supportFragmentManager
+
+        fragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerProfesor, fragment)
+            .commit()
     }
 }
