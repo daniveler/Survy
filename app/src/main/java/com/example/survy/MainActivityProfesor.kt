@@ -17,7 +17,7 @@ import com.example.survy.Authentication.LoginActivity
 import com.example.survy.Fragments.Home.HomeFragmentProfesor
 import com.example.survy.Fragments.MiPerfil.Profesor.MiPerfilFragmentProfesor
 import com.example.survy.Fragments.MisAlumnos.MisAlumnosFragment
-import com.example.survy.Fragments.MisAsignaturas.MisAsignaturasFragmentProfesor
+import com.example.survy.Fragments.MisAsignaturas.Profesor.MisAsignaturasFragmentProfesor
 import com.example.survy.Fragments.Resultados.ResultadosFragmentProfesor
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth

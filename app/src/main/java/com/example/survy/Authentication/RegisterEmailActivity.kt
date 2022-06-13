@@ -114,16 +114,21 @@ class RegisterEmailActivity : AppCompatActivity()
 
                             if (rol == "Alumno")
                             {
-                                val alumno = Alumno(nombre, apellidos, email, curso, uriFoto)
-
-                                db.collection("alumnos").document(alumno.email).set(alumno)
+                                db.collection("alumnos").document(email).set(
+                                    hashMapOf("nombre" to nombre,
+                                        "apellidos" to apellidos,
+                                        "fotoDePerfil" to uriFoto,
+                                        "curso" to spinnerCursos.selectedItem.toString()),
+                                )
                             }
                             else if (rol == "Profesor")
                             {
-                                val profesor = Profesor(nombre, apellidos, email, uriFoto)
-                                db.collection("profesores").document(email).set(profesor)
+                                db.collection("profesores").document(email).set(
+                                    hashMapOf("nombre" to nombre,
+                                        "apellidos" to apellidos,
+                                        "fotoDePerfil" to uriFoto)
+                                )
                             }
-
                             var intent = Intent(applicationContext, LoginActivity::class.java)
                             intent.putExtra("rol", rol)
                             intent.putExtra("vieneDeRegistro", true)

@@ -14,11 +14,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.survy.Authentication.LoginActivity
-import com.example.survy.Clases.Alumno
 import com.example.survy.Fragments.Home.HomeFragmentProfesor
 import com.example.survy.Fragments.MiPerfil.Alumno.MiPerfilFragmentAlumno
 import com.example.survy.Fragments.MisAlumnos.MisAlumnosFragment
-import com.example.survy.Fragments.MisAsignaturas.MisAsignaturasFragmentProfesor
+import com.example.survy.Fragments.MisAsignaturas.Profesor.MisAsignaturasFragmentProfesor
 import com.example.survy.Fragments.Resultados.ResultadosFragmentProfesor
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
@@ -41,18 +40,6 @@ class MainActivityAlumno : AppCompatActivity()
 
         val bundle = intent.extras
         val email = bundle?.getString("email") ?: ""
-        var alumno = Alumno()
-
-        db.collection("alumnos").document(email).get().addOnCompleteListener{
-            if (it.isSuccessful)
-            {
-                val document = it.result
-                if (document.exists())
-                {
-                    alumno = document.toObject(Alumno::class.java)!!
-                }
-            }
-        }
 
         val rol = "Alumno"
         //val nombre = bundle?.getString("nombre")
@@ -61,7 +48,7 @@ class MainActivityAlumno : AppCompatActivity()
 
         header = navView.getHeaderView(0)
 
-        setupMainActivity(email ?: "", alumno)
+        setupMainActivity(email ?: "")
 
         navView.setNavigationItemSelectedListener {
             when(it.itemId)
@@ -88,7 +75,7 @@ class MainActivityAlumno : AppCompatActivity()
         }
     }
 
-    private fun setupMainActivity(email: String?, alumno: Alumno)
+    private fun setupMainActivity(email: String?)
     {
         drawerLayout  = findViewById(R.id.drawerLayoutAlumno)
 
@@ -118,9 +105,13 @@ class MainActivityAlumno : AppCompatActivity()
 
             //civFotoPerfil.setImageURI(null)
 
+            db.collection("alumnos").document(email).get().addOnSuccessListener {
+                tvNombreHeader.setText(it.get("nombre") as String?)
+                //civFotoPerfil.setImageURI(it.get("fotoDePerfil") as Uri?)
+            }
+
             civFotoPerfil.setImageResource(R.drawable.default_profile_image)
-            tvNombreHeader.setText(alumno.nombre)
-            tvEmailHeader.setText(alumno.email)
+            tvEmailHeader.setText(email)
         }
     }
 

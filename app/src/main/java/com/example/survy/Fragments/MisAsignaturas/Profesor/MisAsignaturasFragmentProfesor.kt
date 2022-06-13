@@ -1,4 +1,4 @@
-package com.example.survy.Fragments.MisAsignaturas
+package com.example.survy.Fragments.MisAsignaturas.Profesor
 
 import android.content.Intent
 import android.os.Bundle
