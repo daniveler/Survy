@@ -68,10 +68,12 @@ class RegisterEmailActivity : AppCompatActivity()
         btRegister.setOnClickListener{
             var nombre = etNombre.text.toString()
             var apellidos = etApellidos.text.toString()
-            var email = etEmail.text.toString()
+            var email = etEmail.text.toString().lowercase()
             val curso = spinnerCursos.selectedItem.toString()
             val password = etPassword.text.toString()
-            val uriFoto = Uri.parse("android.resource://" + packageName + "/" + R.drawable.default_profile_image)
+            val uriFoto = Uri.parse("android.resource://" + packageName +
+                    "/" + resources.getResourceTypeName(R.drawable.default_profile_image) +
+                    "/" + resources.getResourceEntryName(R.drawable.default_profile_image))
 
             if (nombre.isBlank())
             {

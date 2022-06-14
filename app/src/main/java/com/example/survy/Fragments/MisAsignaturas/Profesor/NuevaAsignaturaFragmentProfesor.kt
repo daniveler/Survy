@@ -3,6 +3,7 @@ package com.example.survy.Fragments.MisAsignaturas.Profesor
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -61,7 +62,9 @@ class NuevaAsignaturaFragmentProfesor : Fragment()
         btCrear.setOnClickListener {
             val nombre = etNombre.text.toString()
             val curso = spinnerCursos.selectedItem.toString()
-            //val foto =
+            val icono = Uri.parse("android.resource://" + requireActivity().packageName +
+                    "/" + resources.getResourceTypeName(R.drawable.survy_logo) +
+                    "/" + resources.getResourceEntryName(R.drawable.survy_logo))
 
             if (nombre.isBlank())
             {
@@ -76,7 +79,9 @@ class NuevaAsignaturaFragmentProfesor : Fragment()
             else
             {
                 var dataAsignatura = hashMapOf("nombre" to nombre,
-                    "curso" to curso)
+                    "curso" to curso,
+                    "icono" to icono
+                    )
 
                 db.collection("asignaturas").add(dataAsignatura)
                     .addOnSuccessListener {

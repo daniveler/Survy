@@ -3,6 +3,7 @@ package com.example.survy
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -103,14 +104,11 @@ class MainActivityAlumno : AppCompatActivity()
             var tvEmailHeader = header.findViewById<TextView>(R.id.tvEmailHeader)
             var tvNombreHeader = header.findViewById<TextView>(R.id.tvNombreHeader)
 
-            //civFotoPerfil.setImageURI(null)
-
             db.collection("alumnos").document(email).get().addOnSuccessListener {
                 tvNombreHeader.setText(it.get("nombre") as String?)
-                //civFotoPerfil.setImageURI(it.get("fotoDePerfil") as Uri?)
+                civFotoPerfil.setImageURI(Uri.parse(it.get("fotoDePerfil").toString()) as Uri?)
             }
 
-            civFotoPerfil.setImageResource(R.drawable.default_profile_image)
             tvEmailHeader.setText(email)
         }
     }

@@ -36,8 +36,8 @@
 
         <ImageView
             android:id="@+id/ivFotoNuevaAsignaturaProfesor"
-            android:layout_width="264dp"
-            android:layout_height="264dp"
+            android:layout_width="188dp"
+            android:layout_height="188dp"
             android:layout_gravity="center"
             android:src="@drawable/survy_logo"
             android:layout_marginTop="32dp"/>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.example.survy.Clases.Asignatura
 import com.example.survy.MainActivityAlumno
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
@@ -36,24 +37,20 @@ class MisAsignaturasFragmentProfesor : Fragment()
 
         val btNuevaAsignatura = view.findViewById<Button>(R.id.btNuevaAsignaturaMisAsignaturasProfesor)
 
-        /*if (user != null)
+        if (user != null)
         {
             val userEmail = user!!.email
+            val listaAsignaturas : MutableList<Asignatura>
 
-            db.collection("asignaturas").document(userEmail!!).get().addOnCompleteListener {
-                if (it.isSuccessful)
-                {
-                    val document = it.result
-                    if (!document.exists())
-                    {
-
-                    } else
+            /*db.collection("imparte")
+                .whereEqualTo("idProfesor", userEmail)
+                .get().addOnCompleteListener {
+                    if (it.isSuccessful)
                     {
 
                     }
-                }
-            }
-        }*/
+            }*/
+        }
 
         btNuevaAsignatura.setOnClickListener {
             val email = user!!.email ?: ""

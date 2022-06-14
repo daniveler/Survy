@@ -51,7 +51,7 @@ class LoginEmailActivity : AppCompatActivity()
             }
             else
             {
-                var email = etEmail.text.toString()
+                var email = etEmail.text.toString().lowercase()
                 var password = etPassword.text.toString()
 
                 auth.signInWithEmailAndPassword(email, password)
