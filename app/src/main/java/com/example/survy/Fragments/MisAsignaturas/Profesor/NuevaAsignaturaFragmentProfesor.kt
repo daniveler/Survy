@@ -1,8 +1,10 @@
 package com.example.survy.Fragments.MisAsignaturas.Profesor
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -73,18 +75,16 @@ class NuevaAsignaturaFragmentProfesor : Fragment()
             }
             else
             {
-                var id = ""
-
-                var data = hashMapOf("nombre" to nombre,
+                var dataAsignatura = hashMapOf("nombre" to nombre,
                     "curso" to curso)
 
-                db.collection("asignaturas").add(data)
-                    .addOnSuccessListener { id = it.id }
+                db.collection("asignaturas").add(dataAsignatura)
+                    .addOnSuccessListener {
+                        var dataImparte = hashMapOf("idProfesor" to email,
+                            "idAsignatura" to it.id)
 
-                data = hashMapOf("idProfesor" to email,
-                    "idAsignatura" to id)
-
-                db.collection("imparte").add(data)
+                        db.collection("imparte").add(dataImparte)
+                    }
 
                 Toast.makeText(context, "Asignatura creada correctamente",
                     Toast.LENGTH_LONG).show()
