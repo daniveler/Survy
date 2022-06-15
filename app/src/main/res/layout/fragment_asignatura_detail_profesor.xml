@@ -68,6 +68,20 @@
                 android:text="@string/btVerEncuestasAsignaturaDetailProfesor"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
+                android:textSize="16dp"
+                />
+
+            <Button
+                android:id="@+id/btEditarAsignaturaDetailProfesor"
+                android:layout_width="240dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/yellowButton"
+                android:fontFamily="@font/poppins_semibold"
+                android:letterSpacing="0"
+                android:text="@string/btEditarAsignaturaDetailProfesor"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
                 android:textSize="16dp" />
 
             <Button

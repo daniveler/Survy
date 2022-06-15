@@ -36,6 +36,7 @@ class AsignaturaDetailFragmentProfesor : Fragment()
 
         val btVerEncuestas = view.findViewById<Button>(R.id.btVerEncuestasAsignaturaDetailProfesor)
         val btCancelar = view.findViewById<Button>(R.id.btCancelarAsignaturaDetailProfesor)
+        val btEditar = view.findViewById<Button>(R.id.btEditarAsignaturaDetailProfesor)
 
         val email = arguments?.getString("email") ?: ""
         val idAsignatura = arguments?.getString("asignatura") ?: ""
@@ -49,6 +50,10 @@ class AsignaturaDetailFragmentProfesor : Fragment()
 
         btVerEncuestas.setOnClickListener {
 
+        }
+
+        btEditar.setOnClickListener {
+            cambiarFragment(EditarAsignaturaFragmentProfesor(), email, idAsignatura)
         }
 
         btCancelar.setOnClickListener {

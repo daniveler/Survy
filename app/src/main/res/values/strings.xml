@@ -89,5 +89,10 @@
     <!--> ASIGNATURA DETAIL PROFESOR <!-->
     <string name="btVerEncuestasAsignaturaDetailProfesor">Ver Encuestas</string>
     <string name="btCancelarAsignaturaDetailProfesor">Cancelar</string>
+    <string name="btEditarAsignaturaDetailProfesor">Editar Asignatura</string>
+
+    <!--> EDITAR ASIGNATURA PROFESOR <!-->
+    <string name="btGuardarCambiosEditarAsignaturaProfesor">Guardar Cambios</string>
+    <string name="btCancelarEditarAsignaturaProfesor">Cancelar</string>
 
 </resources>
