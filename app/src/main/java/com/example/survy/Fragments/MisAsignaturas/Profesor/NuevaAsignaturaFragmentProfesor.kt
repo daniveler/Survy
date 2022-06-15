@@ -79,17 +79,12 @@ class NuevaAsignaturaFragmentProfesor : Fragment()
             else
             {
                 var dataAsignatura = hashMapOf("nombre" to nombre,
+                    "idProfesor" to email,
                     "curso" to curso,
-                    "icono" to icono
+                    "icono" to icono,
                     )
 
                 db.collection("asignaturas").add(dataAsignatura)
-                    .addOnSuccessListener {
-                        var dataImparte = hashMapOf("idProfesor" to email,
-                            "idAsignatura" to it.id)
-
-                        db.collection("imparte").add(dataImparte)
-                    }
 
                 Toast.makeText(context, "Asignatura creada correctamente",
                     Toast.LENGTH_LONG).show()

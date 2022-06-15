@@ -2,17 +2,25 @@ package com.example.survy.Fragments.MisAsignaturas.Profesor
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.SearchView
+import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Asignatura
-import com.example.survy.MainActivityAlumno
+import com.example.survy.Clases.AsignaturaAdapter
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.firestore.ktx.toObjects
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -34,34 +42,61 @@ class MisAsignaturasFragmentProfesor : Fragment()
         super.onViewCreated(view, savedInstanceState)
 
         var user = FirebaseAuth.getInstance().currentUser
+        var email = user?.email ?: ""
 
+        val searchView = view.findViewById<SearchView>(R.id.searchViewMisAsignaturasProfesor)
+        val tvNoHayAsignaturas = view.findViewById<TextView>(R.id.tvMisAsignaturasProfesor)
+        val rvListaAsignaturas = view.findViewById<RecyclerView>(R.id.recyclerViewMisAsignaturasProfesor)
         val btNuevaAsignatura = view.findViewById<Button>(R.id.btNuevaAsignaturaMisAsignaturasProfesor)
 
-        if (user != null)
-        {
-            val userEmail = user!!.email
-            val listaAsignaturas : MutableList<Asignatura>
+        val listaAsignaturas = mutableListOf<Asignatura>()
 
-            /*db.collection("imparte")
-                .whereEqualTo("idProfesor", userEmail)
-                .get().addOnCompleteListener {
-                    if (it.isSuccessful)
+        db.collection("asignaturas")
+            .whereEqualTo("idProfesor", email)
+            .get()
+            .addOnSuccessListener { task ->
+                for (document in task)
+                {
+                    // Falta número de alumnos
+                    val id = document.id
+                    val nombre = document.data.get("nombre").toString()
+                    val idProfesor = document.data.get("idProfesor").toString()
+                    val curso = document.data.get("curso").toString()
+                    val icono = document.data.get("icono").toString()
+
+                    var asignatura = Asignatura(id, nombre, idProfesor, curso, icono)
+
+                    listaAsignaturas.add(asignatura)
+                }
+                tvNoHayAsignaturas.visibility = View.GONE
+
+                var adapter = AsignaturaAdapter(listaAsignaturas)
+
+                rvListaAsignaturas.layoutManager = LinearLayoutManager(context)
+                rvListaAsignaturas.setHasFixedSize(true)
+                rvListaAsignaturas.adapter = adapter
+
+                adapter.setOnItemClickListener(object: AsignaturaAdapter.onItemClickListener{
+                    override fun onItemClick(position: Int)
                     {
+                        var asignaturaActual = listaAsignaturas.get(position)
 
+                        cambiarFragment(AsignaturaDetailFragmentProfesor(), email, asignaturaActual.id)
                     }
-            }*/
-        }
+                })
+            }
 
         btNuevaAsignatura.setOnClickListener {
             val email = user!!.email ?: ""
-            cambiarFragment(NuevaAsignaturaFragmentProfesor(), email)
+            cambiarFragment(NuevaAsignaturaFragmentProfesor(), email, null)
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, email: String)
+    fun cambiarFragment(framentCambiar: Fragment, email: String, idAsignatura: String?)
     {
         var args = Bundle()
         args.putString("email", email)
+        args.putString("asignatura", idAsignatura ?: "")
 
         var fragment = framentCambiar
         fragment.arguments = args

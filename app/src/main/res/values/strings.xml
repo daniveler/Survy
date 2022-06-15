@@ -80,9 +80,14 @@
     <string name="titleMisAsignaturasProfesor">Mis Asignaturas</string>
     <string name="btNuevaAsignaturaProfesor">Nueva Asignatura</string>
     <string name="tvAsignaturasEmptyProfesor">Aún no hay ninguna asignatura</string>
+    <string name="hintSearchViewMisAsignaturasProfesor">Buscar Asignatura</string>
 
     <!--> NUEVA ASIGNATURA PROFESOR <!-->
     <string name="btCrearNuevaAsignaturaProfesor">Crear Asignatura</string>
     <string name="btCancelarNuevaAsignaturaProfesor">Cancelar</string>
+
+    <!--> ASIGNATURA DETAIL PROFESOR <!-->
+    <string name="btVerEncuestasAsignaturaDetailProfesor">Ver Encuestas</string>
+    <string name="btCancelarAsignaturaDetailProfesor">Cancelar</string>
 
 </resources>
