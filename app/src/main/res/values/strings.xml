@@ -94,5 +94,6 @@
     <!--> EDITAR ASIGNATURA PROFESOR <!-->
     <string name="btGuardarCambiosEditarAsignaturaProfesor">Guardar Cambios</string>
     <string name="btCancelarEditarAsignaturaProfesor">Cancelar</string>
+    <string name="btGuardarIconoEditarAsignaturaProfesor">Guardar Icono</string>
 
 </resources>

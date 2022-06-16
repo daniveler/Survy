@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.R
+import com.squareup.picasso.Picasso
 
 class GridIconosAdapter(val listaIconos : List<Uri>) : RecyclerView.Adapter<GridIconosAdapter.GridIconosViewHolder>()
 {
@@ -25,7 +25,7 @@ class GridIconosAdapter(val listaIconos : List<Uri>) : RecyclerView.Adapter<Grid
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridIconosViewHolder
     {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.asignatura_list_view_profesor, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.icon_item_grid, parent, false)
         return GridIconosViewHolder(itemView, mListener)
     }
 
@@ -33,7 +33,7 @@ class GridIconosAdapter(val listaIconos : List<Uri>) : RecyclerView.Adapter<Grid
     {
         val icono = listaIconos[position]
 
-        holder.ivIcono.setImageURI(Uri.parse(icono.toString()))
+        Picasso.get().load(icono).into(holder.ivIcono)
     }
 
     override fun getItemCount(): Int
@@ -43,7 +43,7 @@ class GridIconosAdapter(val listaIconos : List<Uri>) : RecyclerView.Adapter<Grid
 
     class GridIconosViewHolder(itemView : View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView)
     {
-        val ivIcono = itemView.findViewById<ImageView>(R.id.ivIconoAsignaturaList)
+        val ivIcono = itemView.findViewById<ImageView>(R.id.ivIconoItemGrid)
 
         init
         {

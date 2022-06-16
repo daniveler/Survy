@@ -10,14 +10,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.survy.Clases.AsignaturaAdapter
 import com.example.survy.Clases.GridIconosAdapter
 import com.example.survy.R
-import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ListResult
+import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
+import com.squareup.picasso.Picasso
+import kotlin.collections.ArrayList
 
 class EditarAsignaturaFragmentProfesor : Fragment()
 {
@@ -46,6 +52,9 @@ class EditarAsignaturaFragmentProfesor : Fragment()
         val btGuardarCambios = view.findViewById<Button>(R.id.btGuardarCambiosEditarAsignaturaProfesor)
         val btCancelar = view.findViewById<Button>(R.id.btCancelarEditarAsignaturaProfesor)
 
+        val btGuardarIcono = view.findViewById<Button>(R.id.btGuardarIconoEditarAsignaturaProfesor)
+        val btCancelarIcono = view.findViewById<Button>(R.id.btCancelarGuardarIconoEditarAsignaturaProfesor)
+
         val rvIconos = view.findViewById<RecyclerView>(R.id.rvIconosEditarAsignaturaProfesor)
 
         val cursos = resources.getStringArray(R.array.cursos)
@@ -65,6 +74,8 @@ class EditarAsignaturaFragmentProfesor : Fragment()
             }
         }
 
+        var iconoActual = Uri.parse("")
+
         spinnerCurso.adapter = spinnerAdapter
 
         db.collection("asignaturas")
@@ -73,70 +84,108 @@ class EditarAsignaturaFragmentProfesor : Fragment()
             .addOnSuccessListener {
                 etNombre.setText(it.data?.get("nombre").toString())
                 spinnerCurso.setSelection(cursos.indexOf(it.get("curso").toString()))
-                ivIcono.setImageURI(Uri.parse(it.data?.get("icono").toString()))
+
+                iconoActual = Uri.parse(it.data?.get("icono").toString())
+                Picasso.get().load(it.getString("icono")).into(ivIcono)
             }
 
+        btGuardarCambios.setOnClickListener {
+            val nombre = etNombre.text.toString()
+            val curso = spinnerCurso.selectedItem.toString()
+            val icono = iconoActual
+
+            db.collection("asignaturas").document(idAsignatura).update("nombre", nombre)
+            db.collection("asignaturas").document(idAsignatura).update("curso", curso)
+            db.collection("asignaturas").document(idAsignatura).update("icono", icono)
+
+            cambiarFragment(AsignaturaDetailFragmentProfesor(), idAsignatura)
+        }
+
+        btCancelar.setOnClickListener {
+            cambiarFragment(AsignaturaDetailFragmentProfesor(), idAsignatura)
+        }
+
         ivIcono.setOnClickListener {
+            var iconoAntiguo = ivIcono.drawable
+
             etNombre.visibility = View.GONE
             spinnerCurso.visibility = View.GONE
             btGuardarCambios.visibility = View.GONE
             btCancelar.visibility = View.GONE
 
-            /*rvIconos.visibility = View.VISIBLE
+            rvIconos.visibility = View.VISIBLE
+            btGuardarIcono.visibility = View.VISIBLE
+            btCancelarIcono.visibility = View.VISIBLE
 
-            val listaIconos = obtenerIconos()
+            var storageRef = storage.reference
+            var iconosRef = storageRef.child("iconos_asignaturas_100px")
 
-            var adapter = GridIconosAdapter(listaIconos)
+            val listaIconos: ArrayList<Uri> = ArrayList()
 
-            rvIconos.layoutManager = LinearLayoutManager(context)
-            rvIconos.setHasFixedSize(true)
-            rvIconos.adapter = adapter
+            val listAllTask: Task<ListResult> = iconosRef.listAll()
+            listAllTask.addOnCompleteListener { result ->
+                val items: List<StorageReference> = result.result!!.items
+                
+                items.forEachIndexed { index, item ->
+                    item.downloadUrl.addOnSuccessListener {
+                        listaIconos.add(it)
+                    }.addOnCompleteListener {
+                        var adapter = GridIconosAdapter(listaIconos)
 
-            adapter.setOnItemClickListener(object: GridIconosAdapter.onItemClickListener{
-                override fun onItemClick(position: Int)
-                {
-                    var iconoActual = listaIconos.get(position)
+                        rvIconos.layoutManager = GridLayoutManager(context, 3)
+                        rvIconos.setHasFixedSize(true)
+                        rvIconos.adapter = adapter
 
-                    rvIconos.visibility = View.GONE
+                        adapter.setOnItemClickListener(object: GridIconosAdapter.onItemClickListener{
+                            override fun onItemClick(position: Int)
+                            {
+                                iconoActual = listaIconos.get(position)
+                                Picasso.get().load(iconoActual).into(ivIcono)
+                            }
+                        })
 
-                    etNombre.visibility = View.VISIBLE
-                    spinnerCurso.visibility = View.VISIBLE
-                    btGuardarCambios.visibility = View.VISIBLE
-                    btCancelar.visibility = View.VISIBLE
+                        btGuardarIcono.setOnClickListener {
+                            etNombre.visibility = View.VISIBLE
+                            spinnerCurso.visibility = View.VISIBLE
+                            btGuardarCambios.visibility = View.VISIBLE
+                            btCancelar.visibility = View.VISIBLE
 
-                    ivIcono.setImageURI(iconoActual)
+                            rvIconos.visibility = View.GONE
+                            btGuardarIcono.visibility = View.GONE
+                            btCancelarIcono.visibility = View.GONE
+                        }
+
+                        btCancelarIcono.setOnClickListener {
+                            etNombre.visibility = View.VISIBLE
+                            spinnerCurso.visibility = View.VISIBLE
+                            btGuardarCambios.visibility = View.VISIBLE
+                            btCancelar.visibility = View.VISIBLE
+
+                            rvIconos.visibility = View.GONE
+                            btGuardarIcono.visibility = View.GONE
+                            btCancelarIcono.visibility = View.GONE
+
+                            ivIcono.setImageDrawable(iconoAntiguo)
+                        }
+                    }
                 }
-            })*/
-
-            obtenerIconos()
-
+            }
         }
-
-
     }
 
-    fun obtenerIconos(listener: OnSuccessListener) : List<Uri>
+    fun cambiarFragment(framentCambiar: Fragment, idAsignatura: String?)
     {
-        var storageRef = storage.reference
-        //var iconosRef = storageRef.child("iconos_asignaturas_100px/icons8-7-cute-100.png")
-        var iconosRef = storageRef.child("iconos_asignaturas_100px")
+        var args = Bundle()
+        args.putString("asignatura", idAsignatura)
 
-        var listaIconos = mutableListOf<Uri>()
+        var fragment = framentCambiar
+        fragment.arguments = args
 
-        var uri : String
-        /*iconosRef.downloadUrl.addOnSuccessListener {
-            Log.i("DANI", "$it")
-            uri = it.toString()
-        }*/
+        var fragmentManager = requireActivity().supportFragmentManager
 
-        val successListener = iconosRef.listAll().result
-
-        val successListenerChikito = successListener.items.forEach { item ->
-                item.downloadUrl.result
-        }
-
-        
-
-        return listaIconos
+        fragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerProfesor, fragment)
+            .commit()
     }
 }
+

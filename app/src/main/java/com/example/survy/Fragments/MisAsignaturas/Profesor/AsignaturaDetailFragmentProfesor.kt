@@ -12,6 +12,7 @@ import android.widget.TextView
 import com.example.survy.Clases.Asignatura
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Picasso
 
 class AsignaturaDetailFragmentProfesor : Fragment()
 {
@@ -43,7 +44,7 @@ class AsignaturaDetailFragmentProfesor : Fragment()
 
         db.collection("asignaturas").document(idAsignatura)
             .get().addOnSuccessListener {
-                ivIcono.setImageURI(Uri.parse(it.getString("icono")))
+                Picasso.get().load(it.getString("icono")).into(ivIcono)
                 tvNombre.setText(it.getString("nombre"))
                 tvCurso.setText(it.getString("curso"))
         }

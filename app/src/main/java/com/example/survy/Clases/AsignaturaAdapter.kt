@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.R
+import com.squareup.picasso.Picasso
 
 class AsignaturaAdapter(val listaAsignaturas : List<Asignatura>) : RecyclerView.Adapter<AsignaturaAdapter.AsignaturaViewHolder>()
 {
@@ -33,7 +34,8 @@ class AsignaturaAdapter(val listaAsignaturas : List<Asignatura>) : RecyclerView.
     override fun onBindViewHolder(holder: AsignaturaViewHolder, position: Int)
     {
         val asignatura = listaAsignaturas[position]
-        holder.ivFoto.setImageURI(Uri.parse(asignatura.icono.toString()))
+        Picasso.get().load(Uri.parse(asignatura.icono.toString())).into(holder.ivFoto)
+        //holder.ivFoto.setImageURI(Uri.parse(asignatura.icono.toString()))
         holder.tvTitulo.setText(asignatura.nombre)
         holder.tvCurso.setText(asignatura.curso)
     }
