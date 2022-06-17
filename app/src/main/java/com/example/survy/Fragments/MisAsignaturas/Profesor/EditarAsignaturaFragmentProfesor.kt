@@ -118,7 +118,7 @@ class EditarAsignaturaFragmentProfesor : Fragment()
             btCancelarIcono.visibility = View.VISIBLE
 
             var storageRef = storage.reference
-            var iconosRef = storageRef.child("iconos_asignaturas_100px")
+            var iconosRef = storageRef.child("iconfinder_pack")
 
             val listaIconos: ArrayList<Uri> = ArrayList()
 

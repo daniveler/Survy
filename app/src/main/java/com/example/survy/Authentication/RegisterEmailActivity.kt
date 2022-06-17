@@ -116,8 +116,9 @@ class RegisterEmailActivity : AppCompatActivity()
 
                             if (rol == "Alumno")
                             {
-                                db.collection("alumnos").document(email).set(
+                                db.collection("alumnos").document().set(
                                     hashMapOf("nombre" to nombre,
+                                        "email" to email,
                                         "apellidos" to apellidos,
                                         "fotoDePerfil" to uriFoto,
                                         "curso" to spinnerCursos.selectedItem.toString()),
@@ -125,8 +126,9 @@ class RegisterEmailActivity : AppCompatActivity()
                             }
                             else if (rol == "Profesor")
                             {
-                                db.collection("profesores").document(email).set(
+                                db.collection("profesores").document().set(
                                     hashMapOf("nombre" to nombre,
+                                        "email" to email,
                                         "apellidos" to apellidos,
                                         "fotoDePerfil" to uriFoto)
                                 )

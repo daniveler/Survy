@@ -50,6 +50,7 @@ class MisAsignaturasFragmentProfesor : Fragment()
         val btNuevaAsignatura = view.findViewById<Button>(R.id.btNuevaAsignaturaMisAsignaturasProfesor)
 
         val listaAsignaturas = mutableListOf<Asignatura>()
+        var listaAsignaturasBusqueda = mutableListOf<Asignatura>()
 
         db.collection("asignaturas")
             .whereEqualTo("idProfesor", email)
@@ -82,6 +83,55 @@ class MisAsignaturasFragmentProfesor : Fragment()
                         var asignaturaActual = listaAsignaturas.get(position)
 
                         cambiarFragment(AsignaturaDetailFragmentProfesor(), email, asignaturaActual.id)
+                    }
+                })
+
+                searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String?): Boolean
+                    {
+                        return true
+                    }
+
+                    override fun onQueryTextChange(newText: String?): Boolean
+                    {
+                        val searchText = newText!!.lowercase(Locale.getDefault())
+
+                        if (searchText.isNotEmpty())
+                        {
+                            listaAsignaturasBusqueda.clear()
+
+                            listaAsignaturas.forEach {
+                                if (it.nombre.lowercase(Locale.getDefault()).contains(searchText))
+                                {
+                                    listaAsignaturasBusqueda.add(it)
+                                }
+                            }
+
+                            var adapter = AsignaturaAdapter(listaAsignaturasBusqueda)
+
+                            rvListaAsignaturas.layoutManager = LinearLayoutManager(context)
+                            rvListaAsignaturas.setHasFixedSize(true)
+                            rvListaAsignaturas.adapter = adapter
+
+                            adapter.setOnItemClickListener(object: AsignaturaAdapter.onItemClickListener{
+                                override fun onItemClick(position: Int)
+                                {
+                                    var asignaturaActual = listaAsignaturasBusqueda.get(position)
+
+                                    cambiarFragment(AsignaturaDetailFragmentProfesor(), email, asignaturaActual.id)
+                                }
+                            })
+
+                            rvListaAsignaturas.adapter!!.notifyDataSetChanged()
+                        }
+                        else
+                        {
+                            listaAsignaturasBusqueda.clear()
+                            listaAsignaturasBusqueda.addAll(listaAsignaturas)
+                            rvListaAsignaturas.adapter!!.notifyDataSetChanged()
+                        }
+
+                        return true
                     }
                 })
             }

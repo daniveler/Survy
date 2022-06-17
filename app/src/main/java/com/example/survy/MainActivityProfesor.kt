@@ -40,32 +40,32 @@ class MainActivityProfesor : AppCompatActivity()
         setContentView(R.layout.activity_main_profesor)
 
         val bundle = intent.extras
-        val email = bundle?.getString("email")
+        val idUsuario = bundle?.getString("idUsuario")
 
         var navView : NavigationView = findViewById(R.id.nav_view_profesor)
 
         header = navView.getHeaderView(0)
 
-        setupMainActivity(email ?: "")
+        setupMainActivity(idUsuario ?: "")
 
         navView.setNavigationItemSelectedListener {
             when(it.itemId)
             {
                 R.id.itemHomeProfesor ->
                 {
-                    cambiarFragment(HomeFragmentProfesor(), email)
+                    cambiarFragment(HomeFragmentProfesor(), idUsuario)
                     supportActionBar?.title = getString(R.string.titleHome)
                 }
                 R.id.itemMisAsignaturasProfesor ->
                 {
-                    cambiarFragment(MisAsignaturasFragmentProfesor(), email)
+                    cambiarFragment(MisAsignaturasFragmentProfesor(), idUsuario)
                     supportActionBar?.title = getString(R.string.titleMisAsignaturasProfesor)
                 }
-                R.id.itemMisAlumnosProfesor -> cambiarFragment(MisAlumnosFragment(), email)
-                R.id.itemResultadosProfesor -> cambiarFragment(ResultadosFragmentProfesor(), email)
+                R.id.itemMisAlumnosProfesor -> cambiarFragment(MisAlumnosFragment(), idUsuario)
+                R.id.itemResultadosProfesor -> cambiarFragment(ResultadosFragmentProfesor(), idUsuario)
                 R.id.itemMiPerfilProfesor ->
                 {
-                    cambiarFragment(MiPerfilFragmentProfesor(), email)
+                    cambiarFragment(MiPerfilFragmentProfesor(), idUsuario)
                     supportActionBar?.title = getString(R.string.titleMiPerfil)
                 }
                 R.id.itemCerrarSesionProfesor -> mostrarAlertaCerrarSesion()
@@ -88,7 +88,7 @@ class MainActivityProfesor : AppCompatActivity()
         return super.onOptionsItemSelected(item)
     }
 
-    fun setupMainActivity(email: String?)
+    fun setupMainActivity(idUsuario: String?)
     {
         drawerLayout  = findViewById(R.id.drawerLayoutProfesor)
 
@@ -105,7 +105,7 @@ class MainActivityProfesor : AppCompatActivity()
         supportActionBar?.title = getString(R.string.titleHome)
         supportActionBar!!.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.veryDarkPurple)))
 
-        if (email.isNullOrBlank())
+        if (idUsuario.isNullOrBlank())
         {
             Toast.makeText(this, "Error al iniciar sesión", Toast.LENGTH_LONG).show()
             finish()
@@ -117,20 +117,19 @@ class MainActivityProfesor : AppCompatActivity()
             var tvNombreHeader = header.findViewById<TextView>(R.id.tvNombreHeader)
 
 
-            db.collection("profesores").document(email).get().addOnSuccessListener {
+            db.collection("profesores").document(idUsuario).get().addOnSuccessListener {
                 tvNombreHeader.setText(it.get("nombre") as String?)
+                tvEmailHeader.setText(it.get("email") as String?)
                 civFotoPerfil.setImageURI(Uri.parse(it.get("fotoDePerfil").toString()) as Uri?)
             }
-
-            tvEmailHeader.setText(email)
         }
     }
 
-    fun cambiarFragment (fragmentCambiar : Fragment, email: String?)
+    fun cambiarFragment (fragmentCambiar : Fragment, idUsuario: String?)
     {
         var args = Bundle()
         args.putString("rol", "Profesor")
-        args.putString("email", email)
+        args.putString("idUsuario", idUsuario)
 
         fragmentCambiar.arguments = args
 

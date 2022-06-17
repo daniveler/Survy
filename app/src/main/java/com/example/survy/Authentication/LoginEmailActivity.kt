@@ -13,11 +13,13 @@ import com.example.survy.MainActivityProfesor
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class LoginEmailActivity : AppCompatActivity()
 {
     private lateinit var auth: FirebaseAuth
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -33,8 +35,8 @@ class LoginEmailActivity : AppCompatActivity()
         val bundle = intent.extras
         val rol = bundle?.getString("rol")
 
-        if (rol == "Alumno") { etEmail.setText("daniel01velerdas@gmail.com") }
-        else { etEmail.setText("daniveler@usal.es") }
+        etEmail.setText("daniel01velerdas@gmail.com")
+        //etEmail.setText("daniveler@usal.es")
 
         etPassword.setText("dani2000")
 
@@ -58,25 +60,32 @@ class LoginEmailActivity : AppCompatActivity()
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful)
                         {
-                            // Sign in success, update UI with the signed-in user's information
-
                             val user = auth.currentUser
 
                             if (user!!.isEmailVerified)
                             {
-                                if (rol == "Alumno")
-                                {
-                                    var i = Intent(this, MainActivityAlumno::class.java)
-                                    i.putExtra("email", email)
-                                    startActivity(i)
-                                }
-                                else if (rol == "Profesor")
-                                {
-                                    var i = Intent(this, MainActivityProfesor::class.java)
-                                    i.putExtra("email", email)
-                                    startActivity(i)
-                                }
+                                    db.collection("alumnos")
+                                        .whereEqualTo("email", email)
+                                        .get().addOnSuccessListener {
+                                            var id = it.documents.get(0).id
 
+                                            var i = Intent(this, MainActivityAlumno::class.java)
+                                            i.putExtra("idUsuario", id)
+                                            startActivity(i)
+                                        }.addOnFailureListener {
+                                            db.collection("profesores")
+                                                .whereEqualTo("email", email)
+                                                .get().addOnSuccessListener {
+                                                    var id = it.documents.get(0).id
+
+                                                    var i = Intent(this, MainActivityProfesor::class.java)
+                                                    i.putExtra("idUsuario", id)
+                                                    startActivity(i)
+                                                }.addOnFailureListener {
+                                                    Toast.makeText(this, "No ha sido posible iniciar sesión",
+                                                        Toast.LENGTH_SHORT).show()
+                                                }
+                                        }
                             }
                             else
                             {
@@ -86,7 +95,6 @@ class LoginEmailActivity : AppCompatActivity()
                         }
                         else
                         {
-                            // If sign in fails, display a message to the user.
                             Toast.makeText(this, "El usuario o contraseña son incorrectos",
                                 Toast.LENGTH_SHORT).show()
                         }

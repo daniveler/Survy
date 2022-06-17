@@ -34,13 +34,28 @@
             android:layout_marginTop="16dp"
             android:background="@color/lightPurple" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivFotoNuevaAsignaturaProfesor"
-            android:layout_width="188dp"
-            android:layout_height="188dp"
+            android:layout_width="264dp"
+            android:layout_height="264dp"
             android:layout_gravity="center"
             android:src="@drawable/survy_logo"
-            android:layout_marginTop="32dp"/>
+            android:layout_marginTop="16dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/darkPurple"
+            app:civ_circle_background_color="@color/white"
+
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvIconosNuevaAsignaturaProfesor"
+            android:layout_width="match_parent"
+            android:layout_height="264dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            />
 
         <Button
             android:id="@+id/btCrearNuevaAsignaturaProfesor"
@@ -66,9 +81,41 @@
             android:letterSpacing="0"
             android:text="@string/btCancelarNuevaAsignaturaProfesor"
             android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="16dp"
             android:layout_marginTop="8dp"
+            />
+
+        <Button
+            android:id="@+id/btGuardarIconoNuevaAsignaturaProfesor"
+            android:layout_width="250dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/yellowButton"
+            android:fontFamily="@font/poppins_semibold"
+            android:letterSpacing="0"
+            android:text="@string/btGuardarIconoEditarAsignaturaProfesor"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:visibility="gone"
+            />
+
+        <Button
+            android:id="@+id/btCancelarGuardarIconoNuevaAsignaturaProfesor"
+            android:layout_width="250dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/lightGray"
+            android:fontFamily="@font/poppins_semibold"
+            android:letterSpacing="0"
+            android:text="@string/btCancelarNuevaAsignaturaProfesor"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:visibility="gone"
             />
     </LinearLayout>
 
