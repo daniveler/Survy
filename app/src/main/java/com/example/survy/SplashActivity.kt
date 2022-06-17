@@ -28,32 +28,27 @@ class SplashActivity : AppCompatActivity()
     {
         super.onStart()
 
-        Log.i("DANI", "Paso por aquí")
-
         val user = FirebaseAuth.getInstance().currentUser
 
         if (user != null)
         {
             val userEmail = user.email
 
-            db.collection("alumnos").document(userEmail!!).get().addOnCompleteListener{
-                if (it.isSuccessful)
-                {
-                    val document = it.result
-                    if (document.exists())
+            db.collection("alumnos")
+                .whereEqualTo("email", userEmail)
+                .get().addOnSuccessListener {
+                    if (!it.isEmpty())
                     {
                         val intent = Intent(this, MainActivityAlumno::class.java)
                         intent.putExtra("email", userEmail)
                         Timer().schedule(1000) { startActivity(intent) }
-
                     }
                     else
                     {
-                        db.collection("profesores").document(userEmail!!).get().addOnCompleteListener{
-                            if (it.isSuccessful)
-                            {
-                                val document = it.result
-                                if (document.exists())
+                        db.collection("profesores")
+                            .whereEqualTo("email", userEmail).get()
+                            .addOnSuccessListener {
+                                if (!it.isEmpty)
                                 {
                                     val intent = Intent(this, MainActivityProfesor::class.java)
                                     intent.putExtra("email", userEmail)
@@ -65,15 +60,8 @@ class SplashActivity : AppCompatActivity()
                                     Timer().schedule(1000) { startActivity(intent) }
                                 }
                             }
-                            else{ Toast.makeText(this, "Error al recuperar la sesión", Toast.LENGTH_LONG).show() }
-                        }
                     }
                 }
-                else
-                {
-                    Toast.makeText(this, "Error al recuperar la sesión", Toast.LENGTH_LONG).show()
-                }
-            }
         }
         else
         {

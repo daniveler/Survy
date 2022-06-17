@@ -151,7 +151,7 @@ class MainActivityAlumno : AppCompatActivity()
         val dialogBuilder = AlertDialog.Builder(this)
         dialogBuilder.setTitle("Cerrar Sesión")
         dialogBuilder.setMessage("¿Estás seguro de que deseas cerrar sesión?")
-        dialogBuilder.setPositiveButton("Cerrar Sesión", DialogInterface.OnClickListener{
+        dialogBuilder.setPositiveButton("Cerrar Sesión", DialogInterface.OnClickListener {
                 dialog, id ->
             Firebase.auth.signOut()
 
@@ -159,7 +159,7 @@ class MainActivityAlumno : AppCompatActivity()
             startActivity(i)
             finish()
         })
-        dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener{
+        dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener {
                 dialog, id -> dialog.cancel()
         })
 

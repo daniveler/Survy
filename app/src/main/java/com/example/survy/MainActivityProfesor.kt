@@ -128,7 +128,6 @@ class MainActivityProfesor : AppCompatActivity()
     fun cambiarFragment (fragmentCambiar : Fragment, idUsuario: String?)
     {
         var args = Bundle()
-        args.putString("rol", "Profesor")
         args.putString("idUsuario", idUsuario)
 
         fragmentCambiar.arguments = args
@@ -150,7 +149,7 @@ class MainActivityProfesor : AppCompatActivity()
         val dialogBuilder = AlertDialog.Builder(this)
         dialogBuilder.setTitle("Cerrar Sesión")
         dialogBuilder.setMessage("¿Estás seguro de que deseas cerrar sesión?")
-        dialogBuilder.setPositiveButton("Cerrar Sesión", DialogInterface.OnClickListener{
+        dialogBuilder.setPositiveButton("Cerrar Sesión", DialogInterface.OnClickListener {
             dialog, id ->
                 Firebase.auth.signOut()
 
@@ -158,7 +157,7 @@ class MainActivityProfesor : AppCompatActivity()
                 startActivity(i)
                 finish()
         })
-        dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener{
+        dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener {
             dialog, id -> dialog.cancel()
         })
 

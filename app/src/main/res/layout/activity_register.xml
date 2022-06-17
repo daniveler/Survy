@@ -8,8 +8,8 @@
     tools:context=".Authentication.RegisterActivity">
 
     <LinearLayout
-        android:layout_width="407dp"
-        android:layout_height="483dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,44 +30,11 @@
             android:textSize="44dp" />
 
         <Button
-            android:id="@+id/btGoogleRegister"
-            android:layout_width="240dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="@color/lightPurple"
-            android:drawableLeft="@drawable/ic_google_brands"
-            android:fontFamily="@font/poppins_semibold"
-            android:letterSpacing="0"
-            android:text="Google"
-            android:textAllCaps="false"
-            android:textColor="#000000"
-            android:textSize="24dp" />
-
-        <Button
-            android:id="@+id/btFacebookRegister"
-            android:layout_width="240dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/lightPurple"
-            android:drawableLeft="@drawable/ic_facebook_brands"
-            android:fontFamily="@font/poppins_semibold"
-            android:letterSpacing="0"
-            android:text="Facebook"
-            android:textAllCaps="false"
-            android:textColor="#000000"
-            android:textSize="24dp"
-            app:cornerRadius="8dp"
-            app:strokeColor="@color/darkPurple"
-            app:strokeWidth="2dp" />
-
-        <Button
             android:id="@+id/btEmailRegister"
-            android:layout_width="240dp"
+            android:layout_width="264dp"
             android:layout_height="64dp"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="64dp"
             android:backgroundTint="@color/lightPurple"
             android:drawableLeft="@drawable/ic_mail_solid"
             android:fontFamily="@font/poppins_semibold"
@@ -75,7 +42,7 @@
             android:text="@string/registerMail"
             android:textAllCaps="false"
             android:textColor="#000000"
-            android:textSize="16dp"
+            android:textSize="20dp"
             app:cornerRadius="8dp"
             app:strokeColor="@color/darkPurple"
             app:strokeWidth="2dp" />
@@ -84,7 +51,7 @@
             android:id="@+id/btLoginMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="64dp"
             android:background="?android:attr/selectableItemBackground"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/registerLogin"

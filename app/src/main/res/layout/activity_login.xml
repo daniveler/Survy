@@ -9,8 +9,8 @@
     >
 
     <LinearLayout
-        android:layout_width="412dp"
-        android:layout_height="607dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,8 +21,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivLogo"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:layout_gravity="center"
             android:paddingTop="0dp"
             android:paddingBottom="0dp"
@@ -33,45 +33,11 @@
             />
 
         <Button
-            android:id="@+id/btGoogleLogin"
-            android:layout_width="240dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="54dp"
-            android:backgroundTint="@color/lightPurple"
-            android:drawableLeft="@drawable/ic_google_brands"
-            android:fontFamily="@font/poppins_semibold"
-            android:letterSpacing="0"
-            android:text="Google"
-            android:textAllCaps="false"
-            android:textColor="#000000"
-            android:textSize="24dp"
-            />
-
-        <Button
-            android:id="@+id/btFacebookLogin"
-            android:layout_width="240dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/lightPurple"
-            android:drawableLeft="@drawable/ic_facebook_brands"
-            android:fontFamily="@font/poppins_semibold"
-            android:letterSpacing="0"
-            android:text="Facebook"
-            android:textAllCaps="false"
-            android:textColor="#000000"
-            android:textSize="24dp"
-            app:cornerRadius="8dp"
-            app:strokeColor="@color/darkPurple"
-            app:strokeWidth="2dp" />
-
-        <Button
             android:id="@+id/btEmailLogin"
-            android:layout_width="240dp"
+            android:layout_width="264dp"
             android:layout_height="64dp"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="64dp"
             android:backgroundTint="@color/lightPurple"
             android:drawableLeft="@drawable/ic_mail_solid"
             android:fontFamily="@font/poppins_semibold"
@@ -79,7 +45,7 @@
             android:text="@string/loginMail"
             android:textAllCaps="false"
             android:textColor="#000000"
-            android:textSize="16dp"
+            android:textSize="20dp"
             app:cornerRadius="8dp"
             app:strokeColor="@color/darkPurple"
             app:strokeWidth="2dp" />
@@ -88,7 +54,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="64dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/loginRegister"
             android:textAlignment="center"

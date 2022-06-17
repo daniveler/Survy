@@ -35,68 +35,126 @@ class LoginEmailActivity : AppCompatActivity()
         val bundle = intent.extras
         val rol = bundle?.getString("rol")
 
-        etEmail.setText("daniel01velerdas@gmail.com")
-        //etEmail.setText("daniveler@usal.es")
+        if (rol == "Alumno")
+        {
+            etEmail.setText("daniel01velerdas@gmail.com")
+        } else
+        {
+            etEmail.setText("daniveler@usal.es")
+        }
 
         etPassword.setText("dani2000")
 
         btLogin.setOnClickListener {
-            if(etEmail.text.isBlank())
+            if (etEmail.text.isBlank())
             {
-                Toast.makeText(this, "Por favor, introduzca su correo electónico",
-                    Toast.LENGTH_LONG).show()
-            }
-            else if (etPassword.text.isBlank())
+                Toast.makeText(
+                    this, "Por favor, introduzca su correo electónico",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else if (etPassword.text.isBlank())
             {
-                Toast.makeText(this, "Por favor, introduzca su contraseña",
-                    Toast.LENGTH_LONG).show()
-            }
-            else
+                Toast.makeText(
+                    this, "Por favor, introduzca su contraseña",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else
             {
                 var email = etEmail.text.toString().lowercase()
                 var password = etPassword.text.toString()
 
-                auth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful)
-                        {
-                            val user = auth.currentUser
-
-                            if (user!!.isEmailVerified)
+                if (rol == "Alumno")
+                {
+                    db.collection("alumnos")
+                        .whereEqualTo("email", email)
+                        .get().addOnSuccessListener {
+                            if (!it.isEmpty)
                             {
-                                    db.collection("alumnos")
-                                        .whereEqualTo("email", email)
-                                        .get().addOnSuccessListener {
-                                            var id = it.documents.get(0).id
+                                var id = it.documents.get(0).id
 
-                                            var i = Intent(this, MainActivityAlumno::class.java)
-                                            i.putExtra("idUsuario", id)
-                                            startActivity(i)
-                                        }.addOnFailureListener {
-                                            db.collection("profesores")
-                                                .whereEqualTo("email", email)
-                                                .get().addOnSuccessListener {
-                                                    var id = it.documents.get(0).id
+                                auth.signInWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener(this) { task ->
+                                        if (task.isSuccessful)
+                                        {
+                                            val user = auth.currentUser
 
-                                                    var i = Intent(this, MainActivityProfesor::class.java)
-                                                    i.putExtra("idUsuario", id)
-                                                    startActivity(i)
-                                                }.addOnFailureListener {
-                                                    Toast.makeText(this, "No ha sido posible iniciar sesión",
-                                                        Toast.LENGTH_SHORT).show()
-                                                }
+                                            if (user!!.isEmailVerified)
+                                            {
+                                                var i = Intent(this, MainActivityAlumno::class.java)
+                                                i.putExtra("idUsuario", id)
+                                                startActivity(i)
+                                            } else
+                                            {
+                                                Toast.makeText(
+                                                    this,
+                                                    "El usuario aún no ha sido verificado. Por favor, consulte su email",
+                                                    Toast.LENGTH_LONG
+                                                ).show()
+                                            }
                                         }
+                                        else
+                                        {
+                                            Toast.makeText(
+                                                this, "El usuario o contraseña son incorrectos",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
+                                    }
                             }
                             else
                             {
-                                Toast.makeText(this, "El usuario aún no ha sido verificado. Por favor, consulte su email",
-                                    Toast.LENGTH_LONG).show()
+                                Toast.makeText(
+                                    this, "Error al iniciar sesión",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
+
+
                         }
-                        else
-                        {
-                            Toast.makeText(this, "El usuario o contraseña son incorrectos",
-                                Toast.LENGTH_SHORT).show()
+                } else if (rol == "Profesor")
+                {
+                    db.collection("profesores")
+                        .whereEqualTo("email", email)
+                        .get().addOnSuccessListener {
+                            if (!it.isEmpty)
+                            {
+                                var id = it.documents.get(0).id
+
+                                auth.signInWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener(this) { task ->
+                                        if (task.isSuccessful)
+                                        {
+                                            val user = auth.currentUser
+
+                                            if (user!!.isEmailVerified)
+                                            {
+                                                var i = Intent(this, MainActivityProfesor::class.java)
+                                                i.putExtra("idUsuario", id)
+                                                startActivity(i)
+                                            } else
+                                            {
+                                                Toast.makeText(
+                                                    this,
+                                                    "El usuario aún no ha sido verificado. Por favor, consulte su email",
+                                                    Toast.LENGTH_LONG
+                                                ).show()
+                                            }
+                                        } else
+                                        {
+                                            Toast.makeText(
+                                                this, "El usuario o contraseña son incorrectos",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
+                                    }
+                            }
+                            else
+                            {
+                                Toast.makeText(
+                                    this, "Error al iniciar sesión",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         }
                 }
             }

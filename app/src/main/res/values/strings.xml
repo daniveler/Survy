@@ -10,7 +10,7 @@
     <string name="default_web_client_id_fixed">576137766231-vvd6r7b7fb6a03u78dujp436m07fvsrm.apps.googleusercontent.com</string>
 
     <!--> LOGIN <!-->
-    <string name="loginMail">Iniciar sesión con email</string>
+    <string name="loginMail">Iniciar Sesión</string>
     <string name="loginRegister">¿Aún no tienes cuenta?</string>
     <string name="loginRegisterButton"><u>Regístrate</u></string>
 
@@ -18,7 +18,7 @@
     <string name="registerTV1">Elija un método de registro</string>
     <string name="registerTV2">¿Ya tienes una cuenta?</string>
     <string name="registerLogin"><u>Volver a Inciar Sesión</u></string>
-    <string name="registerMail">Registrar con email</string>
+    <string name="registerMail">Registrar</string>
 
     <!--> ELEGIR ROL <!-->
     <string name="tvMainElegirRol">Selecciona tu rol</string>
