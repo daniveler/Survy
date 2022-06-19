@@ -1,11 +1,9 @@
 package com.example.survy.Fragments.MisAsignaturas.Profesor
 
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -42,7 +40,7 @@ class NuevaAsignaturaFragmentProfesor : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
-        var email = FirebaseAuth.getInstance().currentUser?.email ?: ""
+        var idUsuario = arguments?.getString("idUsuario", "") ?: ""
 
         val etNombre = view.findViewById<EditText>(R.id.etNombreNuevaAsignaturaProfesor)
         val spinnerCursos = view.findViewById<Spinner>(R.id.spinnerCursoNuevaAsignaturaProfesor)
@@ -173,7 +171,7 @@ class NuevaAsignaturaFragmentProfesor : Fragment()
             else
             {
                 var dataAsignatura = hashMapOf("nombre" to nombre,
-                    "idProfesor" to email,
+                    "idProfesor" to idUsuario,
                     "curso" to curso,
                     "icono" to icono,
                     )
@@ -183,7 +181,7 @@ class NuevaAsignaturaFragmentProfesor : Fragment()
                 Toast.makeText(context, "Asignatura creada correctamente",
                     Toast.LENGTH_LONG).show()
 
-                cambiarFragment(MisAsignaturasFragmentProfesor(), email)
+                cambiarFragment(MisAsignaturasFragmentProfesor(), idUsuario)
             }
         }
 
@@ -193,10 +191,10 @@ class NuevaAsignaturaFragmentProfesor : Fragment()
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, email: String)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String)
     {
         var args = Bundle()
-        args.putString("email", email)
+        args.putString("idUsuario", idUsuario)
 
         var fragment = framentCambiar
         fragment.arguments = args

@@ -84,7 +84,6 @@ class EditarAsignaturaFragmentProfesor : Fragment()
             .addOnSuccessListener {
                 etNombre.setText(it.data?.get("nombre").toString())
                 spinnerCurso.setSelection(cursos.indexOf(it.get("curso").toString()))
-
                 iconoActual = Uri.parse(it.data?.get("icono").toString())
                 Picasso.get().load(it.getString("icono")).into(ivIcono)
             }

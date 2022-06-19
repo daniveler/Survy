@@ -34,7 +34,7 @@ class ModificarPasswordFragmentAlumno : Fragment()
         val btModificarPassword = view.findViewById<Button>(R.id.btAplicarCambiosModificarPasswordAlumno)
         val btCancelar = view.findViewById<Button>(R.id.btCancelarModificarPasswordAlumno)
 
-        var email = arguments?.getString("email", "") ?: ""
+        var idUsuario = arguments?.getString("idUsuario", "") ?: ""
 
         btModificarPassword.setOnClickListener {
             val user = FirebaseAuth.getInstance().currentUser
@@ -65,7 +65,7 @@ class ModificarPasswordFragmentAlumno : Fragment()
                         Toast.makeText(context, "Contraseña actualizada correctamente",
                             Toast.LENGTH_LONG).show()
 
-                        cambiarFragment(MiPerfilFragmentAlumno(), email)
+                        cambiarFragment(MiPerfilFragmentAlumno(), idUsuario)
                     }
 
                     else
@@ -76,14 +76,14 @@ class ModificarPasswordFragmentAlumno : Fragment()
         }
 
         btCancelar.setOnClickListener {
-            cambiarFragment(ModificarPerfilFragmentAlumno(), email)
+            cambiarFragment(ModificarPerfilFragmentAlumno(), idUsuario)
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, email: String)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String)
     {
         var args = Bundle()
-        args.putString("email", email)
+        args.putString("idUsuario", idUsuario)
 
         var fragment = framentCambiar
         fragment.arguments = args

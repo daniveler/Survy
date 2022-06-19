@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 class RegisterEmailActivity : AppCompatActivity()
 {
@@ -71,6 +72,8 @@ class RegisterEmailActivity : AppCompatActivity()
             var email = etEmail.text.toString().lowercase()
             val curso = spinnerCursos.selectedItem.toString()
             val password = etPassword.text.toString()
+
+
             val uriFoto = Uri.parse("android.resource://" + packageName +
                     "/" + resources.getResourceTypeName(R.drawable.default_profile_image) +
                     "/" + resources.getResourceEntryName(R.drawable.default_profile_image))
@@ -112,11 +115,13 @@ class RegisterEmailActivity : AppCompatActivity()
                         if (task.isSuccessful) {
                             // Sign in success, update UI with the signed-in user's information
                             val user = auth.currentUser
+                            val idUsuario = auth.currentUser?.uid ?: ""
+
                             user?.sendEmailVerification()
 
                             if (rol == "Alumno")
                             {
-                                db.collection("alumnos").document().set(
+                                db.collection("alumnos").document(idUsuario).set(
                                     hashMapOf("nombre" to nombre,
                                         "email" to email,
                                         "apellidos" to apellidos,
@@ -126,7 +131,7 @@ class RegisterEmailActivity : AppCompatActivity()
                             }
                             else if (rol == "Profesor")
                             {
-                                db.collection("profesores").document().set(
+                                db.collection("profesores").document(idUsuario).set(
                                     hashMapOf("nombre" to nombre,
                                         "email" to email,
                                         "apellidos" to apellidos,

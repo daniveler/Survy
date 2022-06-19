@@ -39,8 +39,10 @@ class SplashActivity : AppCompatActivity()
                 .get().addOnSuccessListener {
                     if (!it.isEmpty())
                     {
+                        var id = it.documents.get(0).id
+
                         val intent = Intent(this, MainActivityAlumno::class.java)
-                        intent.putExtra("email", userEmail)
+                        intent.putExtra("idUsuario", id)
                         Timer().schedule(1000) { startActivity(intent) }
                     }
                     else
@@ -50,8 +52,10 @@ class SplashActivity : AppCompatActivity()
                             .addOnSuccessListener {
                                 if (!it.isEmpty)
                                 {
+                                    var id = it.documents.get(0).id
+
                                     val intent = Intent(this, MainActivityProfesor::class.java)
-                                    intent.putExtra("email", userEmail)
+                                    intent.putExtra("idUsuario", id)
                                     Timer().schedule(1000) { startActivity(intent) }
                                 }
                                 else

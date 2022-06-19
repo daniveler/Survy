@@ -16,24 +16,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tvMainModificarPerfilAlumno"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="@string/tvMainModificarPerfil"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="44dp" />
-
         <EditText
             android:id="@+id/etNombreModificarPerfilAlumno"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
             android:background="@color/lightPurple"
             android:hint="@string/registerMailET1"
             android:textColor="@color/black"
@@ -64,6 +51,18 @@
             android:layout_marginTop="16dp"
             android:spinnerMode="dropdown"
             android:background="@color/lightPurple"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civFotoDePerfilModificarPerfilAlumno"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/darkPurple"
+            app:civ_circle_background_color="@color/white"
+            android:clickable="true"
             />
 
         <Button

@@ -24,6 +24,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
 class MainActivityProfesor : AppCompatActivity()
@@ -112,7 +113,7 @@ class MainActivityProfesor : AppCompatActivity()
         }
         else
         {
-            var civFotoPerfil = header.findViewById<CircleImageView>(R.id.civHeader)
+            var civFotoPerfilHeader = header.findViewById<CircleImageView>(R.id.civHeader)
             var tvEmailHeader = header.findViewById<TextView>(R.id.tvEmailHeader)
             var tvNombreHeader = header.findViewById<TextView>(R.id.tvNombreHeader)
 
@@ -120,7 +121,7 @@ class MainActivityProfesor : AppCompatActivity()
             db.collection("profesores").document(idUsuario).get().addOnSuccessListener {
                 tvNombreHeader.setText(it.get("nombre") as String?)
                 tvEmailHeader.setText(it.get("email") as String?)
-                civFotoPerfil.setImageURI(Uri.parse(it.get("fotoDePerfil").toString()) as Uri?)
+                Picasso.get().load(it.getString("fotoDePerfil")).into(civFotoPerfilHeader)
             }
         }
     }

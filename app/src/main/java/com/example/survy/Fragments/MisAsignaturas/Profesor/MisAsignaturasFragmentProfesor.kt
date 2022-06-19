@@ -1,14 +1,11 @@
 package com.example.survy.Fragments.MisAsignaturas.Profesor
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.SearchView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,12 +14,8 @@ import com.example.survy.Clases.Asignatura
 import com.example.survy.Clases.AsignaturaAdapter
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.firestore.ktx.toObjects
 import java.util.*
-import kotlin.concurrent.schedule
 
 class MisAsignaturasFragmentProfesor : Fragment()
 {
@@ -42,7 +35,7 @@ class MisAsignaturasFragmentProfesor : Fragment()
         super.onViewCreated(view, savedInstanceState)
 
         var user = FirebaseAuth.getInstance().currentUser
-        var email = user?.email ?: ""
+        var idUsuario = arguments?.getString("idUsuario", "") ?: ""
 
         val searchView = view.findViewById<SearchView>(R.id.searchViewMisAsignaturasProfesor)
         val tvNoHayAsignaturas = view.findViewById<TextView>(R.id.tvMisAsignaturasProfesor)
@@ -53,7 +46,7 @@ class MisAsignaturasFragmentProfesor : Fragment()
         var listaAsignaturasBusqueda = mutableListOf<Asignatura>()
 
         db.collection("asignaturas")
-            .whereEqualTo("idProfesor", email)
+            .whereEqualTo("idProfesor", idUsuario)
             .get()
             .addOnSuccessListener { task ->
                 for (document in task)
@@ -69,7 +62,7 @@ class MisAsignaturasFragmentProfesor : Fragment()
 
                     listaAsignaturas.add(asignatura)
                 }
-                tvNoHayAsignaturas.visibility = View.GONE
+                if (!task.isEmpty) { tvNoHayAsignaturas.visibility = View.GONE }
 
                 var adapter = AsignaturaAdapter(listaAsignaturas)
 
@@ -82,7 +75,7 @@ class MisAsignaturasFragmentProfesor : Fragment()
                     {
                         var asignaturaActual = listaAsignaturas.get(position)
 
-                        cambiarFragment(AsignaturaDetailFragmentProfesor(), email, asignaturaActual.id)
+                        cambiarFragment(AsignaturaDetailFragmentProfesor(), idUsuario, asignaturaActual.id)
                     }
                 })
 
@@ -118,7 +111,7 @@ class MisAsignaturasFragmentProfesor : Fragment()
                                 {
                                     var asignaturaActual = listaAsignaturasBusqueda.get(position)
 
-                                    cambiarFragment(AsignaturaDetailFragmentProfesor(), email, asignaturaActual.id)
+                                    cambiarFragment(AsignaturaDetailFragmentProfesor(), idUsuario, asignaturaActual.id)
                                 }
                             })
 
@@ -137,15 +130,14 @@ class MisAsignaturasFragmentProfesor : Fragment()
             }
 
         btNuevaAsignatura.setOnClickListener {
-            val email = user!!.email ?: ""
-            cambiarFragment(NuevaAsignaturaFragmentProfesor(), email, null)
+            cambiarFragment(NuevaAsignaturaFragmentProfesor(), idUsuario, null)
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, email: String, idAsignatura: String?)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idAsignatura: String?)
     {
         var args = Bundle()
-        args.putString("email", email)
+        args.putString("idUsuario", idUsuario)
         args.putString("asignatura", idAsignatura ?: "")
 
         var fragment = framentCambiar

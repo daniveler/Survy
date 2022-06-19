@@ -55,10 +55,10 @@ class ModificarPerfilFragmentAlumno : Fragment()
 
         spinnerCurso.adapter = spinnerAdapter
 
-        var email = arguments?.getString("email", "") ?: ""
+        var idUsuario = arguments?.getString("idUsuario", "") ?: ""
         var rol = arguments?.getString("rol", "") ?: ""
 
-        db.collection("alumnos").document(email).get().addOnSuccessListener {
+        db.collection("alumnos").document(idUsuario).get().addOnSuccessListener {
             //civFotoDePerfil.setImageURI(it.get("fotoDePerfil") as Uri?)
             etNombre.setText(it.get("nombre") as String?)
             etApellidos.setText(it.get("apellidos") as String?)
@@ -88,9 +88,9 @@ class ModificarPerfilFragmentAlumno : Fragment()
             }
             else
             {
-                db.collection("alumnos").document(email).update("nombre", nombre)
-                db.collection("alumnos").document(email).update("apellidos", apellidos)
-                db.collection("alumnos").document(email).update("curso", curso)
+                db.collection("alumnos").document(idUsuario).update("nombre", nombre)
+                db.collection("alumnos").document(idUsuario).update("apellidos", apellidos)
+                db.collection("alumnos").document(idUsuario).update("curso", curso)
 
                 var nombreHeader = requireActivity().findViewById<TextView>(R.id.tvNombreHeader)
                 var civHeader =  requireActivity().findViewById<CircleImageView>(R.id.civHeader)
@@ -101,25 +101,25 @@ class ModificarPerfilFragmentAlumno : Fragment()
                 Toast.makeText(context, "Datos actualizados correctamente",
                     Toast.LENGTH_LONG).show()
 
-                cambiarFragment(MiPerfilFragmentAlumno(), email, rol)
+                cambiarFragment(MiPerfilFragmentAlumno(), idUsuario, rol)
 
             }
         }
 
         btCancelar.setOnClickListener {
-            cambiarFragment(MiPerfilFragmentAlumno(), email, rol)
+            cambiarFragment(MiPerfilFragmentAlumno(), idUsuario, rol)
         }
 
         btPassword.setOnClickListener {
-            cambiarFragment(ModificarPasswordFragmentAlumno(), email, rol)
+            cambiarFragment(ModificarPasswordFragmentAlumno(), idUsuario, rol)
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, email: String, rol: String)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, rol: String)
     {
         var args = Bundle()
         args.putString("rol", rol)
-        args.putString("email", email)
+        args.putString("idUsuario", idUsuario)
 
         var fragment = framentCambiar
         fragment.arguments = args

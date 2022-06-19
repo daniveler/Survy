@@ -1,6 +1,5 @@
 package com.example.survy.Fragments.MisAsignaturas.Profesor
 
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.survy.Clases.Asignatura
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
@@ -39,7 +37,7 @@ class AsignaturaDetailFragmentProfesor : Fragment()
         val btCancelar = view.findViewById<Button>(R.id.btCancelarAsignaturaDetailProfesor)
         val btEditar = view.findViewById<Button>(R.id.btEditarAsignaturaDetailProfesor)
 
-        val email = arguments?.getString("email") ?: ""
+        val idUsuario = arguments?.getString("idUsuario") ?: ""
         val idAsignatura = arguments?.getString("asignatura") ?: ""
 
         db.collection("asignaturas").document(idAsignatura)
@@ -54,18 +52,18 @@ class AsignaturaDetailFragmentProfesor : Fragment()
         }
 
         btEditar.setOnClickListener {
-            cambiarFragment(EditarAsignaturaFragmentProfesor(), email, idAsignatura)
+            cambiarFragment(EditarAsignaturaFragmentProfesor(), idUsuario, idAsignatura)
         }
 
         btCancelar.setOnClickListener {
-            cambiarFragment(MisAsignaturasFragmentProfesor(), email, idAsignatura)
+            cambiarFragment(MisAsignaturasFragmentProfesor(), idUsuario, idAsignatura)
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, email: String, idAsignatura: String?)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idAsignatura: String?)
     {
         var args = Bundle()
-        args.putString("email", email)
+        args.putString("idUsuario", idUsuario)
         args.putString("asignatura", idAsignatura)
 
         var fragment = framentCambiar

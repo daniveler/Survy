@@ -38,27 +38,27 @@ class MiPerfilFragmentAlumno : Fragment()
 
         var btModificarMisDatos = view.findViewById<Button>(R.id.btModificarDatosMiPerfilAlumno)
 
-        var email = arguments?.getString("email", "") ?: ""
+        var idUsuario = arguments?.getString("idUsuario", "") ?: ""
 
-            db.collection("alumnos").document(email).get().addOnSuccessListener {
+            db.collection("alumnos").document(idUsuario).get().addOnSuccessListener {
                 //civFotoDePerfil.setImageURI(it.get("fotoDePerfil") as Uri?)
                 //civHeader.setImageURI(it.get("fotoDePerfil") as Uri?)
                 tvNombre.setText(it.get("nombre") as String?)
                 //tvNombreHeader.setText(it.get("nombre") as String?)
                 tvApellidos.setText(it.get("apellidos") as String?)
-                tvEmail.setText(email)
+                tvEmail.setText(it.get("email") as String?)
                 tvCurso.setText(it.get("curso") as String?)
             }
 
         btModificarMisDatos.setOnClickListener {
-            cambiarFragment(ModificarPerfilFragmentAlumno(), email)
+            cambiarFragment(ModificarPerfilFragmentAlumno(), idUsuario)
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, email: String)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String)
     {
         var args = Bundle()
-        args.putString("email", email)
+        args.putString("idUsuario", idUsuario)
 
         var fragment = framentCambiar
         fragment.arguments = args
