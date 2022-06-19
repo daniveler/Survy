@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.SearchView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Asignatura
 import com.example.survy.Clases.AsignaturaAdapter
+import com.example.survy.Fragments.MisAlumnos.MatricularAlumnoFragmentProfesor
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -20,6 +22,7 @@ import java.util.*
 class MisAsignaturasFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()
+    lateinit var vieneDe : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +39,7 @@ class MisAsignaturasFragmentProfesor : Fragment()
 
         var user = FirebaseAuth.getInstance().currentUser
         var idUsuario = arguments?.getString("idUsuario", "") ?: ""
+        vieneDe = arguments?.getString("vieneDe", "") ?: ""
 
         val searchView = view.findViewById<SearchView>(R.id.searchViewMisAsignaturasProfesor)
         val tvNoHayAsignaturas = view.findViewById<TextView>(R.id.tvMisAsignaturasProfesor)
@@ -44,6 +48,13 @@ class MisAsignaturasFragmentProfesor : Fragment()
 
         val listaAsignaturas = mutableListOf<Asignatura>()
         var listaAsignaturasBusqueda = mutableListOf<Asignatura>()
+
+        if (vieneDe == "MisAlumos")
+        {
+            btNuevaAsignatura.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+            btNuevaAsignatura.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.lightGray))
+            btNuevaAsignatura.setText(R.string.btCancelarAsignaturaDetailProfesor)
+        }
 
         db.collection("asignaturas")
             .whereEqualTo("idProfesor", idUsuario)
@@ -70,7 +81,7 @@ class MisAsignaturasFragmentProfesor : Fragment()
                 rvListaAsignaturas.setHasFixedSize(true)
                 rvListaAsignaturas.adapter = adapter
 
-                adapter.setOnItemClickListener(object: AsignaturaAdapter.onItemClickListener{
+                adapter.setOnItemClickListener(object: AsignaturaAdapter.onItemClickListener {
                     override fun onItemClick(position: Int)
                     {
                         var asignaturaActual = listaAsignaturas.get(position)
@@ -130,17 +141,27 @@ class MisAsignaturasFragmentProfesor : Fragment()
             }
 
         btNuevaAsignatura.setOnClickListener {
-            cambiarFragment(NuevaAsignaturaFragmentProfesor(), idUsuario, null)
+            if (vieneDe == "MisAlumos")
+            {
+                cambiarFragment(MatricularAlumnoFragmentProfesor(), idUsuario, null)
+            }
+            else
+            {
+                cambiarFragment(NuevaAsignaturaFragmentProfesor(), idUsuario, null)
+            }
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idAsignatura: String?)
+    fun cambiarFragment(fragmentCambiar: Fragment, idUsuario: String, idAsignatura: String?)
     {
         var args = Bundle()
         args.putString("idUsuario", idUsuario)
         args.putString("asignatura", idAsignatura ?: "")
 
-        var fragment = framentCambiar
+        var fragment = fragmentCambiar
+
+        if (vieneDe == "MisAlumnos") { fragment = MatricularAlumnoFragmentProfesor() }
+
         fragment.arguments = args
 
         var fragmentManager = requireActivity().supportFragmentManager

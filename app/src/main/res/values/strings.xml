@@ -96,4 +96,14 @@
     <string name="btCancelarEditarAsignaturaProfesor">Cancelar</string>
     <string name="btGuardarIconoEditarAsignaturaProfesor">Guardar Icono</string>
 
+    <!--> MIS ALUMNOS PROFESOR <!-->
+    <string name="titleMisAlumnosProfesor">Mis Alumnos</string>
+    <string name="tvSeleccioneMisAlumnosProfesor">Seleccione una opción</string>
+    <string name="btBuscarAlumnoMisAlumnosProfesor">Buscar Alumno</string>
+    <string name="btMatricularAlumnosMisAlumnosProfesor">Matricular Alumnos</string>
+
+    <!--> MATRICULAR ALUMNO PROFESOR <!-->
+    <string name="btGenerarCodigoMatricularAlumnoProfesor">Generar Código</string>
+
+
 </resources>

@@ -181,20 +181,21 @@ class NuevaAsignaturaFragmentProfesor : Fragment()
                 Toast.makeText(context, "Asignatura creada correctamente",
                     Toast.LENGTH_LONG).show()
 
-                cambiarFragment(MisAsignaturasFragmentProfesor(), idUsuario)
+                cambiarFragment(MisAsignaturasFragmentProfesor(), idUsuario, "MisAsignaturas")
             }
         }
 
         btCancelar.setOnClickListener {
             var email = FirebaseAuth.getInstance().currentUser?.email ?: ""
-            cambiarFragment(MisAsignaturasFragmentProfesor(), email)
+            cambiarFragment(MisAsignaturasFragmentProfesor(), email, "MisAsignaturas")
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, vieneDe: String)
     {
         var args = Bundle()
         args.putString("idUsuario", idUsuario)
+        args.putString("vieneDe", vieneDe)
 
         var fragment = framentCambiar
         fragment.arguments = args

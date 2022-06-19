@@ -7,16 +7,52 @@
     tools:context=".Fragments.MisAlumnos.MisAlumnosFragment"
     android:background="@drawable/gradient_background">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="MIS ALUMNO"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="50dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/tvSeleccioneMisAlumnosProfesor"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="28dp" />
+
+        <Button
+            android:id="@+id/btMatricularAlumnosMisAlumnosProfesor"
+            android:layout_width="264dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/yellowButton"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/btMatricularAlumnosMisAlumnosProfesor"
+            android:letterSpacing="0"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/btBuscarAlumnoMisAlumnosProfesor"
+            android:layout_width="264dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/yellowButton"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/btBuscarAlumnoMisAlumnosProfesor"
+            android:letterSpacing="0"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

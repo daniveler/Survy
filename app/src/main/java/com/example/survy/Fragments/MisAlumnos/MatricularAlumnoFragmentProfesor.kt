@@ -1,4 +1,4 @@
-package com.example.survy.Fragments.MisAsignaturas.Profesor
+package com.example.survy.Fragments.MisAlumnos
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 
-class AsignaturaDetailFragmentProfesor : Fragment()
+class MatricularAlumnoFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()
 
@@ -22,20 +22,19 @@ class AsignaturaDetailFragmentProfesor : Fragment()
     ): View?
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_asignatura_detail_profesor, container, false)
+        return inflater.inflate(R.layout.fragment_matricular_alumno_profesor, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val ivIcono = view.findViewById<ImageView>(R.id.ivIconoAsignaturaDetailProfesor)
-        val tvNombre = view.findViewById<TextView>(R.id.tvNombreAsignaturaDetailProfesor)
-        val tvCurso = view.findViewById<TextView>(R.id.tvCursoAsignaturaDetailProfesor)
+        val ivIcono = view.findViewById<CircleImageView>(R.id.ivIconoAsignaturaDetailMatricularAlumnoProfesor)
+        val tvNombre = view.findViewById<TextView>(R.id.tvNombreAsignaturaDetailMatricularAlumnoProfesor)
+        val tvCurso = view.findViewById<TextView>(R.id.tvCursoAsignaturaDetailMatricularAlumnoProfesor)
 
-        val btVerEncuestas = view.findViewById<Button>(R.id.btVerEncuestasAsignaturaDetailProfesor)
-        val btCancelar = view.findViewById<Button>(R.id.btCancelarAsignaturaDetailProfesor)
-        val btEditar = view.findViewById<Button>(R.id.btEditarAsignaturaDetailProfesor)
+        val btGenerarCodigo = view.findViewById<Button>(R.id.btGenerarCodigoMatricularAlumnoProfesor)
+        val btCancelar = view.findViewById<Button>(R.id.btCancelarMatricularAlumnoProfesor)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
         val idAsignatura = arguments?.getString("asignatura") ?: ""
@@ -45,27 +44,21 @@ class AsignaturaDetailFragmentProfesor : Fragment()
                 Picasso.get().load(it.getString("icono")).into(ivIcono)
                 tvNombre.setText(it.getString("nombre"))
                 tvCurso.setText(it.getString("curso"))
-        }
+            }
 
-        btVerEncuestas.setOnClickListener {
+        btGenerarCodigo.setOnClickListener {
 
-        }
-
-        btEditar.setOnClickListener {
-            cambiarFragment(EditarAsignaturaFragmentProfesor(), idUsuario, idAsignatura, "MisAsignaturas")
         }
 
         btCancelar.setOnClickListener {
-            cambiarFragment(MisAsignaturasFragmentProfesor(), idUsuario, idAsignatura, "MisAsignaturas")
+            cambiarFragment(MisAlumnosFragment(), idUsuario)
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idAsignatura: String?, vieneDe: String)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String)
     {
         var args = Bundle()
-        args.putString("vieneDe", vieneDe)
         args.putString("idUsuario", idUsuario)
-        args.putString("asignatura", idAsignatura)
 
         var fragment = framentCambiar
         fragment.arguments = args
@@ -76,4 +69,5 @@ class AsignaturaDetailFragmentProfesor : Fragment()
             .replace(R.id.fragmentContainerProfesor, fragment)
             .commit()
     }
+
 }

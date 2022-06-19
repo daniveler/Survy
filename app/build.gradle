@@ -46,6 +46,9 @@ dependencies {
     // PICASSO
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    // ZXING (CÓDGOS QR)
+    //implementation 'com.journeyapps:zxing-android-embedded:3.5.0'
+
     // FIREBASE
     implementation platform('com.google.firebase:firebase-bom:30.0.2')
     implementation 'com.google.firebase:firebase-analytics-ktx'
