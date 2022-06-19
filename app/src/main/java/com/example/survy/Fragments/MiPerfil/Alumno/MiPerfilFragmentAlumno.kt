@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
 class MiPerfilFragmentAlumno : Fragment()
@@ -27,24 +28,26 @@ class MiPerfilFragmentAlumno : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
-        var civFotoDePerfil = view.findViewById<CircleImageView>(R.id.civMiPerfilAlumno)
-        var tvNombre = view.findViewById<TextView>(R.id.tvNombreMiPerfilAlumno)
-        var tvApellidos = view.findViewById<TextView>(R.id.tvApellidosMiPerfilAlumno)
-        var tvEmail = view.findViewById<TextView>(R.id.tvEmailMiPerfilAlumno)
-        var tvCurso = view.findViewById<TextView>(R.id.tvCursoMiPerfilAlumno)
+        var civFotoDePerfil         = view.findViewById<CircleImageView>(R.id.civMiPerfilAlumno)
+        var tvNombre                = view.findViewById<TextView>(R.id.tvNombreMiPerfilAlumno)
+        var tvApellidos             = view.findViewById<TextView>(R.id.tvApellidosMiPerfilAlumno)
+        var tvEmail                 = view.findViewById<TextView>(R.id.tvEmailMiPerfilAlumno)
+        var tvCurso                 = view.findViewById<TextView>(R.id.tvCursoMiPerfilAlumno)
 
-        //var tvNombreHeader = view.findViewById<TextView>(R.id.tvNombreHeader)
-        //var civFotoDePerfilHeader = view.findViewById<CircleImageView>(R.id.civHeader)
+        var tvNombreHeader          = requireActivity().findViewById<TextView>(R.id.tvNombreHeader)
+        var civFotoDePerfilHeader   = requireActivity().findViewById<CircleImageView>(R.id.civHeader)
 
-        var btModificarMisDatos = view.findViewById<Button>(R.id.btModificarDatosMiPerfilAlumno)
+        var btModificarMisDatos     = view.findViewById<Button>(R.id.btModificarDatosMiPerfilAlumno)
 
         var idUsuario = arguments?.getString("idUsuario", "") ?: ""
 
             db.collection("alumnos").document(idUsuario).get().addOnSuccessListener {
-                //civFotoDePerfil.setImageURI(it.get("fotoDePerfil") as Uri?)
-                //civHeader.setImageURI(it.get("fotoDePerfil") as Uri?)
+                Picasso.get().load(it.getString("fotoDePerfil")).into(civFotoDePerfil)
+                Picasso.get().load(it.getString("fotoDePerfil")).into(civFotoDePerfilHeader)
+
                 tvNombre.setText(it.get("nombre") as String?)
-                //tvNombreHeader.setText(it.get("nombre") as String?)
+                tvNombreHeader.setText(it.get("nombre") as String?)
+
                 tvApellidos.setText(it.get("apellidos") as String?)
                 tvEmail.setText(it.get("email") as String?)
                 tvCurso.setText(it.get("curso") as String?)

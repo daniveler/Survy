@@ -26,6 +26,7 @@ class RegisterEmailActivity : AppCompatActivity()
 {
     private lateinit var auth: FirebaseAuth
     private val db = FirebaseFirestore.getInstance()
+    private val storage = Firebase.storage
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -138,6 +139,11 @@ class RegisterEmailActivity : AppCompatActivity()
                                         "fotoDePerfil" to uriFoto)
                                 )
                             }
+
+                            val nombreUri = "" + idUsuario
+
+                            val storageReference = storage.getReference("user_profile_pics/$nombreUri")
+                            storageReference.putFile(uriFoto)
 
                             var intent = Intent(applicationContext, LoginActivity::class.java)
                             intent.putExtra("rol", rol)
