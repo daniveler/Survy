@@ -1,4 +1,4 @@
-package com.example.survy.Fragments.MisAlumnos
+package com.example.survy.Fragments.MisAsignaturas.Alumno
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,13 +11,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Asignatura
+import com.example.survy.Clases.AsignaturaAdapterAlumno
 import com.example.survy.Clases.AsignaturaAdapterProfesor
+import com.example.survy.Fragments.MisAlumnos.MatricularAlumnoFragmentProfesor
+import com.example.survy.Fragments.MisAsignaturas.Profesor.AsignaturaDetailFragmentProfesor
+import com.example.survy.Fragments.MisAsignaturas.Profesor.NuevaAsignaturaFragmentProfesor
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
-class AsignaturasMatricularAlumnoFragmentProfesor : Fragment()
+class MisAsignaturasFragmentAlumno : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()
 
@@ -27,11 +31,7 @@ class AsignaturasMatricularAlumnoFragmentProfesor : Fragment()
     ): View?
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(
-            R.layout.fragment_asignaturas_matricular_alumno_profesor,
-            container,
-            false
-        )
+        return inflater.inflate(R.layout.fragment_mis_asignaturas_alumno, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
@@ -41,47 +41,57 @@ class AsignaturasMatricularAlumnoFragmentProfesor : Fragment()
         var user = FirebaseAuth.getInstance().currentUser
         var idUsuario = arguments?.getString("idUsuario", "") ?: ""
 
-        val searchView = view.findViewById<SearchView>(R.id.searchViewAsignaturasMatricularAlumnoProfesor)
-        val tvNoHayAsignaturas = view.findViewById<TextView>(R.id.tvAsignaturasMatricularAlumnoProfesor)
-        val rvListaAsignaturas = view.findViewById<RecyclerView>(R.id.recyclerViewAsignaturasMatricularAlumnoProfesor)
-        val btCancelar = view.findViewById<Button>(R.id.btCancelarAsignaturasMatricularAlumnoProfesor)
+        val searchView = view.findViewById<SearchView>(R.id.searchViewMisAsignaturasAlumno)
+        val tvNoHayAsignaturas = view.findViewById<TextView>(R.id.tvMisAsignaturasAlumno)
+        val rvListaAsignaturas = view.findViewById<RecyclerView>(R.id.recyclerViewMisAsignaturasAlumno)
+        val btNuevaAsignatura = view.findViewById<Button>(R.id.btNuevaAsignaturaMisAsignaturasAlumno)
 
         val listaAsignaturas = mutableListOf<Asignatura>()
         var listaAsignaturasBusqueda = mutableListOf<Asignatura>()
 
-        db.collection("asignaturas")
-            .whereEqualTo("idProfesor", idUsuario)
+        var sinAsignaturas = true
+
+        db.collection("matriculado")
+            .whereEqualTo("idAlumno", idUsuario)
             .get()
             .addOnSuccessListener { task ->
                 for (document in task)
                 {
-                    // Falta número de alumnos
-                    val id = document.id
-                    val nombre = document.data.get("nombre").toString()
-                    val idProfesor = document.data.get("idProfesor").toString()
-                    val curso = document.data.get("curso").toString()
-                    val icono = document.data.get("icono").toString()
+                    sinAsignaturas = false
 
-                    var asignatura = Asignatura(id, nombre, idProfesor, curso, icono)
+                    val idAsignatura = document.data.get("idAsignatura").toString()
 
-                    listaAsignaturas.add(asignatura)
+                    db.collection("asignaturas")
+                        .document(idAsignatura)
+                        .get().addOnSuccessListener {
+                            val id = it.id
+                            val nombre = it.data?.get("nombre").toString()
+                            val idProfesor = it.data?.get("idProfesor").toString()
+                            val curso = it.data?.get("curso").toString()
+                            val icono = it.data?.get("icono").toString()
+
+                            var asignatura = Asignatura(id, nombre, idProfesor, curso, icono)
+
+                            listaAsignaturas.add(asignatura)
+                        }
                 }
-                if (!task.isEmpty) { tvNoHayAsignaturas.visibility = View.GONE }
 
-                var adapter = AsignaturaAdapterProfesor(listaAsignaturas)
+                if (sinAsignaturas) { tvNoHayAsignaturas.visibility = View.GONE }
+
+                var adapter = AsignaturaAdapterAlumno(listaAsignaturas)
 
                 rvListaAsignaturas.layoutManager = LinearLayoutManager(context)
                 rvListaAsignaturas.setHasFixedSize(true)
                 rvListaAsignaturas.adapter = adapter
 
-                adapter.setOnItemClickListener(object: AsignaturaAdapterProfesor.onItemClickListener {
+                /*adapter.setOnItemClickListener(object: AsignaturaAdapterAlumno.onItemClickListener {
                     override fun onItemClick(position: Int)
                     {
                         var asignaturaActual = listaAsignaturas.get(position)
 
-                        cambiarFragment(MatricularAlumnoFragmentProfesor(), idUsuario, asignaturaActual.id)
+                        cambiarFragment(AsignaturaDetailFragmentProfesor(), idUsuario, asignaturaActual.id)
                     }
-                })
+                })*/
 
                 searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean
@@ -104,20 +114,20 @@ class AsignaturasMatricularAlumnoFragmentProfesor : Fragment()
                                 }
                             }
 
-                            var adapter = AsignaturaAdapterProfesor(listaAsignaturasBusqueda)
+                            var adapter = AsignaturaAdapterAlumno(listaAsignaturasBusqueda)
 
                             rvListaAsignaturas.layoutManager = LinearLayoutManager(context)
                             rvListaAsignaturas.setHasFixedSize(true)
                             rvListaAsignaturas.adapter = adapter
 
-                            adapter.setOnItemClickListener(object: AsignaturaAdapterProfesor.onItemClickListener{
+                            /*adapter.setOnItemClickListener(object: AsignaturaAdapterAlumno.onItemClickListener{
                                 override fun onItemClick(position: Int)
                                 {
                                     var asignaturaActual = listaAsignaturasBusqueda.get(position)
 
                                     cambiarFragment(MatricularAlumnoFragmentProfesor(), idUsuario, asignaturaActual.id)
                                 }
-                            })
+                            })*/
 
                             rvListaAsignaturas.adapter!!.notifyDataSetChanged()
                         }
@@ -133,8 +143,8 @@ class AsignaturasMatricularAlumnoFragmentProfesor : Fragment()
                 })
             }
 
-        btCancelar.setOnClickListener {
-            cambiarFragment(MisAlumnosFragment(), idUsuario, null)
+        btNuevaAsignatura.setOnClickListener {
+            cambiarFragment(MatricularAlumnoFragmentAlumno(), idUsuario, null)
         }
     }
 
@@ -151,7 +161,7 @@ class AsignaturasMatricularAlumnoFragmentProfesor : Fragment()
         var fragmentManager = requireActivity().supportFragmentManager
 
         fragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerProfesor, fragment)
+            .replace(R.id.fragmentContainerAlumno, fragment)
             .commit()
     }
 }

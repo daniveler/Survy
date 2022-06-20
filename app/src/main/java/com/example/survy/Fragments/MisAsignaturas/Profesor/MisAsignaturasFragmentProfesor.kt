@@ -8,11 +8,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.SearchView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Asignatura
-import com.example.survy.Clases.AsignaturaAdapter
+import com.example.survy.Clases.AsignaturaAdapterProfesor
 import com.example.survy.Fragments.MisAlumnos.MatricularAlumnoFragmentProfesor
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
@@ -66,13 +65,13 @@ class MisAsignaturasFragmentProfesor : Fragment()
                 }
                 if (!task.isEmpty) { tvNoHayAsignaturas.visibility = View.GONE }
 
-                var adapter = AsignaturaAdapter(listaAsignaturas)
+                var adapter = AsignaturaAdapterProfesor(listaAsignaturas)
 
                 rvListaAsignaturas.layoutManager = LinearLayoutManager(context)
                 rvListaAsignaturas.setHasFixedSize(true)
                 rvListaAsignaturas.adapter = adapter
 
-                adapter.setOnItemClickListener(object: AsignaturaAdapter.onItemClickListener {
+                adapter.setOnItemClickListener(object: AsignaturaAdapterProfesor.onItemClickListener {
                     override fun onItemClick(position: Int)
                     {
                         var asignaturaActual = listaAsignaturas.get(position)
@@ -102,13 +101,13 @@ class MisAsignaturasFragmentProfesor : Fragment()
                                 }
                             }
 
-                            var adapter = AsignaturaAdapter(listaAsignaturasBusqueda)
+                            var adapter = AsignaturaAdapterProfesor(listaAsignaturasBusqueda)
 
                             rvListaAsignaturas.layoutManager = LinearLayoutManager(context)
                             rvListaAsignaturas.setHasFixedSize(true)
                             rvListaAsignaturas.adapter = adapter
 
-                            adapter.setOnItemClickListener(object: AsignaturaAdapter.onItemClickListener{
+                            adapter.setOnItemClickListener(object: AsignaturaAdapterProfesor.onItemClickListener{
                                 override fun onItemClick(position: Int)
                                 {
                                     var asignaturaActual = listaAsignaturasBusqueda.get(position)

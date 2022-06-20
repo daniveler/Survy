@@ -4,14 +4,13 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.R
 import com.squareup.picasso.Picasso
 
-class AsignaturaAdapter(val listaAsignaturas : List<Asignatura>) : RecyclerView.Adapter<AsignaturaAdapter.AsignaturaViewHolder>()
+class AsignaturaAdapterProfesor(val listaAsignaturas : List<Asignatura>) : RecyclerView.Adapter<AsignaturaAdapterProfesor.AsignaturaViewHolder>()
 {
     private lateinit var mListener : onItemClickListener
 
@@ -35,7 +34,6 @@ class AsignaturaAdapter(val listaAsignaturas : List<Asignatura>) : RecyclerView.
     {
         val asignatura = listaAsignaturas[position]
         Picasso.get().load(Uri.parse(asignatura.icono.toString())).into(holder.ivFoto)
-        //holder.ivFoto.setImageURI(Uri.parse(asignatura.icono.toString()))
         holder.tvTitulo.setText(asignatura.nombre)
         holder.tvCurso.setText(asignatura.curso)
     }

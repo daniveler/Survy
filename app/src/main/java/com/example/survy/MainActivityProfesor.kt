@@ -169,13 +169,4 @@ class MainActivityProfesor : AppCompatActivity()
         val alerta = dialogBuilder.create()
         alerta.show()
     }
-
-    fun actualizarHeader(nombre: String)
-    {
-        var civFotoPerfil = header.findViewById<CircleImageView>(R.id.civHeader)
-        var tvNombreHeader = header.findViewById<TextView>(R.id.tvNombreHeader)
-
-        tvNombreHeader.setText(nombre)
-        //civFotoPerfil.setImageURI(fotoDePerfil)
-    }
 }

@@ -18,12 +18,14 @@ import com.example.survy.Authentication.LoginActivity
 import com.example.survy.Fragments.Home.HomeFragmentProfesor
 import com.example.survy.Fragments.MiPerfil.Alumno.MiPerfilFragmentAlumno
 import com.example.survy.Fragments.MisAlumnos.MisAlumnosFragment
+import com.example.survy.Fragments.MisAsignaturas.Alumno.MisAsignaturasFragmentAlumno
 import com.example.survy.Fragments.MisAsignaturas.Profesor.MisAsignaturasFragmentProfesor
 import com.example.survy.Fragments.Resultados.ResultadosFragmentProfesor
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
 class MainActivityAlumno : AppCompatActivity()
@@ -42,9 +44,6 @@ class MainActivityAlumno : AppCompatActivity()
         val bundle = intent.extras
         val idUsuario = bundle?.getString("idUsuario") ?: ""
 
-        val rol = "Alumno"
-        //val nombre = bundle?.getString("nombre")
-
         var navView : NavigationView = findViewById(R.id.nav_view_alumno)
 
         header = navView.getHeaderView(0)
@@ -56,18 +55,19 @@ class MainActivityAlumno : AppCompatActivity()
             {
                 R.id.itemHomeAlumno ->
                 {
-                    cambiarFragment(HomeFragmentProfesor(), idUsuario, rol)
+                    cambiarFragment(HomeFragmentProfesor(), idUsuario)
                     supportActionBar?.title = getString(R.string.titleHome)
                 }
                 R.id.itemMisAsignaturasAlumno ->
                 {
-                    cambiarFragment(MisAsignaturasFragmentProfesor(), idUsuario, rol)
+                    cambiarFragment(MisAsignaturasFragmentAlumno(), idUsuario)
+                    supportActionBar?.title = getString(R.string.titleMisAsignaturasProfesor)
                 }
-                R.id.itemNuevaEncuestaAlumno -> cambiarFragment(MisAlumnosFragment(), idUsuario, rol)
-                R.id.itemMisResultadosAlumno -> cambiarFragment(ResultadosFragmentProfesor(), idUsuario, rol)
+                R.id.itemNuevaEncuestaAlumno -> cambiarFragment(MisAlumnosFragment(), idUsuario)
+                R.id.itemMisResultadosAlumno -> cambiarFragment(ResultadosFragmentProfesor(), idUsuario)
                 R.id.itemMiPerfilAlumno ->
                 {
-                    cambiarFragment(MiPerfilFragmentAlumno(), idUsuario, rol)
+                    cambiarFragment(MiPerfilFragmentAlumno(), idUsuario)
                     supportActionBar?.title = getString(R.string.titleMiPerfil)
                 }
                 R.id.itemCerrarSesionAlumno -> mostrarAlertaCerrarSesion()
@@ -100,14 +100,14 @@ class MainActivityAlumno : AppCompatActivity()
         }
         else
         {
-            var civFotoPerfil = header.findViewById<CircleImageView>(R.id.civHeader)
+            var civFotoPerfilHeader = header.findViewById<CircleImageView>(R.id.civHeader)
             var tvEmailHeader = header.findViewById<TextView>(R.id.tvEmailHeader)
             var tvNombreHeader = header.findViewById<TextView>(R.id.tvNombreHeader)
 
             db.collection("alumnos").document(idUsuario).get().addOnSuccessListener {
                 tvNombreHeader.setText(it.get("nombre") as String?)
                 tvEmailHeader.setText(it.get("email") as String?)
-                civFotoPerfil.setImageURI(Uri.parse(it.get("fotoDePerfil").toString()) as Uri?)
+                Picasso.get().load(it.getString("fotoDePerfil")).into(civFotoPerfilHeader)
             }
         }
     }
@@ -126,11 +126,10 @@ class MainActivityAlumno : AppCompatActivity()
         return super.onOptionsItemSelected(item)
     }
 
-    private fun cambiarFragment (fragmentCambiar : Fragment, idUsuario: String?, rol: String)
+    private fun cambiarFragment (fragmentCambiar : Fragment, idUsuario: String?)
     {
         var args = Bundle()
         args.putString("idUsuario", idUsuario)
-        args.putString("rol", rol)
 
         fragmentCambiar.arguments = args
 

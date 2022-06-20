@@ -89,7 +89,7 @@ class MatricularAlumnoFragmentProfesor : Fragment()
                 this.action = Intent.ACTION_SEND
                 this.putExtra(Intent.EXTRA_STREAM, Uri.parse(qrUri))
                 this.type = "image/jpeg"
-                this.putExtra(Intent.EXTRA_TEXT, "¡Matricúlate en la asignatura " + tvNombre.text + "!")
+                this.putExtra(Intent.EXTRA_TEXT, "¡Matricúlate en la asignatura " + tvNombre.text + "!\n\nCódigo: " + idAsignatura)
             }
 
             startActivity(Intent.createChooser(intent, "Enviar código de matriculación a: "))
