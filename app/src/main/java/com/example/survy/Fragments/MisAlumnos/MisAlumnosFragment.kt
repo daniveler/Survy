@@ -30,19 +30,18 @@ class MisAlumnosFragment : Fragment()
         val idUsuario = arguments?.getString("idUsuario", "") ?: ""
 
         btMatricularAlumnos.setOnClickListener {
-            cambiarFragment(MisAsignaturasFragmentProfesor(), idUsuario, "MisAlumnos")
+            cambiarFragment(AsignaturasMatricularAlumnoFragmentProfesor(), idUsuario)
         }
 
         btBuscarAlumno.setOnClickListener {
-            cambiarFragment(BuscarAlumnoFragmentProfesor(), idUsuario, "MisAlumnos")
+            cambiarFragment(BuscarAlumnoFragmentProfesor(), idUsuario)
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, vieneDe: String)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String)
     {
         var args = Bundle()
         args.putString("idUsuario", idUsuario)
-        args.putString("vieneDe", vieneDe)
 
         var fragment = framentCambiar
         fragment.arguments = args

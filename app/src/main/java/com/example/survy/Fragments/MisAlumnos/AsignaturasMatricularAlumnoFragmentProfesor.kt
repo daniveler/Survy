@@ -1,4 +1,4 @@
-package com.example.survy.Fragments.MisAsignaturas.Profesor
+package com.example.survy.Fragments.MisAlumnos
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,18 +8,18 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.SearchView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Asignatura
 import com.example.survy.Clases.AsignaturaAdapter
-import com.example.survy.Fragments.MisAlumnos.MatricularAlumnoFragmentProfesor
+import com.example.survy.Fragments.MisAsignaturas.Profesor.AsignaturaDetailFragmentProfesor
+import com.example.survy.Fragments.MisAsignaturas.Profesor.NuevaAsignaturaFragmentProfesor
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
-class MisAsignaturasFragmentProfesor : Fragment()
+class AsignaturasMatricularAlumnoFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()
 
@@ -29,7 +29,11 @@ class MisAsignaturasFragmentProfesor : Fragment()
     ): View?
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mis_asignaturas_profesor, container, false)
+        return inflater.inflate(
+            R.layout.fragment_asignaturas_matricular_alumno_profesor,
+            container,
+            false
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
@@ -39,10 +43,10 @@ class MisAsignaturasFragmentProfesor : Fragment()
         var user = FirebaseAuth.getInstance().currentUser
         var idUsuario = arguments?.getString("idUsuario", "") ?: ""
 
-        val searchView = view.findViewById<SearchView>(R.id.searchViewMisAsignaturasProfesor)
-        val tvNoHayAsignaturas = view.findViewById<TextView>(R.id.tvMisAsignaturasProfesor)
-        val rvListaAsignaturas = view.findViewById<RecyclerView>(R.id.recyclerViewMisAsignaturasProfesor)
-        val btNuevaAsignatura = view.findViewById<Button>(R.id.btNuevaAsignaturaMisAsignaturasProfesor)
+        val searchView = view.findViewById<SearchView>(R.id.searchViewAsignaturasMatricularAlumnoProfesor)
+        val tvNoHayAsignaturas = view.findViewById<TextView>(R.id.tvAsignaturasMatricularAlumnoProfesor)
+        val rvListaAsignaturas = view.findViewById<RecyclerView>(R.id.recyclerViewAsignaturasMatricularAlumnoProfesor)
+        val btCancelar = view.findViewById<Button>(R.id.btCancelarAsignaturasMatricularAlumnoProfesor)
 
         val listaAsignaturas = mutableListOf<Asignatura>()
         var listaAsignaturasBusqueda = mutableListOf<Asignatura>()
@@ -77,7 +81,7 @@ class MisAsignaturasFragmentProfesor : Fragment()
                     {
                         var asignaturaActual = listaAsignaturas.get(position)
 
-                        cambiarFragment(AsignaturaDetailFragmentProfesor(), idUsuario, asignaturaActual.id)
+                        cambiarFragment(MatricularAlumnoFragmentProfesor(), idUsuario, asignaturaActual.id)
                     }
                 })
 
@@ -113,7 +117,7 @@ class MisAsignaturasFragmentProfesor : Fragment()
                                 {
                                     var asignaturaActual = listaAsignaturasBusqueda.get(position)
 
-                                    cambiarFragment(MatricularAlumnoFragmentProfesor(), idUsuario, asignaturaActual.id)
+                                    cambiarFragment(AsignaturaDetailFragmentProfesor(), idUsuario, asignaturaActual.id)
                                 }
                             })
 
@@ -131,8 +135,8 @@ class MisAsignaturasFragmentProfesor : Fragment()
                 })
             }
 
-        btNuevaAsignatura.setOnClickListener {
-            cambiarFragment(NuevaAsignaturaFragmentProfesor(), idUsuario, null)
+        btCancelar.setOnClickListener {
+            cambiarFragment(MisAlumnosFragment(), idUsuario, null)
         }
     }
 

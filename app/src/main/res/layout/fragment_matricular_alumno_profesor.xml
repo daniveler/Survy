@@ -27,15 +27,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/ivIconoAsignaturaDetailMatricularAlumnoProfesor"
                 android:layout_width="264dp"
                 android:layout_height="264dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="32dp"
-                app:civ_border_color="@color/darkPurple"
-                app:civ_border_width="2dp"
-                app:civ_circle_background_color="@color/white" />
+                android:background="@color/white" />
 
             <TextView
                 android:id="@+id/tvNombreAsignaturaDetailMatricularAlumnoProfesor"

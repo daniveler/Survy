@@ -52,18 +52,17 @@ class AsignaturaDetailFragmentProfesor : Fragment()
         }
 
         btEditar.setOnClickListener {
-            cambiarFragment(EditarAsignaturaFragmentProfesor(), idUsuario, idAsignatura, "MisAsignaturas")
+            cambiarFragment(EditarAsignaturaFragmentProfesor(), idUsuario, idAsignatura)
         }
 
         btCancelar.setOnClickListener {
-            cambiarFragment(MisAsignaturasFragmentProfesor(), idUsuario, idAsignatura, "MisAsignaturas")
+            cambiarFragment(MisAsignaturasFragmentProfesor(), idUsuario, idAsignatura)
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idAsignatura: String?, vieneDe: String)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idAsignatura: String?)
     {
         var args = Bundle()
-        args.putString("vieneDe", vieneDe)
         args.putString("idUsuario", idUsuario)
         args.putString("asignatura", idAsignatura)
 

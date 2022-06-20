@@ -1,14 +1,21 @@
 package com.example.survy.Fragments.MisAlumnos
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.zxing.BarcodeFormat
+import com.journeyapps.barcodescanner.BarcodeEncoder
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -29,7 +36,7 @@ class MatricularAlumnoFragmentProfesor : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val ivIcono = view.findViewById<CircleImageView>(R.id.ivIconoAsignaturaDetailMatricularAlumnoProfesor)
+        val ivIcono = view.findViewById<ImageView>(R.id.ivIconoAsignaturaDetailMatricularAlumnoProfesor)
         val tvNombre = view.findViewById<TextView>(R.id.tvNombreAsignaturaDetailMatricularAlumnoProfesor)
         val tvCurso = view.findViewById<TextView>(R.id.tvCursoAsignaturaDetailMatricularAlumnoProfesor)
 
@@ -47,19 +54,31 @@ class MatricularAlumnoFragmentProfesor : Fragment()
             }
 
         btGenerarCodigo.setOnClickListener {
+            val barcodeEncoder = BarcodeEncoder()
+            val bitmap = barcodeEncoder.encodeBitmap(idAsignatura, BarcodeFormat.QR_CODE, 264, 264)
 
+            ivIcono.setImageBitmap(bitmap)
+
+            Toast.makeText(context, "Toque el QR para copiar el código en el portapapeles", Toast.LENGTH_SHORT).show()
+
+            ivIcono.setOnClickListener {
+                val clipBoard = requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                clipBoard.setPrimaryClip(ClipData.newPlainText(idAsignatura, idAsignatura))
+
+                Toast.makeText(context, "Código copiado en el portapapeles", Toast.LENGTH_LONG).show()
+            }
         }
 
         btCancelar.setOnClickListener {
-            cambiarFragment(MisAlumnosFragment(), idUsuario)
+            cambiarFragment(AsignaturasMatricularAlumnoFragmentProfesor(), idUsuario, idAsignatura)
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idAsignatura: String)
     {
         var args = Bundle()
         args.putString("idUsuario", idUsuario)
-
+        args.putString("idAsignatura", idAsignatura)
         var fragment = framentCambiar
         fragment.arguments = args
 
