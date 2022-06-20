@@ -3,7 +3,11 @@ package com.example.survy.Fragments.MisAlumnos
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +22,7 @@ import com.google.zxing.BarcodeFormat
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
+import java.io.ByteArrayOutputStream
 
 class MatricularAlumnoFragmentProfesor : Fragment()
 {
@@ -41,6 +46,7 @@ class MatricularAlumnoFragmentProfesor : Fragment()
         val tvCurso = view.findViewById<TextView>(R.id.tvCursoAsignaturaDetailMatricularAlumnoProfesor)
 
         val btGenerarCodigo = view.findViewById<Button>(R.id.btGenerarCodigoMatricularAlumnoProfesor)
+        val btCompartir = view.findViewById<Button>(R.id.btCompartirCodigoMatricularAlumnoProfesor)
         val btCancelar = view.findViewById<Button>(R.id.btCancelarMatricularAlumnoProfesor)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
@@ -67,6 +73,26 @@ class MatricularAlumnoFragmentProfesor : Fragment()
 
                 Toast.makeText(context, "Código copiado en el portapapeles", Toast.LENGTH_LONG).show()
             }
+        }
+
+        btCompartir.setOnClickListener {
+            val barcodeEncoder = BarcodeEncoder()
+            val bitmap = barcodeEncoder.encodeBitmap(idAsignatura, BarcodeFormat.QR_CODE, 264, 264)
+
+            val bytes = ByteArrayOutputStream()
+
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+
+            val qrUri = MediaStore.Images.Media.insertImage(requireContext().contentResolver, bitmap, "Qr" + tvNombre.text, null)
+
+            val intent = Intent().apply {
+                this.action = Intent.ACTION_SEND
+                this.putExtra(Intent.EXTRA_STREAM, Uri.parse(qrUri))
+                this.type = "image/jpeg"
+                this.putExtra(Intent.EXTRA_TEXT, "¡Matricúlate en la asignatura " + tvNombre.text + "!")
+            }
+
+            startActivity(Intent.createChooser(intent, "Enviar código de matriculación a: "))
         }
 
         btCancelar.setOnClickListener {

@@ -117,7 +117,7 @@ class AsignaturasMatricularAlumnoFragmentProfesor : Fragment()
                                 {
                                     var asignaturaActual = listaAsignaturasBusqueda.get(position)
 
-                                    cambiarFragment(AsignaturaDetailFragmentProfesor(), idUsuario, asignaturaActual.id)
+                                    cambiarFragment(MatricularAlumnoFragmentProfesor(), idUsuario, asignaturaActual.id)
                                 }
                             })
 

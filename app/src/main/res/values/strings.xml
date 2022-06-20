@@ -105,6 +105,7 @@
 
     <!--> MATRICULAR ALUMNO PROFESOR <!-->
     <string name="btGenerarCodigoMatricularAlumnoProfesor">Generar Código</string>
+    <string name="btCompartirCodigoMatricularAlumnoProfesor">Compartir Código</string>
 
 
 </resources>
