@@ -73,7 +73,6 @@
     <string name="tvMainModificarPassword">Modificar Contraseña</string>
     <string name="etModificarPassword1">Contraseña</string>
     <string name="etModificarPassword2">Repita la Contraseña</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--> MIS ASIGNATURAS PROFESOR <!-->
@@ -109,6 +108,11 @@
 
     <!--> MIS ASIGNATURAS ALUMNO <!-->
     <string name="btAnadirAsignaturaMisAsignaturasAlumno">Añadir Asignatura</string>
+
+    <!--> MATRICULAR ALUMNO ALUMNO <!-->
+    <string name="tvMatricularAlumnoAlumno">Lee un código de asignatura</string>
+    <string name="btIntroducirCodigoAlumnoAlumno">Introducir Código</string>
+    <string name="tvEscanerQrMatricularAlumnoAlumno">Lea el código QR de la asignatura</string>
 
 
 </resources>

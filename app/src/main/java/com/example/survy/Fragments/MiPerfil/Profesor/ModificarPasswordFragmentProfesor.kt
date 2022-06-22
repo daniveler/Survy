@@ -31,7 +31,7 @@ class ModificarPasswordFragmentProfesor : Fragment()
 
         val etPassword1 = view.findViewById<EditText>(R.id.etModificarPassword1Profesor)
         val etPassword2 = view.findViewById<EditText>(R.id.etModificarPassword2Profesor)
-        val btModificarPassword = view.findViewById<Button>(R.id.btAplicarCambiosModificarPasswordProfesor)
+        val btModificarPassword = view.findViewById<Button>(R.id.btIntroducirCodigoMatricularAlumnoAlumno)
         val btCancelar = view.findViewById<Button>(R.id.btCancelarModificarPasswordProfesor)
 
         var idUsuario = arguments?.getString("idUsuario", "") ?: ""
