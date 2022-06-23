@@ -55,17 +55,18 @@ class AsignaturasMatricularAlumnoFragmentProfesor : Fragment()
             .addOnSuccessListener { task ->
                 for (document in task)
                 {
-                    // Falta número de alumnos
                     val id = document.id
                     val nombre = document.data.get("nombre").toString()
                     val idProfesor = document.data.get("idProfesor").toString()
                     val curso = document.data.get("curso").toString()
                     val icono = document.data.get("icono").toString()
+                    val numAlumnos = document.data.get("numAlumnos").toString().toInt()
 
-                    var asignatura = Asignatura(id, nombre, idProfesor, curso, icono)
+                    var asignatura = Asignatura(id, nombre, idProfesor, curso, icono, numAlumnos)
 
                     listaAsignaturas.add(asignatura)
                 }
+
                 if (!task.isEmpty) { tvNoHayAsignaturas.visibility = View.GONE }
 
                 var adapter = AsignaturaAdapterProfesor(listaAsignaturas)

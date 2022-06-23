@@ -36,6 +36,7 @@ class AsignaturaAdapterProfesor(val listaAsignaturas : List<Asignatura>) : Recyc
         Picasso.get().load(Uri.parse(asignatura.icono.toString())).into(holder.ivFoto)
         holder.tvTitulo.setText(asignatura.nombre)
         holder.tvCurso.setText(asignatura.curso)
+        holder.tvAlumnos.setText(asignatura.numAlumnos.toString() + " alumnos")
     }
 
     override fun getItemCount(): Int

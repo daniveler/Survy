@@ -7,7 +7,8 @@ data class Asignatura(
     val nombre : String,
     val idProfesor : String,
     val curso : String,
-    val icono : String
+    val icono : String,
+    val numAlumnos : Int
 )
 {
 }

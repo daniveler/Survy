@@ -174,6 +174,7 @@ class NuevaAsignaturaFragmentProfesor : Fragment()
                     "idProfesor" to idUsuario,
                     "curso" to curso,
                     "icono" to icono,
+                    "numAlumnos" to 0
                     )
 
                 db.collection("asignaturas").add(dataAsignatura)

@@ -58,8 +58,9 @@ class MisAsignaturasFragmentProfesor : Fragment()
                     val idProfesor = document.data.get("idProfesor").toString()
                     val curso = document.data.get("curso").toString()
                     val icono = document.data.get("icono").toString()
+                    val numAlumnos = document.data.get("numAlumnos").toString().toInt()
 
-                    var asignatura = Asignatura(id, nombre, idProfesor, curso, icono)
+                    var asignatura = Asignatura(id, nombre, idProfesor, curso, icono, numAlumnos)
 
                     listaAsignaturas.add(asignatura)
                 }
