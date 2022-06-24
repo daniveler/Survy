@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Alumno
 import com.example.survy.Clases.AlumnoAdapterProfesor
-import com.example.survy.Clases.AsignaturaAdapterProfesor
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
@@ -73,8 +72,7 @@ class BuscarAlumnoFragmentProfesor : Fragment()
                         {
                             var alumnoActual = listaAlumnos.get(position)
 
-                            Toast.makeText(context, "Alumno: " + alumnoActual.nombre + " " + alumnoActual.apellidos,
-                                Toast.LENGTH_LONG).show()
+                            cambiarFragment(AlumnoDetailFragmentProfesor(), alumnoActual.id)
                         }
                     })
 
@@ -111,9 +109,7 @@ class BuscarAlumnoFragmentProfesor : Fragment()
                                     {
                                         var alumnoActual = listaAlumnosBusqueda.get(position)
 
-                                        Toast.makeText(context, "Alumno: " + alumnoActual.nombre + " " + alumnoActual.apellidos,
-                                            Toast.LENGTH_LONG).show()
-                                        //cambiarFragment(MatricularAlumnoFragmentProfesor(), idUsuario, asignaturaActual.id)
+                                        cambiarFragment(AlumnoDetailFragmentProfesor(), alumnoActual.id)
                                     }
                                 })
 
@@ -132,7 +128,21 @@ class BuscarAlumnoFragmentProfesor : Fragment()
 
                 }
             }
+    }
 
+    fun cambiarFragment(fragmentCambiar: Fragment, idUsuario: String)
+    {
+        var args = Bundle()
+        args.putString("idUsuario", idUsuario)
 
+        var fragment = fragmentCambiar
+
+        fragment.arguments = args
+
+        var fragmentManager = requireActivity().supportFragmentManager
+
+        fragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerProfesor, fragment)
+            .commit()
     }
 }

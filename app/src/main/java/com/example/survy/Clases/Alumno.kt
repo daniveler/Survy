@@ -4,7 +4,7 @@ import android.net.Uri
 import androidx.core.net.toUri
 
 data class Alumno(
-    val idAlumno : String,
+    val id : String,
     val nombre : String,
     val apellidos : String,
     val email : String,

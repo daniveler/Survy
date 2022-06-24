@@ -1,12 +1,7 @@
-package com.example.survy.Fragments.MisAsignaturas.Alumno
+package com.example.survy.Fragments.MisAlumnos
 
-import android.content.Context
 import android.content.DialogInterface
-import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.os.VibrationEffect
-import android.os.Vibrator
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +10,6 @@ import android.widget.Button
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,10 +21,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.zxing.integration.android.IntentIntegrator
 import java.util.*
 
-class MisAsignaturasFragmentAlumno : Fragment()
+class VerAsignaturasAlumnoFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,21 +31,19 @@ class MisAsignaturasFragmentAlumno : Fragment()
     ): View?
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mis_asignaturas_alumno, container, false)
+        return inflater.inflate(R.layout.fragment_ver_asignaturas_alumno_profesor, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
 
-        auth = FirebaseAuth.getInstance()
+        var idAlumno = arguments?.getString("idAlumno", "") ?: ""
 
-        var idUsuario = arguments?.getString("idUsuario", "") ?: ""
-
-        val searchView = view.findViewById<SearchView>(R.id.searchViewVerAsignaturasAlumnoProfesor)
-        val tvNoHayAsignaturas = view.findViewById<TextView>(R.id.tvEmptyVerAsignaturasAlumnoProfesor)
-        val rvListaAsignaturas = view.findViewById<RecyclerView>(R.id.recyclerViewVerAsignaturasAlumnoProfesor)
-        val btNuevaAsignatura = view.findViewById<Button>(R.id.btCancelarVerAsignaturasAlumnoProfesor)
+        val searchView          = view.findViewById<SearchView>(R.id.searchViewVerAsignaturasAlumnoProfesor)
+        val tvNoHayAsignaturas  = view.findViewById<TextView>(R.id.tvEmptyVerAsignaturasAlumnoProfesor)
+        val rvListaAsignaturas  = view.findViewById<RecyclerView>(R.id.recyclerViewVerAsignaturasAlumnoProfesor)
+        val btCancelar          = view.findViewById<Button>(R.id.btCancelarVerAsignaturasAlumnoProfesor)
 
         val listaAsignaturas = mutableListOf<Asignatura>()
         var listaAsignaturasBusqueda = mutableListOf<Asignatura>()
@@ -60,7 +51,7 @@ class MisAsignaturasFragmentAlumno : Fragment()
         var sinAsignaturas = true
 
         db.collection("matriculado")
-            .whereEqualTo("idAlumno", idUsuario)
+            .whereEqualTo("idAlumno", idAlumno)
             .get()
             .addOnSuccessListener { task ->
                 for (document in task)
@@ -96,8 +87,7 @@ class MisAsignaturasFragmentAlumno : Fragment()
                                 {
                                     var asignaturaActual = listaAsignaturas.get(position)
 
-                                    Toast.makeText(context, "Asignatura: " + asignaturaActual.nombre, Toast.LENGTH_LONG).show()
-                                    //cambiarFragment(AsignaturaDetailFragmentProfesor(), idUsuario, asignaturaActual.id)
+                                    mostrarAlerta(idAlumno, asignaturaActual)
                                 }
                             })
 
@@ -133,8 +123,7 @@ class MisAsignaturasFragmentAlumno : Fragment()
                                             {
                                                 var asignaturaActual = listaAsignaturasBusqueda.get(position)
 
-                                                Toast.makeText(context, "Asignatura: " + asignaturaActual.nombre, Toast.LENGTH_LONG).show()
-                                                //cambiarFragment(MatricularAlumnoFragmentProfesor(), idUsuario, asignaturaActual.id)
+                                                mostrarAlerta(idAlumno, asignaturaActual)
                                             }
                                         })
 
@@ -154,48 +143,16 @@ class MisAsignaturasFragmentAlumno : Fragment()
                 }
             }
 
-        btNuevaAsignatura.setOnClickListener {
-            val integrator = IntentIntegrator.forSupportFragment(this)
-
-            integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
-            integrator.setPrompt(getString(R.string.tvEscanerQrMatricularAlumnoAlumno))
-            integrator.setBeepEnabled(true)
-
-            integrator.initiateScan()
+        btCancelar.setOnClickListener {
+            cambiarFragment(BuscarAlumnoFragmentProfesor(), idAlumno)
         }
+
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
-    {
-        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-
-        if (result != null)
-        {
-            if (result.contents != null)
-            {
-                val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-                    vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
-
-                db.collection("asignaturas").document(result.contents)
-                    .get().addOnSuccessListener {
-                        val nombre = it.getString("nombre") as String
-
-                        mostrarAlerta(nombre, result.contents)
-                    }
-            }
-        }
-        else
-        {
-            super.onActivityResult(requestCode, resultCode, data)
-        }
-    }
-
-    fun cambiarFragment(fragmentCambiar: Fragment, idUsuario: String, idAsignatura: String?)
+    fun cambiarFragment(fragmentCambiar: Fragment, idAlumno: String)
     {
         var args = Bundle()
-        args.putString("idUsuario", idUsuario)
-        args.putString("asignatura", idAsignatura ?: "")
+        args.putString("idUsuario", idAlumno)
 
         var fragment = fragmentCambiar
 
@@ -204,73 +161,22 @@ class MisAsignaturasFragmentAlumno : Fragment()
         var fragmentManager = requireActivity().supportFragmentManager
 
         fragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerAlumno, fragment)
+            .replace(R.id.fragmentContainerProfesor, fragment)
             .commit()
     }
 
-    fun recargarFragment()
-    {
-        val fragmento = requireFragmentManager().beginTransaction()
-
-        fragmento.setReorderingAllowed(false)
-
-        fragmento.detach(this).attach(this).commit()
-    }
-
-    fun mostrarAlerta(nombre: String, idAsignatura: String)
+    fun mostrarAlerta(idAlumno: String, asignatura: Asignatura)
     {
         val dialogBuilder = AlertDialog.Builder(requireContext())
-        dialogBuilder.setTitle("Añadir Asignatura")
-        dialogBuilder.setMessage("¿Deseas matricularte en la asignatura " + nombre + "?")
-        dialogBuilder.setPositiveButton("Sí", DialogInterface.OnClickListener {
-            dialog, id ->
-                val idAlumno = auth.currentUser!!.uid
+        dialogBuilder.setTitle(getString(R.string.alertTitleVerAsingnaturasAlumnoProfesor) + " " + asignatura.nombre + "?")
+        dialogBuilder.setMessage(R.string.alertTextVerAsingnaturasAlumnoProfesor)
 
-            db.collection("matriculado")
-                .whereEqualTo("idAsignatura", idAsignatura)
-                .whereEqualTo("idAlumno", idAlumno)
-                .get()
-                .addOnCompleteListener { task ->
-                    if (task.result.isEmpty)
-                    {
-                        db.collection("asignaturas").document(idAsignatura).get()
-                            .addOnSuccessListener {
-                                val cursoAsignatura = it.getString("curso")
-                                var numAlumnos = it.getLong("numAlumnos")!!.toInt()
-
-                                db.collection("alumnos").document(idAlumno).get()
-                                    .addOnSuccessListener {
-                                        val cursoAlumno = it.getString("curso")
-
-                                        if (cursoAlumno == cursoAsignatura)
-                                        {
-                                            db.collection("matriculado").document().set(
-                                                hashMapOf("idAlumno" to idAlumno,
-                                                    "idAsignatura" to idAsignatura))
-                                                .addOnSuccessListener {
-                                                    Toast.makeText(activity, "Te has matriculado correctamente", Toast.LENGTH_LONG).show()
-
-                                                    db.collection("asignaturas").document(idAsignatura).update("numAlumnos", ++numAlumnos)
-
-                                                    cambiarFragment(MisAsignaturasFragmentAlumno(), idAlumno, null)
-                                                }
-                                        }
-                                        else
-                                        {
-                                            Toast.makeText(activity, "No puedes matricularte en esta asignatura porque no eres de este curso",
-                                                Toast.LENGTH_LONG).show()
-                                        }
-                                    }
-                            }
-                    }
-                    else
-                    {
-                        Toast.makeText(activity, "Ya estás matriculado en esta asignatura", Toast.LENGTH_LONG).show()
-                    }
-                }
+        dialogBuilder.setPositiveButton("SÍ", DialogInterface.OnClickListener { dialog, id ->
+            dialog.cancel()
         })
-        dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener {
-                dialog, id -> dialog.cancel()
+
+        dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialog, id ->
+            dialog.cancel()
         })
 
         val alerta = dialogBuilder.create()

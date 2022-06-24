@@ -117,4 +117,11 @@
     <!--> BUSCAR ALUMNOS PROFESOR <!-->
     <string name="tvEmptyAlumnos">Aún no hay alumnos registrados</string>
 
+    <!--> ALUMNO DETAIL PROFESOR <!-->
+    <string name="btVerAsignaturasAlumnoDetailProfesor">Ver Asignaturas</string>
+
+    <!--> VER ASIGNATURAS ALUMNO PROFESOR <!-->
+    <string name="alertTitleVerAsingnaturasAlumnoProfesor">¿Desea desmatricular al alumno de la asignatura</string>
+    <string name="alertTextVerAsingnaturasAlumnoProfesor">Se eliminarán todos los datos del alumno relacionados con la asignatura, incluyendo sus encuestas</string>
+
 </resources>
