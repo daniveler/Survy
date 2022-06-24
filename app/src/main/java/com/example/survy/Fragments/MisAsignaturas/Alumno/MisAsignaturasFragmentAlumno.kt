@@ -224,8 +224,7 @@ class MisAsignaturasFragmentAlumno : Fragment()
         dialogBuilder.setMessage("¿Deseas matricularte en la asignatura " + nombre + "?")
         dialogBuilder.setPositiveButton("Sí", DialogInterface.OnClickListener {
             dialog, id ->
-
-            val idAlumno = auth.currentUser!!.uid
+                val idAlumno = auth.currentUser!!.uid
 
             db.collection("matriculado")
                 .whereEqualTo("idAsignatura", idAsignatura)
@@ -251,7 +250,7 @@ class MisAsignaturasFragmentAlumno : Fragment()
                                                 .addOnSuccessListener {
                                                     Toast.makeText(activity, "Te has matriculado correctamente", Toast.LENGTH_LONG).show()
 
-                                                    db.collection("asignaturas").document(idAsignatura).update("numAlumnos", numAlumnos++)
+                                                    db.collection("asignaturas").document(idAsignatura).update("numAlumnos", ++numAlumnos)
 
                                                     cambiarFragment(MisAsignaturasFragmentAlumno(), idAlumno, null)
                                                 }

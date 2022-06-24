@@ -114,5 +114,7 @@
     <string name="btIntroducirCodigoAlumnoAlumno">Introducir Código</string>
     <string name="tvEscanerQrMatricularAlumnoAlumno">Lea el código QR de la asignatura</string>
 
+    <!--> BUSCAR ALUMNOS PROFESOR <!-->
+    <string name="tvEmptyAlumnos">Aún no hay alumnos registrados</string>
 
 </resources>
