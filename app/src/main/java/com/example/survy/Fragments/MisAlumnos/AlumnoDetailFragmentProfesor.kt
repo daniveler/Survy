@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import com.example.survy.Fragments.MiPerfil.Alumno.ModificarPerfilFragmentAlumno
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
@@ -55,7 +54,7 @@ class AlumnoDetailFragmentProfesor : Fragment()
         }
 
         btCancelar.setOnClickListener {
-            cambiarFragment(BuscarAlumnoFragmentProfesor(), null)
+            cambiarFragment(MisAlumnosProfesor(), null)
         }
     }
 

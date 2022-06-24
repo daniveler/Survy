@@ -135,7 +135,7 @@ class AsignaturasMatricularAlumnoFragmentProfesor : Fragment()
             }
 
         btCancelar.setOnClickListener {
-            cambiarFragment(MisAlumnosFragment(), idUsuario, null)
+            cambiarFragment(MisAlumnosProfesor(), idUsuario, null)
         }
     }
 

@@ -116,6 +116,7 @@
 
     <!--> BUSCAR ALUMNOS PROFESOR <!-->
     <string name="tvEmptyAlumnos">Aún no hay alumnos registrados</string>
+    <string name="btMatricularBuscarAlumnosProfesor">Matricular Alumno</string>
 
     <!--> ALUMNO DETAIL PROFESOR <!-->
     <string name="btVerAsignaturasAlumnoDetailProfesor">Ver Asignaturas</string>

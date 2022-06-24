@@ -3,7 +3,6 @@ package com.example.survy
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -17,7 +16,7 @@ import androidx.fragment.app.Fragment
 import com.example.survy.Authentication.LoginActivity
 import com.example.survy.Fragments.Home.HomeFragmentProfesor
 import com.example.survy.Fragments.MiPerfil.Profesor.MiPerfilFragmentProfesor
-import com.example.survy.Fragments.MisAlumnos.MisAlumnosFragment
+import com.example.survy.Fragments.MisAlumnos.MisAlumnosProfesor
 import com.example.survy.Fragments.MisAsignaturas.Profesor.MisAsignaturasFragmentProfesor
 import com.example.survy.Fragments.Resultados.ResultadosFragmentProfesor
 import com.google.android.material.navigation.NavigationView
@@ -64,7 +63,7 @@ class MainActivityProfesor : AppCompatActivity()
                 }
                 R.id.itemMisAlumnosProfesor ->
                 {
-                    cambiarFragment(MisAlumnosFragment(), idUsuario)
+                    cambiarFragment(MisAlumnosProfesor(), idUsuario)
                     supportActionBar?.title = getString(R.string.titleMisAlumnosProfesor)
                 }
                 R.id.itemResultadosProfesor -> cambiarFragment(ResultadosFragmentProfesor(), idUsuario)

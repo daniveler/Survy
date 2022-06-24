@@ -109,7 +109,7 @@
                 android:backgroundTint="@color/yellowButton"
                 android:fontFamily="@font/poppins_semibold"
                 android:letterSpacing="0"
-                android:text="@string/btMiPerfil"
+                android:text="@string/btVerAsignaturasAlumnoDetailProfesor"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
@@ -125,7 +125,9 @@
                 android:text="@string/btCancelarMatricularAlumnoProfesor"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:layout_marginBottom="32dp"
+                />
 
         </LinearLayout>
     </ScrollView>

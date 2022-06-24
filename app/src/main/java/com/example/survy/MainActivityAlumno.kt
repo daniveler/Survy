@@ -3,7 +3,6 @@ package com.example.survy
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -17,9 +16,7 @@ import androidx.fragment.app.Fragment
 import com.example.survy.Authentication.LoginActivity
 import com.example.survy.Fragments.Home.HomeFragmentProfesor
 import com.example.survy.Fragments.MiPerfil.Alumno.MiPerfilFragmentAlumno
-import com.example.survy.Fragments.MisAlumnos.MisAlumnosFragment
 import com.example.survy.Fragments.MisAsignaturas.Alumno.MisAsignaturasFragmentAlumno
-import com.example.survy.Fragments.MisAsignaturas.Profesor.MisAsignaturasFragmentProfesor
 import com.example.survy.Fragments.Resultados.ResultadosFragmentProfesor
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
@@ -63,7 +60,7 @@ class MainActivityAlumno : AppCompatActivity()
                     cambiarFragment(MisAsignaturasFragmentAlumno(), idUsuario)
                     supportActionBar?.title = getString(R.string.titleMisAsignaturasProfesor)
                 }
-                R.id.itemNuevaEncuestaAlumno -> cambiarFragment(MisAlumnosFragment(), idUsuario)
+                R.id.itemNuevaEncuestaAlumno -> cambiarFragment(HomeFragmentProfesor(), idUsuario)
                 R.id.itemMisResultadosAlumno -> cambiarFragment(ResultadosFragmentProfesor(), idUsuario)
                 R.id.itemMiPerfilAlumno ->
                 {

@@ -104,7 +104,9 @@
                     android:text="@string/btCancelarAsignaturaDetailProfesor"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="16dp" />
+                    android:textSize="16dp"
+                    android:layout_marginBottom="32dp"
+                    />
             </LinearLayout>
         </ScrollView>
 

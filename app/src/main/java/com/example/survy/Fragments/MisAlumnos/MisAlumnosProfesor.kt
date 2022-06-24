@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.SearchView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Alumno
@@ -17,7 +17,7 @@ import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
-class BuscarAlumnoFragmentProfesor : Fragment()
+class MisAlumnosProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()
 
@@ -27,7 +27,7 @@ class BuscarAlumnoFragmentProfesor : Fragment()
     ): View?
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_buscar_alumno_profesor, container, false)
+        return inflater.inflate(R.layout.fragment_mis_alumnos_profesor, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
@@ -37,6 +37,7 @@ class BuscarAlumnoFragmentProfesor : Fragment()
         val searchView = view.findViewById<SearchView>(R.id.searchViewBuscarAlumnosProfesor)
         val tvEmpty = view.findViewById<TextView>(R.id.tvEmptyBuscarAlumnoProfesor)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewBuscarAlumnoProfesor)
+        val btMatricularAlumno = view.findViewById<Button>(R.id.btMatricularAlumnoBuscarAlumnoProfesor)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
 
@@ -128,6 +129,10 @@ class BuscarAlumnoFragmentProfesor : Fragment()
 
                 }
             }
+
+        btMatricularAlumno.setOnClickListener {
+            cambiarFragment(AsignaturasMatricularAlumnoFragmentProfesor(), idUsuario)
+        }
     }
 
     fun cambiarFragment(fragmentCambiar: Fragment, idUsuario: String)

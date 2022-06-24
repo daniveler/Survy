@@ -9,16 +9,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.SearchView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Asignatura
 import com.example.survy.Clases.AsignaturaAdapterAlumno
 import com.example.survy.R
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.zxing.integration.android.IntentIntegrator
 import java.util.*
 
 class VerAsignaturasAlumnoFragmentProfesor : Fragment()
@@ -144,7 +141,7 @@ class VerAsignaturasAlumnoFragmentProfesor : Fragment()
             }
 
         btCancelar.setOnClickListener {
-            cambiarFragment(BuscarAlumnoFragmentProfesor(), idAlumno)
+            cambiarFragment(MisAlumnosProfesor(), idAlumno)
         }
 
     }
@@ -172,8 +169,27 @@ class VerAsignaturasAlumnoFragmentProfesor : Fragment()
         dialogBuilder.setMessage(R.string.alertTextVerAsingnaturasAlumnoProfesor)
 
         dialogBuilder.setPositiveButton("SÍ", DialogInterface.OnClickListener { dialog, id ->
-            dialog.cancel()
+            db.collection("matriculado")
+                .whereEqualTo("idAlumno", idAlumno)
+                .whereEqualTo("idAsignatura", asignatura.id)
+                .get().addOnSuccessListener { task ->
+                    for(document in task)
+                    {
+                        db.collection("matriculado").document(document.id).delete()
+
+                        var numAlumnos = 0
+                        db.collection("asignaturas").document(asignatura.id)
+                            .get().addOnSuccessListener {
+                                numAlumnos = it.getLong("numAlumnos")!!.toInt()
+                                numAlumnos--
+
+                                db.collection("asignaturas").document(asignatura.id).update("numAlumnos", numAlumnos)
+                            }
+                    }
+                }
         })
+
+        // FALTA ELIMINAR ENCUESTAS
 
         dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialog, id ->
             dialog.cancel()
