@@ -125,4 +125,24 @@
     <string name="alertTitleVerAsingnaturasAlumnoProfesor">¿Desea desmatricular al alumno de la asignatura</string>
     <string name="alertTextVerAsingnaturasAlumnoProfesor">Se eliminarán todos los datos del alumno relacionados con la asignatura, incluyendo sus encuestas</string>
 
+    <!--> NUEVA ENCUESTA ALUMNO <!-->
+    <string name="titleNuevaEncuestaAlumno">Nueva Encuesta</string>
+    <string name="tvEscanerNuevaEncuestaAlumno">Lea el código QR de la encuesta</string>
+
+    <string name="loremIpsunDescripcionEncuesta">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae risus et eros vulputate ultricies. Proin in erat lobortis, varius ex at, congue arcu. Phasellus est est, aliquam id magna quis, ultrices sagittis dui. Nullam quis lorem eget diam rutrum sagittis. Nulla facilisi. Nulla sodales, ligula id sagittis gravida, sapien quam consectetur arcu, sed elementum lorem neque a nunc. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In placerat tortor in nisi posuere gravida. Aenean convallis augue at sodales convallis. Nulla vel dui eu urna feugiat dapibus ut tempus lacus.</string>
+
+    <!--> MIS ENCUESTAS PROFESOR <!-->
+    <string name="tvEncuestasEmptyProfesor">Aún no hay ninguna encuesta</string>
+    <string name="btNuevaEncuestaProfesor">Nueva Encuesta</string>
+
+    <!--> NUEVA ENCUESTA PROFESOR <!-->
+    <string name="btCrearEncuestaNuevaEncuestaProfesor">Crear Encuesta</string>
+    <string name="btCancelarNuevaEncuestaProfesor">Cancelar</string>
+
+    <!--> ENCUESTA DETAIL PROFESOR <!-->
+    <string name="btVerPreguntasEncuestaDetailProfesor">Ver Preguntas</string>
+    <string name="btCancelarEncuestaDetailProfesor">Cancelar</string>
+    <string name="btEditarEncuestaDetailProfesor">Editar Encuesta</string>
+
+
 </resources>

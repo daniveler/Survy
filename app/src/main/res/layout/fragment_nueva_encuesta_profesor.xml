@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.MisAsignaturas.Profesor.EditarAsignaturaFragmentProfesor"
-    android:background="@drawable/gradient_background"
-    android:animateLayoutChanges="true">
+    tools:context=".Fragments.MisEncuestas.Profesor.NuevaEncuestaFragmentProfesor"
+    android:background="@drawable/gradient_background">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,54 +25,58 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                android:id="@+id/etNombreEditarAsignaturaProfesor"
+                android:id="@+id/etNombreNuevaEncuestaProfesor"
                 android:layout_width="264dp"
                 android:layout_height="64dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="32dp"
                 android:background="@color/lightPurple"
                 android:hint="Nombre"
                 android:textColor="@color/black"
                 android:visibility="visible"
-                android:layout_marginTop="32dp"
                 />
 
-            <Spinner
-                android:id="@+id/spinnerCursoEditarAsignaturaProfesor"
+            <EditText
+                android:id="@+id/etDescripcionNuevaEncuestaProfesor"
                 android:layout_width="264dp"
-                android:layout_height="64dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
-                android:background="@color/lightPurple"
-                android:visibility="visible" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivIconoEditarAsignaturaProfesor"
-                android:layout_width="264dp"
-                android:layout_height="264dp"
+                android:layout_height="192dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="32dp"
-                android:clickable="true"
+                android:background="@color/lightPurple"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:hint="Descripción"
+                android:maxLines="10"
+                android:text="@string/loremIpsunDescripcionEncuesta"
+                android:textColor="@color/black"
+                android:visibility="visible"
+                />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civFotoNuevaEncuestaProfesor"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
                 android:src="@drawable/survy_logo"
                 app:civ_border_color="@color/darkPurple"
                 app:civ_border_width="2dp"
                 app:civ_circle_background_color="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
+                />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvIconosEditarAsignaturaProfesor"
+                android:id="@+id/rvIconosNuevaEncuestaProfesor"
                 android:layout_width="match_parent"
                 android:layout_height="264dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:visibility="gone"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="3" />
 
             <Button
-                android:id="@+id/btGuardarCambiosEditarAsignaturaProfesor"
+                android:id="@+id/btCrearNuevaEncuestaProfesor"
                 android:layout_width="250dp"
                 android:layout_height="64dp"
                 android:layout_gravity="center"
@@ -81,20 +84,17 @@
                 android:backgroundTint="@color/yellowButton"
                 android:fontFamily="@font/poppins_semibold"
                 android:letterSpacing="0"
-                android:text="@string/btGuardarCambiosEditarAsignaturaProfesor"
+                android:text="@string/btCrearEncuestaNuevaEncuestaProfesor"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="16dp"
-                android:visibility="visible"
-
-                />
+                android:visibility="visible"/>
 
             <Button
-                android:id="@+id/btCancelarEditarAsignaturaProfesor"
+                android:id="@+id/btCancelarNuevaEncuestaProfesor"
                 android:layout_width="250dp"
                 android:layout_height="64dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="8dp"
                 android:backgroundTint="@color/lightGray"
                 android:fontFamily="@font/poppins_semibold"
                 android:letterSpacing="0"
@@ -102,12 +102,12 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16dp"
-                android:visibility="visible"
                 android:layout_marginBottom="32dp"
+                android:visibility="visible"
                 />
 
             <Button
-                android:id="@+id/btGuardarIconoEditarAsignaturaProfesor"
+                android:id="@+id/btGuardarIconoNuevaEncuestaProfesor"
                 android:layout_width="250dp"
                 android:layout_height="64dp"
                 android:layout_gravity="center"
@@ -119,10 +119,11 @@
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="16dp"
-                android:visibility="gone" />
+                android:visibility="gone"
+                />
 
             <Button
-                android:id="@+id/btCancelarGuardarIconoEditarAsignaturaProfesor"
+                android:id="@+id/btCancelarGuardarIconoNuevaEncuestaProfesor"
                 android:layout_width="250dp"
                 android:layout_height="64dp"
                 android:layout_gravity="center"
@@ -134,12 +135,9 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16dp"
-                android:visibility="gone"
-                android:layout_marginBottom="32dp"
-                />
+                android:visibility="gone" />
         </LinearLayout>
+
     </ScrollView>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

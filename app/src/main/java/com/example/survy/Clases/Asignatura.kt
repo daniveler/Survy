@@ -10,5 +10,3 @@ data class Asignatura(
     val icono : String,
     val numAlumnos : Int
 )
-{
-}

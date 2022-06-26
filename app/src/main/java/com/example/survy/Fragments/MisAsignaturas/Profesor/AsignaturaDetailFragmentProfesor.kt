@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.survy.Fragments.MisEncuestas.Profesor.MisEncuestasFragmentProfesor
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
@@ -38,7 +39,7 @@ class AsignaturaDetailFragmentProfesor : Fragment()
         val btEditar = view.findViewById<Button>(R.id.btEditarAsignaturaDetailProfesor)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
-        val idAsignatura = arguments?.getString("asignatura") ?: ""
+        val idAsignatura = arguments?.getString("idAsignatura") ?: ""
 
         db.collection("asignaturas").document(idAsignatura)
             .get().addOnSuccessListener {
@@ -48,7 +49,7 @@ class AsignaturaDetailFragmentProfesor : Fragment()
         }
 
         btVerEncuestas.setOnClickListener {
-
+            cambiarFragment(MisEncuestasFragmentProfesor(), idUsuario, idAsignatura)
         }
 
         btEditar.setOnClickListener {
@@ -60,11 +61,11 @@ class AsignaturaDetailFragmentProfesor : Fragment()
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idAsignatura: String?)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idAsignatura: String)
     {
         var args = Bundle()
         args.putString("idUsuario", idUsuario)
-        args.putString("asignatura", idAsignatura)
+        args.putString("idAsignatura", idAsignatura)
 
         var fragment = framentCambiar
         fragment.arguments = args

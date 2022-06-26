@@ -5,10 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import com.example.survy.R
+import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Picasso
 
 class AsignaturaDetailFragmentAlumno : Fragment()
 {
+    private val db = FirebaseFirestore.getInstance()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,6 +29,45 @@ class AsignaturaDetailFragmentAlumno : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
+        val ivIcono         = view.findViewById<ImageView>(R.id.ivIconoAsignaturaDetailAlumno)
+        val tvNombre        = view.findViewById<TextView>(R.id.tvNombreAsignaturaDetailAlumno)
+        val tvCurso         = view.findViewById<TextView>(R.id.tvCursoAsignaturaDetailAlumno)
 
+        val btVerEncuestas  = view.findViewById<Button>(R.id.btVerEncuestasAsignaturaDetailAlumno)
+        val btCancelar      = view.findViewById<Button>(R.id.btCancelarAsignaturaDetailAlumno)
+
+        val idUsuario = arguments?.getString("idUsuario") ?: ""
+        val idAsignatura = arguments?.getString("asignatura") ?: ""
+
+        db.collection("asignaturas").document(idAsignatura)
+            .get().addOnSuccessListener {
+                Picasso.get().load(it.getString("icono")).into(ivIcono)
+                tvNombre.setText(it.getString("nombre"))
+                tvCurso.setText(it.getString("curso"))
+            }
+
+        btVerEncuestas.setOnClickListener {
+
+        }
+
+        btCancelar.setOnClickListener {
+            cambiarFragment(MisAsignaturasFragmentAlumno(), idUsuario, idAsignatura)
+        }
+    }
+
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idAsignatura: String?)
+    {
+        var args = Bundle()
+        args.putString("idUsuario", idUsuario)
+        args.putString("asignatura", idAsignatura)
+
+        var fragment = framentCambiar
+        fragment.arguments = args
+
+        var fragmentManager = requireActivity().supportFragmentManager
+
+        fragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerAlumno, fragment)
+            .commit()
     }
 }

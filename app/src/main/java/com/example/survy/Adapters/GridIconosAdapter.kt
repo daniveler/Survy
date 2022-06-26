@@ -1,4 +1,4 @@
-package com.example.survy.Clases
+package com.example.survy.Adapters
 
 import android.net.Uri
 import android.view.LayoutInflater

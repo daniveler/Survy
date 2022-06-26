@@ -1,4 +1,4 @@
-package com.example.survy.Fragments.NuevoEncuesta
+package com.example.survy.Fragments.Preguntas
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.survy.R
 
-class NuevaEncuestaFragment : Fragment()
+class PreguntasFragmentProfesor : Fragment()
 {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -15,6 +15,13 @@ class NuevaEncuestaFragment : Fragment()
     ): View?
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nueva_encuesta, container, false)
+        return inflater.inflate(R.layout.fragment_preguntas_profesor, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
+    {
+        super.onViewCreated(view, savedInstanceState)
+
+
     }
 }

@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Alumno
-import com.example.survy.Clases.AlumnoAdapterProfesor
+import com.example.survy.Adapters.AlumnoAdapterProfesor
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
@@ -34,10 +34,10 @@ class MisAlumnosProfesor : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val searchView = view.findViewById<SearchView>(R.id.searchViewBuscarAlumnosProfesor)
-        val tvEmpty = view.findViewById<TextView>(R.id.tvEmptyBuscarAlumnoProfesor)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewBuscarAlumnoProfesor)
-        val btMatricularAlumno = view.findViewById<Button>(R.id.btMatricularAlumnoBuscarAlumnoProfesor)
+        val searchView = view.findViewById<SearchView>(R.id.searchViewMisAlumnosProfesor)
+        val tvEmpty = view.findViewById<TextView>(R.id.tvEmptyMisAlumnosProfesor)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewMisAlumnosProfesor)
+        val btMatricularAlumno = view.findViewById<Button>(R.id.btMatricularAlumnoMisAlumnosProfesor)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
 

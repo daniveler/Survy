@@ -13,7 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Asignatura
-import com.example.survy.Clases.AsignaturaAdapterAlumno
+import com.example.survy.Adapters.AsignaturaAdapterAlumno
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*

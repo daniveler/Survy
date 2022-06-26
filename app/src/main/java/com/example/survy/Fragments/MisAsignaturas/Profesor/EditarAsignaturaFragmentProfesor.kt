@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.survy.Clases.GridIconosAdapter
+import com.example.survy.Adapters.GridIconosAdapter
 import com.example.survy.R
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore

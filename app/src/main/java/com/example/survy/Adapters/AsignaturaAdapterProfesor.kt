@@ -1,4 +1,4 @@
-package com.example.survy.Clases
+package com.example.survy.Adapters
 
 import android.net.Uri
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.survy.Clases.Asignatura
 import com.example.survy.R
 import com.squareup.picasso.Picasso
 

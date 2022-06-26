@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.MisAlumnos.MisAlumnosProfesor"
+    tools:context=".Fragments.MisEncuestas.Profesor.MisEncuestasFragmentProfesor"
     android:background="@drawable/gradient_background">
 
     <SearchView
-        android:id="@+id/searchViewMisAlumnosProfesor"
+        android:id="@+id/searchViewMisEncuestasProfesor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -24,45 +24,47 @@
         />
 
     <TextView
-        android:id="@+id/tvEmptyMisAlumnosProfesor"
+        android:id="@+id/tvEmptyMisEncuestasProfesor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
-        android:text="@string/tvEmptyAlumnos"
+        android:text="@string/tvEncuestasEmptyProfesor"
         android:textColor="@color/white"
         android:textSize="32dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/searchViewMisAlumnosProfesor" />
+        app:layout_constraintTop_toBottomOf="@+id/searchViewMisEncuestasProfesor" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewMisAlumnosProfesor"
+        android:id="@+id/recyclerViewMisEncuestasProfesor"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/btMatricularAlumnoMisAlumnosProfesor"
+        android:layout_marginRight="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btNuevaEncuestaMisEncuestasProfesor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmptyMisAlumnosProfesor" />
+        app:layout_constraintTop_toBottomOf="@+id/tvEmptyMisEncuestasProfesor" />
 
     <Button
-        android:id="@+id/btMatricularAlumnoMisAlumnosProfesor"
+        android:id="@+id/btNuevaEncuestaMisEncuestasProfesor"
         android:layout_width="250dp"
         android:layout_height="64dp"
         android:layout_gravity="center"
         android:backgroundTint="@color/yellowButton"
         android:fontFamily="@font/poppins_semibold"
         android:letterSpacing="0"
-        android:text="@string/btMatricularBuscarAlumnosProfesor"
+        android:text="@string/btNuevaEncuestaProfesor"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:visibility="visible"
-        android:layout_marginBottom="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="48dp"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

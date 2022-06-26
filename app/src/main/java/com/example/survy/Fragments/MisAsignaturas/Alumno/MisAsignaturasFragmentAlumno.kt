@@ -20,7 +20,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Asignatura
-import com.example.survy.Clases.AsignaturaAdapterAlumno
+import com.example.survy.Adapters.AsignaturaAdapterAlumno
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -96,8 +96,7 @@ class MisAsignaturasFragmentAlumno : Fragment()
                                 {
                                     var asignaturaActual = listaAsignaturas.get(position)
 
-                                    Toast.makeText(context, "Asignatura: " + asignaturaActual.nombre, Toast.LENGTH_LONG).show()
-                                    //cambiarFragment(AsignaturaDetailFragmentProfesor(), idUsuario, asignaturaActual.id)
+                                    cambiarFragment(AsignaturaDetailFragmentAlumno(), idUsuario, asignaturaActual.id)
                                 }
                             })
 
@@ -133,8 +132,7 @@ class MisAsignaturasFragmentAlumno : Fragment()
                                             {
                                                 var asignaturaActual = listaAsignaturasBusqueda.get(position)
 
-                                                Toast.makeText(context, "Asignatura: " + asignaturaActual.nombre, Toast.LENGTH_LONG).show()
-                                                //cambiarFragment(MatricularAlumnoFragmentProfesor(), idUsuario, asignaturaActual.id)
+                                                cambiarFragment(AsignaturaDetailFragmentAlumno(), idUsuario, asignaturaActual.id)
                                             }
                                         })
 

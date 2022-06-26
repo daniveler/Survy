@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Asignatura
-import com.example.survy.Clases.AsignaturaAdapterProfesor
+import com.example.survy.Adapters.AsignaturaAdapterProfesor
 import com.example.survy.Fragments.MisAlumnos.MatricularAlumnoFragmentProfesor
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
@@ -52,7 +52,6 @@ class MisAsignaturasFragmentProfesor : Fragment()
             .addOnSuccessListener { task ->
                 for (document in task)
                 {
-                    // Falta número de alumnos
                     val id = document.id
                     val nombre = document.data.get("nombre").toString()
                     val idProfesor = document.data.get("idProfesor").toString()
@@ -113,7 +112,7 @@ class MisAsignaturasFragmentProfesor : Fragment()
                                 {
                                     var asignaturaActual = listaAsignaturasBusqueda.get(position)
 
-                                    cambiarFragment(MatricularAlumnoFragmentProfesor(), idUsuario, asignaturaActual.id)
+                                    cambiarFragment(AsignaturaDetailFragmentProfesor(), idUsuario, asignaturaActual.id)
                                 }
                             })
 
@@ -140,7 +139,7 @@ class MisAsignaturasFragmentProfesor : Fragment()
     {
         var args = Bundle()
         args.putString("idUsuario", idUsuario)
-        args.putString("asignatura", idAsignatura ?: "")
+        args.putString("idAsignatura", idAsignatura ?: "")
 
         var fragment = fragmentCambiar
 
