@@ -40,7 +40,8 @@ class EditarAsignaturaFragmentProfesor : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val idAsignatura = arguments?.getString("asignatura") ?: ""
+        val idUsuario = arguments?.getString("idUsuario") ?: ""
+        val idAsignatura = arguments?.getString("idAsignatura") ?: ""
 
         val etNombre = view.findViewById<EditText>(R.id.etNombreEditarAsignaturaProfesor)
         val spinnerCurso = view.findViewById<Spinner>(R.id.spinnerCursoEditarAsignaturaProfesor)
@@ -94,11 +95,11 @@ class EditarAsignaturaFragmentProfesor : Fragment()
             db.collection("asignaturas").document(idAsignatura).update("curso", curso)
             db.collection("asignaturas").document(idAsignatura).update("icono", icono)
 
-            cambiarFragment(AsignaturaDetailFragmentProfesor(), idAsignatura)
+            cambiarFragment(AsignaturaDetailFragmentProfesor(), idUsuario, idAsignatura)
         }
 
         btCancelar.setOnClickListener {
-            cambiarFragment(AsignaturaDetailFragmentProfesor(), idAsignatura)
+            cambiarFragment(AsignaturaDetailFragmentProfesor(), idUsuario, idAsignatura)
         }
 
         ivIcono.setOnClickListener {
@@ -169,10 +170,11 @@ class EditarAsignaturaFragmentProfesor : Fragment()
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, idAsignatura: String?)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idAsignatura: String?)
     {
         var args = Bundle()
-        args.putString("asignatura", idAsignatura)
+        args.putString("idUsuario", idUsuario)
+        args.putString("idAsignatura", idAsignatura)
 
         var fragment = framentCambiar
         fragment.arguments = args

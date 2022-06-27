@@ -30,13 +30,13 @@ class AsignaturaDetailFragmentProfesor : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val ivIcono = view.findViewById<ImageView>(R.id.ivIconoAsignaturaDetailProfesor)
-        val tvNombre = view.findViewById<TextView>(R.id.tvNombreAsignaturaDetailProfesor)
-        val tvCurso = view.findViewById<TextView>(R.id.tvCursoAsignaturaDetailProfesor)
+        val ivIcono         = view.findViewById<ImageView>(R.id.ivIconoAsignaturaDetailProfesor)
+        val tvNombre        = view.findViewById<TextView>(R.id.tvNombreAsignaturaDetailProfesor)
+        val tvCurso         = view.findViewById<TextView>(R.id.tvCursoAsignaturaDetailProfesor)
 
-        val btVerEncuestas = view.findViewById<Button>(R.id.btVerEncuestasAsignaturaDetailProfesor)
-        val btCancelar = view.findViewById<Button>(R.id.btCancelarAsignaturaDetailProfesor)
-        val btEditar = view.findViewById<Button>(R.id.btEditarAsignaturaDetailProfesor)
+        val btVerEncuestas  = view.findViewById<Button>(R.id.btVerEncuestasAsignaturaDetailProfesor)
+        val btCancelar      = view.findViewById<Button>(R.id.btCancelarAsignaturaDetailProfesor)
+        val btEditar        = view.findViewById<Button>(R.id.btEditarAsignaturaDetailProfesor)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
         val idAsignatura = arguments?.getString("idAsignatura") ?: ""

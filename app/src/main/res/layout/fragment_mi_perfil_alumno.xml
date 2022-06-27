@@ -7,113 +7,119 @@
     tools:context=".Fragments.MiPerfil.Alumno.MiPerfilFragmentAlumno"
     android:background="@drawable/gradient_background">
 
-    <LinearLayout
-        android:id="@+id/linearLayoutMiPerfilAlumno"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civMiPerfilAlumno"
-            android:layout_width="264dp"
-            android:layout_height="264dp"
-            android:layout_gravity="center"
-            app:civ_border_color="@color/darkPurple"
-            app:civ_border_width="2dp"
-            />
-
-        <TextView
-            android:id="@+id/tvNombreMiPerfilAlumno"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="48dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Nombre"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="48dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:ellipsize="end"
-            />
-
-        <TextView
-            android:id="@+id/tvApellidosMiPerfilAlumno"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayoutMiPerfilAlumno"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Apellido1 Apellido 2"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:ellipsize="end"
-            />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tvEmailMiPerfilAlumno"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppins"
-            android:text="Email"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:ellipsize="end"
-            />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civMiPerfilAlumno"
+                android:layout_width="264dp"
+                android:layout_height="264dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                app:civ_border_color="@color/darkPurple"
+                app:civ_border_width="2dp" />
 
-        <TextView
-            android:id="@+id/tvCursoMiPerfilAlumno"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Curso"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="visible"
-            />
+            <TextView
+                android:id="@+id/tvNombreMiPerfilAlumno"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="48dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Nombre"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="48dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btModificarDatosMiPerfilAlumno"
-            android:layout_width="240dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="@color/yellowButton"
-            android:fontFamily="@font/poppins_semibold"
-            android:letterSpacing="0"
-            android:text="@string/btMiPerfil"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            />
+            <TextView
+                android:id="@+id/tvApellidosMiPerfilAlumno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Apellido1 Apellido 2"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvEmailMiPerfilAlumno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins"
+                android:text="Email"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvCursoMiPerfilAlumno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Curso"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="42dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btModificarDatosMiPerfilAlumno"
+                android:layout_width="240dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:backgroundTint="@color/yellowButton"
+                android:fontFamily="@font/poppins_semibold"
+                android:letterSpacing="0"
+                android:text="@string/btMiPerfil"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
 
 
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

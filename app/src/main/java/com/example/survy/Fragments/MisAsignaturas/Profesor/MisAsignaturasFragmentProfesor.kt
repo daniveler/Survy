@@ -36,12 +36,12 @@ class MisAsignaturasFragmentProfesor : Fragment()
         super.onViewCreated(view, savedInstanceState)
 
         var user = FirebaseAuth.getInstance().currentUser
-        var idUsuario = arguments?.getString("idUsuario", "") ?: ""
+        var idUsuario = arguments?.getString("idUsuario") ?: ""
 
-        val searchView = view.findViewById<SearchView>(R.id.searchViewMisAsignaturasProfesor)
-        val tvNoHayAsignaturas = view.findViewById<TextView>(R.id.tvMisAsignaturasProfesor)
-        val rvListaAsignaturas = view.findViewById<RecyclerView>(R.id.recyclerViewMisAsignaturasProfesor)
-        val btNuevaAsignatura = view.findViewById<Button>(R.id.btNuevaAsignaturaMisAsignaturasProfesor)
+        val searchView          = view.findViewById<SearchView>(R.id.searchViewMisAsignaturasProfesor)
+        val tvNoHayAsignaturas  = view.findViewById<TextView>(R.id.tvMisAsignaturasProfesor)
+        val rvListaAsignaturas  = view.findViewById<RecyclerView>(R.id.recyclerViewMisAsignaturasProfesor)
+        val btNuevaAsignatura   = view.findViewById<Button>(R.id.btNuevaAsignaturaMisAsignaturasProfesor)
 
         val listaAsignaturas = mutableListOf<Asignatura>()
         var listaAsignaturasBusqueda = mutableListOf<Asignatura>()

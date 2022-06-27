@@ -36,7 +36,7 @@ class EncuestaDetailFragmentProfesor : Fragment()
         val tvDescripcion = view.findViewById<TextView>(R.id.tvDescripcionEncuestaDetailProfesor)
 
         val btVerPreguntas = view.findViewById<Button>(R.id.btVerPreguntasEncuestaDetailProfesor)
-        val btEditarEncuesta = view.findViewById<Button>(R.id.btCancelarEncuestaDetailProfesor)
+        val btEditarEncuesta = view.findViewById<Button>(R.id.btEditarEncuestaDetailProfesor)
         val btCancelar = view.findViewById<Button>(R.id.btCancelarEncuestaDetailProfesor)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""

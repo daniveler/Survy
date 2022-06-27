@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.Preguntas.NuevaPreguntaFragmentProfesor"
+    android:background="@drawable/gradient_background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="48dp"
+            >
+
+            <EditText
+                android:id="@+id/etTituloNuevaPreguntaProfesor"
+                android:layout_width="264dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:background="@color/lightPurple"
+                android:gravity="start"
+                android:hint="Título"
+                android:textColor="@color/black"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="264dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:padding="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@color/lightPurple">
+
+                <TextView
+                    android:id="@+id/tvTiempoNuevaPreguntaProfesor"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="60"
+                    android:textColor="@color/darkPurple"
+                    android:textSize="40dp"
+                    android:layout_margin="4dp"/>
+
+                <TextView
+                    android:id="@+id/tvUnidadNuevaPreguntaProfesor"
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="seg"
+                    android:textColor="@color/darkPurple"
+                    android:textSize="40dp"
+                    android:layout_margin="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btPlusNuevaPreguntaProfesor"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:backgroundTint="#62BC60"
+                        android:src="@drawable/ic_plus_solid"/>
+
+                    <ImageButton
+                        android:id="@+id/btMinusNuevaPreguntaProfesor"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="#B34A4A"
+                        android:src="@drawable/ic_minus_solid"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/etRespuestaANuevaPreguntaProfesor"
+                android:layout_width="264dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:background="@color/lightPurple"
+                android:layout_marginTop="32dp"
+                android:hint="Respuesta A"
+                />
+
+            <EditText
+                android:id="@+id/etRespuestaBNuevaPreguntaProfesor"
+                android:layout_width="264dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:background="@color/lightPurple"
+                android:layout_marginTop="8dp"
+                android:hint="Respuesta B"
+                />
+
+            <EditText
+                android:id="@+id/etRespuestaCNuevaPreguntaProfesor"
+                android:layout_width="264dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:background="@color/lightPurple"
+                android:layout_marginTop="8dp"
+                android:hint="Respuesta C"
+                />
+
+            <EditText
+                android:id="@+id/etRespuestaDNuevaPreguntaProfesor"
+                android:layout_width="264dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:background="@color/lightPurple"
+                android:layout_marginTop="8dp"
+                android:hint="Respuesta D"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Respuesta \ncorrecta:"
+                    android:layout_margin="16dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="@color/white"
+                    android:textSize="24dp"
+                    />
+
+                <EditText
+                    android:id="@+id/etLetraCorrectaNuevaPreguntaProfesor"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:background="@color/lightPurple"
+                    android:hint="Letra"
+                    android:maxLength="1"
+                    android:inputType="textCapWords"
+                    />
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btCrearPreguntaNuevaPreguntaProfesor"
+                android:layout_width="250dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@color/yellowButton"
+                android:fontFamily="@font/poppins_semibold"
+                android:letterSpacing="0"
+                android:text="@string/btCrearPreguntaNuevaPreguntaProfesor"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/btCancelarNuevaPreguntaProfesor"
+                android:layout_width="250dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="48dp"
+                android:backgroundTint="@color/lightGray"
+                android:fontFamily="@font/poppins_semibold"
+                android:letterSpacing="0"
+                android:text="@string/btCancelarNuevaPreguntaProfesor"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:visibility="visible" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

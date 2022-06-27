@@ -144,5 +144,19 @@
     <string name="btCancelarEncuestaDetailProfesor">Cancelar</string>
     <string name="btEditarEncuestaDetailProfesor">Editar Encuesta</string>
 
+    <!--> EDITAR ENCUESTA PROFESOR <!-->
+    <string name="btGuardarCambiosEditarEncuestaProfesor">Guardar Cambios</string>
+    <string name="btCancelarEditarEncuestaProfesor">Cancelar</string>
+    <string name="btGuardarIconoEditarEncuestaProfesor">Guardar Icono</string>
+
+    <!--> PREGUNTAS PROFESOR <!-->
+    <string name="btNuevaPreguntaPreguntasProfesor">Nueva Pregunta</string>
+    <string name="btCancelarPreguntasProfesor">Cancelar</string>
+    <string name="tvEmptyPreguntasProfesor">Aún no hay ninguna pregunta en esta encuesta</string>
+
+    <!--> NUEVA PREGUNTA PROFESOR <!-->
+    <string name="btCrearPreguntaNuevaPreguntaProfesor">Crear Pregunta</string>
+    <string name="btCancelarNuevaPreguntaProfesor">Cancelar</string>
+
 
 </resources>
