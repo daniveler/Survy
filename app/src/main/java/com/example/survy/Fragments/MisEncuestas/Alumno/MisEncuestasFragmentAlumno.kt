@@ -1,4 +1,4 @@
-package com.example.survy.Fragments.MisEncuestas.Profesor
+package com.example.survy.Fragments.MisEncuestas.Alumno
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,7 +16,8 @@ import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
-class MisEncuestasFragmentProfesor : Fragment()
+
+class MisEncuestasFragmentAlumno : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()
 
@@ -26,17 +27,17 @@ class MisEncuestasFragmentProfesor : Fragment()
     ): View?
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mis_encuestas_profesor, container, false)
+        return inflater.inflate(R.layout.fragment_mis_encuestas_alumno, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val searchView          = view.findViewById<SearchView>(R.id.searchViewMisEncuestasProfesor)
-        val tvEmpty             = view.findViewById<TextView>(R.id.tvEmptyMisEncuestasProfesor)
-        val rvListaEncuestas    = view.findViewById<RecyclerView>(R.id.recyclerViewMisEncuestasProfesor)
-        val btNuevaEncuesta     = view.findViewById<Button>(R.id.btNuevaEncuestaMisEncuestasProfesor)
+        val searchView          = view.findViewById<SearchView>(R.id.searchViewMisEncuestasAlumno)
+        val tvEmpty             = view.findViewById<TextView>(R.id.tvEmptyMisEncuestasAlumno)
+        val rvListaEncuestas    = view.findViewById<RecyclerView>(R.id.recyclerViewMisEncuestasAlumno)
+        val btNuevaEncuesta     = view.findViewById<Button>(R.id.btNuevaEncuestaMisEncuestasAlumno)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
         val idAsignatura = arguments?.getString("idAsignatura") ?: ""
@@ -73,7 +74,7 @@ class MisEncuestasFragmentProfesor : Fragment()
                     {
                         var encuestaActual = listaEncuestas.get(position)
 
-                        cambiarFragment(EncuestaDetailFragmentProfesor(), idUsuario, encuestaActual.id, idAsignatura)
+                        cambiarFragment(EncuestaDetailFragmentAlumno(), idUsuario, encuestaActual.id, idAsignatura)
                     }
                 })
 
@@ -109,7 +110,7 @@ class MisEncuestasFragmentProfesor : Fragment()
                                 {
                                     var encuestaActual = listaEncuestasBusqueda.get(position)
 
-                                    cambiarFragment(EncuestaDetailFragmentProfesor(), idUsuario, encuestaActual.id, idAsignatura)
+                                    cambiarFragment(EncuestaDetailFragmentAlumno(), idUsuario, encuestaActual.id, idAsignatura)
                                 }
                             })
 
@@ -126,13 +127,9 @@ class MisEncuestasFragmentProfesor : Fragment()
                     }
                 })
             }
-
-        btNuevaEncuesta.setOnClickListener {
-            cambiarFragment(NuevaEncuestaFragmentProfesor(), idUsuario, null, idAsignatura)
-        }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idEncuesta: String?, idAsignatura: String)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idEncuesta: String, idAsignatura: String?)
     {
         var args = Bundle()
         args.putString("idUsuario", idUsuario)
@@ -145,7 +142,7 @@ class MisEncuestasFragmentProfesor : Fragment()
         var fragmentManager = requireActivity().supportFragmentManager
 
         fragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerProfesor, fragment)
+            .replace(R.id.fragmentContainerAlumno, fragment)
             .commit()
     }
 }

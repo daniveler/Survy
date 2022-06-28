@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.MisEncuestas.Profesor.EncuestaDetailFragmentProfesor"
+    tools:context=".Fragments.MisEncuestas.Alumno.EncuestaDetailFragmentAlumno"
     android:background="@drawable/gradient_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +36,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/ivIconoEncuestaDetailProfesor"
+                    android:id="@+id/ivIconoEncuestaDetailAlumno"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_gravity="center"
@@ -44,7 +44,7 @@
                     android:background="@color/white" />
 
                 <TextView
-                    android:id="@+id/tvNombreEncuestaDetailProfesor"
+                    android:id="@+id/tvNombreEncuestaDetailAlumno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
@@ -60,23 +60,22 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/tvDescripcionEncuestaDetailProfesor"
+                        android:id="@+id/tvDescripcionEncuestaDetailAlumno"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
                         android:fontFamily="@font/poppins"
                         android:justificationMode="inter_word"
+                        android:maxLines="8"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="16dp"
-                        android:maxLines="8"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginLeft="8dp"
-                        />
+                        android:textSize="16dp" />
                 </ScrollView>
 
 
                 <Button
-                    android:id="@+id/btVerPreguntasEncuestaDetailProfesor"
+                    android:id="@+id/btResolverEncuestaDetailAlumno"
                     android:layout_width="240dp"
                     android:layout_height="64dp"
                     android:layout_gravity="center"
@@ -84,26 +83,26 @@
                     android:backgroundTint="@color/yellowButton"
                     android:fontFamily="@font/poppins_semibold"
                     android:letterSpacing="0"
-                    android:text="@string/btVerPreguntasEncuestaDetailProfesor"
+                    android:text="@string/btResolverEncuestaDetailAlumno"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:textSize="16dp" />
 
                 <Button
-                    android:id="@+id/btEditarEncuestaDetailProfesor"
+                    android:id="@+id/btVerResultadosEncuestaAlumno"
                     android:layout_width="240dp"
                     android:layout_height="64dp"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/yellowButton"
                     android:fontFamily="@font/poppins_semibold"
                     android:letterSpacing="0"
-                    android:text="@string/btEditarEncuestaDetailProfesor"
+                    android:text="@string/btVerResultadosEncuestaDetailAlumno"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:textSize="16dp" />
 
                 <Button
-                    android:id="@+id/btCancelarEncuestaDetailProfesor"
+                    android:id="@+id/btCancelarEncuestaDetailAlumno"
                     android:layout_width="240dp"
                     android:layout_height="64dp"
                     android:layout_gravity="center"
@@ -120,4 +119,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

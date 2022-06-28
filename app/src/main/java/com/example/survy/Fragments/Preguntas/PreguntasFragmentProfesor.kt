@@ -6,18 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.SearchView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.survy.Adapters.EncuestaAdapterProfesor
 import com.example.survy.Adapters.PreguntaAdapterProfesor
 import com.example.survy.Clases.Pregunta
 import com.example.survy.Fragments.MisEncuestas.Profesor.EncuestaDetailFragmentProfesor
-import com.example.survy.Fragments.MisEncuestas.Profesor.NuevaEncuestaFragmentProfesor
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.*
 
 class PreguntasFragmentProfesor : Fragment()
 {
@@ -83,7 +79,7 @@ class PreguntasFragmentProfesor : Fragment()
                     {
                         var preguntaActual = listaPreguntas.get(position)
 
-                        //cambiarFragment(PreguntaAdapterProfesor(), idUsuario, encuestaActual.id, idAsignatura)
+                        cambiarFragment(EditarPreguntaFragmentProfesor(), idUsuario, idEncuesta, idAsignatura, preguntaActual.id)
                     }
                 })
             }

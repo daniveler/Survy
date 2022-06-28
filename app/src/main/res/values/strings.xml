@@ -154,6 +154,11 @@
     <string name="btCancelarPreguntasProfesor">Cancelar</string>
     <string name="tvEmptyPreguntasProfesor">Aún no hay ninguna pregunta en esta encuesta</string>
 
+    <!--> ENCUESTA DETAIL ALUMNO <!-->
+    <string name="btResolverEncuestaDetailAlumno">Resolver Encuesta</string>
+    <string name="btVerResultadosEncuestaDetailAlumno">Ver Resultados</string>
+    <string name="btCancelarEncuestaDetailAlumno">Cancelar</string>
+
     <!--> NUEVA PREGUNTA PROFESOR <!-->
     <string name="btCrearPreguntaNuevaPreguntaProfesor">Crear Pregunta</string>
     <string name="btCancelarNuevaPreguntaProfesor">Cancelar</string>

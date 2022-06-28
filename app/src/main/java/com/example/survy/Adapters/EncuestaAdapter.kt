@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Encuesta
 import com.example.survy.R
 import com.squareup.picasso.Picasso
-import de.hdodenhof.circleimageview.CircleImageView
 
-class EncuestaAdapterProfesor (var listaEncuestas: List<Encuesta>) : RecyclerView.Adapter<EncuestaAdapterProfesor.EncuestaViewHolderProfesor>()
+class EncuestaAdapter (var listaEncuestas: List<Encuesta>) : RecyclerView.Adapter<EncuestaAdapter.EncuestaViewHolderProfesor>()
 {
     private lateinit var mListener : onItemClickListener
 

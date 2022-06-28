@@ -10,8 +10,12 @@
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable-v24/ic_qrcode_solid.xml" value="0.2675" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable/gradient_background_splash.xml" value="0.264" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable/iamge_circle_background.xml" value="0.265" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable/ic_a_solid.xml" value="0.189" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable/ic_arrow_right_from_bracket_solid.xml" value="0.198" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable/ic_b_solid.xml" value="0.189" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable/ic_c_solid.xml" value="0.189" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable/ic_chalkboard_user_solid.xml" value="0.2675" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable/ic_d_solid.xml" value="0.189" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable/ic_graduation_cap_solid.xml" value="0.2675" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable/ic_magnifying_glass_solid.xml" value="0.264" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/drawable/ic_minus_solid.xml" value="0.199" />
@@ -43,7 +47,8 @@
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_buscar_alumno_profesor.xml" value="0.30029154518950435" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_editar_asignatura_profesor.xml" value="0.31765711842667804" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_editar_encuesta_profesor.xml" value="0.2964641885766092" />
-        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_editar_pregunta_profesor.xml" value="0.30611372381359553" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_editar_pregunta_profesor.xml" value="0.25" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_encuesta_detail_alumno.xml" value="0.31765711842667804" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_encuesta_detail_profesor.xml" value="0.31765711842667804" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_home_profesor.xml" value="0.31765711842667804" />
@@ -57,6 +62,7 @@
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_mis_asignaturas.xml" value="0.27447916666666666" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_mis_asignaturas_alumno.xml" value="0.31765711842667804" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_mis_asignaturas_profesor.xml" value="0.28651685393258425" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_mis_encuestas_alumno.xml" value="0.25" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_mis_encuestas_profesor.xml" value="0.33" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_mis_resultados.xml" value="0.27447916666666666" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_modificar_password.xml" value="0.22530996152201796" />
@@ -71,6 +77,7 @@
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_nueva_encuesta_profesor.xml" value="0.33" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_nueva_pregunta_profesor.xml" value="0.33" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_preguntas_profesor.xml" value="0.2964641885766092" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_resolver_encuesta_alumno.xml" value="0.33" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_ver_asignaturas_alumno_profesor.xml" value="0.31765711842667804" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/icon_item_grid.xml" value="0.25" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/image_circle_background.xml" value="0.31765711842667804" />

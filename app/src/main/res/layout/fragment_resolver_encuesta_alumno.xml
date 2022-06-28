@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.MisEncuestas.Alumno.ResolverEncuestaFragmentAlumno"
+    android:background="@drawable/gradient_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lightPurple"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="36dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvTituloPreguntaResolverEncuestaAlumno"
+                android:layout_width="match_parent"
+                android:layout_height="164dp"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/loremIpsunDescripcionEncuesta"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:maxLines="5"
+                android:gravity="center_vertical|center_horizontal"
+                />
+
+            <TextView
+                android:id="@+id/tvTiempoPreguntaResolverEncuestaAlumno"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:text="00:00"
+                android:textColor="@color/darkPurple"
+                android:textSize="50dp" />
+
+            <Button
+                android:id="@+id/btRespuestaAResolverEncuestaAlumno"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Respuesta A"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="16dp"
+                android:maxLines="2"
+                android:letterSpacing="0"
+                android:backgroundTint="@color/darkPurple"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_a_solid"
+                />
+
+            <Button
+                android:id="@+id/btRespuestaBResolverEncuestaAlumno"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"                android:text="Respuesta B"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="16dp"
+                android:maxLines="2"
+                android:letterSpacing="0"
+                android:backgroundTint="@color/darkPurple"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_b_solid"
+                />
+
+            <Button
+                android:id="@+id/btRespuestaCResolverEncuestaAlumno"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"                android:text="Respuesta C"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="16dp"
+                android:maxLines="2"
+                android:letterSpacing="0"
+                android:backgroundTint="@color/darkPurple"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_c_solid"
+                />
+
+            <Button
+                android:id="@+id/btRespuestaDResolverEncuestaAlumno"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"                android:text="Respuesta D"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="16dp"
+                android:maxLines="2"
+                android:letterSpacing="0"
+                android:backgroundTint="@color/darkPurple"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_d_solid"
+                />
+
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
