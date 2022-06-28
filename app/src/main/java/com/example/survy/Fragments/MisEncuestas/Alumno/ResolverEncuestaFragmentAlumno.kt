@@ -25,6 +25,8 @@ class ResolverEncuestaFragmentAlumno : Fragment()
     private lateinit var timer : CountDownTimer
     private var segundosRestantes = 0L
 
+    private var puntuacion = 0
+
     lateinit var tvPregunta : TextView
     lateinit var tvTiempo : TextView
 
@@ -67,96 +69,173 @@ class ResolverEncuestaFragmentAlumno : Fragment()
 
     private fun cargarPregunta(index: Int, idEncuesta: String, numPreguntas: Int)
     {
-        if (index < numPreguntas)
-        {
             db.collection("preguntas").whereEqualTo("idEncuesta", idEncuesta)
                 .get().addOnSuccessListener {
-                    val titulo = it.documents.get(index).data?.get("titulo").toString()
-                    val tiempo = it.documents.get(index).data?.get("tiempo").toString().toLong()
-
-                    val respuestaA = it.documents.get(index).data?.get("respuestaA").toString()
-                    val respuestaB = it.documents.get(index).data?.get("respuestaB").toString()
-                    val respuestaC = it.documents.get(index).data?.get("respuestaC").toString()
-                    val respuestaD = it.documents.get(index).data?.get("respuestaD").toString()
-
-                    val correcta = it.documents.get(index).data?.get("correcta").toString()
-
-                    tvPregunta.setText(titulo)
-
-                    if (tiempo in 1..5)
+                    if (index < numPreguntas)
                     {
-                        segundosRestantes = tiempo * 60L
-                    }
-                    else if (tiempo in 20..50)
-                    {
-                        segundosRestantes = tiempo
-                    }
 
-                    btA.setText(respuestaA)
-                    btB.setText(respuestaB)
-                    btC.setText(respuestaC)
-                    btD.setText(respuestaD)
+                        val titulo = it.documents.get(index).data?.get("titulo").toString()
+                        val tiempo = it.documents.get(index).data?.get("tiempo").toString().toLong()
 
-                    btA.setBackgroundColor(resources.getColor(R.color.darkPurple))
-                    btB.setBackgroundColor(resources.getColor(R.color.darkPurple))
-                    btC.setBackgroundColor(resources.getColor(R.color.darkPurple))
-                    btD.setBackgroundColor(resources.getColor(R.color.darkPurple))
+                        val respuestaA = it.documents.get(index).data?.get("respuestaA").toString()
+                        val respuestaB = it.documents.get(index).data?.get("respuestaB").toString()
+                        val respuestaC = it.documents.get(index).data?.get("respuestaC").toString()
+                        val respuestaD = it.documents.get(index).data?.get("respuestaD").toString()
 
-                    var timer = object : CountDownTimer(segundosRestantes * 1000, 1000)
-                    {
-                        override fun onTick(millisUntilFinished: Long)
+                        val correcta = it.documents.get(index).data?.get("correcta").toString()
+
+                        tvPregunta.setText(titulo)
+
+                        if (tiempo in 1..5)
                         {
-                            segundosRestantes -= 1
-                            val minutosRestantes = segundosRestantes / 60
-                            val segundosEnMinutosRestantes = segundosRestantes - minutosRestantes * 60
-
-                            val strSegundos = segundosEnMinutosRestantes.toString()
-
-                            tvTiempo.setText("$minutosRestantes:${
-                                if (strSegundos.length == 2) strSegundos
-                                else "0" + strSegundos
-                            }")
-
+                            segundosRestantes = tiempo * 60L
+                        } else if (tiempo in 20..50)
+                        {
+                            segundosRestantes = tiempo
                         }
-                        override fun onFinish()
+
+                        btA.setText(respuestaA)
+                        btB.setText(respuestaB)
+                        btC.setText(respuestaC)
+                        btD.setText(respuestaD)
+
+                        btA.setBackgroundColor(resources.getColor(R.color.darkPurple))
+                        btB.setBackgroundColor(resources.getColor(R.color.darkPurple))
+                        btC.setBackgroundColor(resources.getColor(R.color.darkPurple))
+                        btD.setBackgroundColor(resources.getColor(R.color.darkPurple))
+
+                        btA.isClickable = true
+                        btB.isClickable = true
+                        btC.isClickable = true
+                        btD.isClickable = true
+
+                        var timer = object : CountDownTimer(segundosRestantes * 1000, 1000)
                         {
+                            override fun onTick(millisUntilFinished: Long)
+                            {
+                                segundosRestantes -= 1
+                                val minutosRestantes = segundosRestantes / 60
+                                val segundosEnMinutosRestantes =
+                                    segundosRestantes - minutosRestantes * 60
+
+                                val strSegundos = segundosEnMinutosRestantes.toString()
+
+                                tvTiempo.setText(
+                                    "$minutosRestantes:${
+                                        if (strSegundos.length == 2) strSegundos
+                                        else "0" + strSegundos
+                                    }"
+                                )
+
+                            }
+
+                            override fun onFinish()
+                            {
+                                mostrarRespuestaCorrecta(correcta)
+                                Toast.makeText(
+                                    context,
+                                    "Lo siento, se acabó el tiempo",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                        }
+
+                        timer.start()
+
+                        btA.setOnClickListener {
+                            btA.isClickable = false
+                            btB.isClickable = false
+                            btC.isClickable = false
+                            btD.isClickable = false
+
+                            if (correcta == "A")
+                            {
+                                puntuacion++
+                            }
+
+                            timer.cancel()
                             mostrarRespuestaCorrecta(correcta)
-                            Toast.makeText(context, "Lo siento, se acabó el tiempo", Toast.LENGTH_LONG).show()
+                            Timer().schedule(2000) {
+                                cargarPregunta(
+                                    index + 1,
+                                    idEncuesta,
+                                    numPreguntas
+                                )
+                            }
+                        }
+
+                        btB.setOnClickListener {
+                            btA.isClickable = false
+                            btB.isClickable = false
+                            btC.isClickable = false
+                            btD.isClickable = false
+
+                            if (correcta == "B")
+                            {
+                                puntuacion++
+                            }
+
+                            timer.cancel()
+                            mostrarRespuestaCorrecta(correcta)
+                            Timer().schedule(2000) {
+                                cargarPregunta(
+                                    index + 1,
+                                    idEncuesta,
+                                    numPreguntas
+                                )
+                            }
+                        }
+
+                        btC.setOnClickListener {
+                            btA.isClickable = false
+                            btB.isClickable = false
+                            btC.isClickable = false
+                            btD.isClickable = false
+
+                            if (correcta == "C")
+                            {
+                                puntuacion++
+                            }
+
+                            timer.cancel()
+                            mostrarRespuestaCorrecta(correcta)
+                            Timer().schedule(2000) {
+                                cargarPregunta(
+                                    index + 1,
+                                    idEncuesta,
+                                    numPreguntas
+                                )
+                            }
+                        }
+
+                        btD.setOnClickListener {
+                            btA.isClickable = false
+                            btB.isClickable = false
+                            btC.isClickable = false
+                            btD.isClickable = false
+
+                            if (correcta == "D")
+                            {
+                                puntuacion++
+                            }
+
+                            timer.cancel()
+                            mostrarRespuestaCorrecta(correcta)
+                            Timer().schedule(2000) {
+                                cargarPregunta(
+                                    index + 1,
+                                    idEncuesta,
+                                    numPreguntas
+                                )
+                            }
                         }
                     }
-
-                    timer.start()
-
-                    btA.setOnClickListener {
-                        timer.cancel()
-                        mostrarRespuestaCorrecta(correcta)
-                        Timer().schedule(2000) { cargarPregunta(index + 1, idEncuesta, numPreguntas) }
-
-                    }
-
-                    btB.setOnClickListener {
-                        timer.cancel()
-                        mostrarRespuestaCorrecta(correcta)
-                        Timer().schedule(2000) { cargarPregunta(index + 1, idEncuesta, numPreguntas) }
-                    }
-
-                    btC.setOnClickListener {
-                        timer.cancel()
-                        mostrarRespuestaCorrecta(correcta)
-                        Timer().schedule(2000) { cargarPregunta(index + 1, idEncuesta, numPreguntas) }
-                    }
-
-                    btD.setOnClickListener {
-                        timer.cancel()
-                        mostrarRespuestaCorrecta(correcta)
-                        Timer().schedule(2000) { cargarPregunta(index + 1, idEncuesta, numPreguntas) }
+                    else
+                    {
+                        val puntuacionTotal = puntuacion / numPreguntas * 10
+                        Log.i("DANI", "Puntuación: " + puntuacionTotal)
                     }
                 }
-        }
-        else
-        {
-            // ¡Encuesta Terminada!
-        }
     }
 
     private fun mostrarRespuestaCorrecta(correcta: String)
