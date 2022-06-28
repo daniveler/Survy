@@ -46,27 +46,33 @@ class EncuestaDetailFragmentAlumno : Fragment()
                 Picasso.get().load(it.getString("icono")).into(ivIcono)
                 tvNombre.setText(it.getString("nombre"))
                 tvDescripcion.setText(it.getString("descripcion"))
+
+                db.collection("preguntas").whereEqualTo("idEncuesta", idEncuesta)
+                    .get().addOnSuccessListener {
+                        val numPreguntas = it.documents.size
+
+                        btHacerEncuesta.setOnClickListener {
+                            cambiarFragment(ResolverEncuestaFragmentAlumno(), idUsuario, idEncuesta, idAsignatura, numPreguntas)
+                        }
+
+                        btVerResultados.setOnClickListener {
+
+                        }
+
+                        btCancelar.setOnClickListener {
+                            cambiarFragment(MisEncuestasFragmentAlumno(), idUsuario, idEncuesta, idAsignatura, 0)
+                        }
+                    }
             }
-
-        btHacerEncuesta.setOnClickListener {
-            cambiarFragment(ResolverEncuestaFragmentAlumno(), idUsuario, idEncuesta, idAsignatura)
-        }
-
-        btVerResultados.setOnClickListener {
-
-        }
-
-        btCancelar.setOnClickListener {
-            cambiarFragment(MisEncuestasFragmentAlumno(), idUsuario, idEncuesta, idAsignatura)
-        }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idEncuesta: String?, idAsignatura: String)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idEncuesta: String?, idAsignatura: String, numPreguntas: Int)
     {
         var args = Bundle()
         args.putString("idUsuario", idUsuario)
         args.putString("idEncuesta", idEncuesta)
         args.putString("idAsignatura", idAsignatura)
+        args.putInt("numPreguntas", numPreguntas)
 
         var fragment = framentCambiar
         fragment.arguments = args
