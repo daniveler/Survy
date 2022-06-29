@@ -32,6 +32,8 @@ class LoginEmailActivity : AppCompatActivity()
         var etPassword = findViewById<EditText>(R.id.etPasswordLogin)
         var btLogin = findViewById<Button>(R.id.btLogin)
 
+        var btOlvidastePassword = findViewById<Button>(R.id.btOlvidastePasswordLoginMail)
+
         val bundle = intent.extras
         val rol = bundle?.getString("rol")
 
@@ -157,6 +159,25 @@ class LoginEmailActivity : AppCompatActivity()
                             }
                         }
                 }
+            }
+        }
+
+        btOlvidastePassword.setOnClickListener {
+            if (etEmail.text.isBlank())
+            {
+                Toast.makeText(
+                    this, "Por favor, introduzca el correo de su cuenta",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            else
+            {
+                auth.sendPasswordResetEmail(etEmail.text.toString())
+
+                Toast.makeText(
+                    this, "Se ha enviado un email para reestablecer su contraseña. Compruebe su correo electrónico",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
