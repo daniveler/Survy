@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Asignatura
 import com.example.survy.Adapters.AsignaturaAdapterAlumno
+import com.example.survy.Clases.Resultado
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
@@ -185,11 +186,39 @@ class VerAsignaturasAlumnoFragmentProfesor : Fragment()
 
                                 db.collection("asignaturas").document(asignatura.id).update("numAlumnos", numAlumnos)
                             }
+
+                        // Borrar resultados del alumno
+                        db.collection("resultados")
+                            .whereEqualTo("idUsuario", idAlumno)
+                            .get().addOnSuccessListener { task ->
+                                val listaResultados = mutableListOf<Resultado>()
+
+                                for (resultadoDoc in task)
+                                {
+                                    val id = resultadoDoc.id
+                                    val idEncuesta = resultadoDoc.data.get("idEncuesta").toString()
+                                    val fecha = resultadoDoc.data.get("fecha").toString()
+                                    val nota = resultadoDoc.data.get("nota").toString()
+
+                                    val resultado = Resultado(id, idAlumno, idEncuesta, fecha, nota)
+
+                                    listaResultados.add(resultado)
+                                }
+
+                                for (resultado in listaResultados)
+                                {
+                                    db.collection("encuestas").document(resultado.idEncuesta)
+                                }
+
+
+                            }
                     }
+
+                    cambiarFragment(VerAsignaturasAlumnoFragmentProfesor(), idAlumno)
                 }
         })
 
-        // FALTA ELIMINAR ENCUESTAS
+        // FALTA ELIMINAR RESULTADOS
 
         dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialog, id ->
             dialog.cancel()

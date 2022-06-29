@@ -130,9 +130,10 @@ class NuevaPreguntaFragmentProfesor : Fragment()
                 Toast.makeText(context, "Por favor, introduzca la respuesta D",
                     Toast.LENGTH_LONG).show()
             }
-            else if (correcta.isBlank())
+            else if (correcta.isBlank() || correcta != "A" && correcta != "B"
+                && correcta != "C" && correcta != "D")
             {
-                Toast.makeText(context, "Por favor, introduzca cuál es la respuesta correcta",
+                Toast.makeText(context, "Por favor, introduzca una respuesta correcta válida (A, B, C, D)",
                     Toast.LENGTH_LONG).show()
             }
             else

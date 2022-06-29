@@ -89,7 +89,7 @@
                     android:textSize="16dp" />
 
                 <Button
-                    android:id="@+id/btVerResultadosEncuestaAlumno"
+                    android:id="@+id/btVerResultadosEncuestaDetailAlumno"
                     android:layout_width="240dp"
                     android:layout_height="64dp"
                     android:layout_gravity="center"

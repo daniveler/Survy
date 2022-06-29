@@ -18,5 +18,8 @@
     <color name="pinkTeacher">#B85BB8</color>
 
     <color name="greenAcierto">#2C8C2B</color>
+    <color name="greenMuyBien">#72A53D</color>
+    <color name="yellowSuficiente">#DDAE21</color>
+    <color name="orangeBien">#FF9800</color>
     <color name="redError">#9E2C2C</color>
 </resources>

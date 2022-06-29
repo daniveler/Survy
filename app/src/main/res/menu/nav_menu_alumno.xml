@@ -13,22 +13,11 @@
     android:id="@+id/itemMisAsignaturasAlumno"
     android:icon="@drawable/ic_chalkboard_user_solid">
 </item>
-<item
-    android:title="Nueva Encuesta"
-    android:id="@+id/itemNuevaEncuestaAlumno"
-    android:icon="@drawable/ic_qrcode_solid">
-</item>
     <item
         android:title="Mi Perfil"
         android:id="@+id/itemMiPerfilAlumno"
         android:icon="@drawable/ic_user_solid">
     </item>
-<item
-    android:title="Mis Resultados"
-    android:id="@+id/itemMisResultadosAlumno"
-    android:icon="@drawable/ic_chart_line_solid">
-</item>
-
 <item
     android:title="Cerrar Sesión"
     android:id="@+id/itemCerrarSesionAlumno"

@@ -78,12 +78,16 @@
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_nueva_pregunta_profesor.xml" value="0.33" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_preguntas_profesor.xml" value="0.2964641885766092" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_resolver_encuesta_alumno.xml" value="0.33" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_resultado_encuesta_alumno.xml" value="0.33" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_ver_asignaturas_alumno_profesor.xml" value="0.31765711842667804" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_ver_resultados_asignatura_alumno.xml" value="0.31765711842667804" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/fragment_ver_resultados_encuesta_alumno.xml" value="0.2860196665241556" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/icon_item_grid.xml" value="0.25" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/image_circle_background.xml" value="0.31765711842667804" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/nav_header.xml" value="0.5" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/pregunta_list_view.xml" value="0.31765711842667804" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/pregunta_list_view_profesor.xml" value="0.33" />
+        <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/resultado_list_view.xml" value="0.22" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/layout/top_bar.xml" value="0.27447916666666666" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/menu/nav_menu.xml" value="0.27447916666666666" />
         <entry key="..\:/TFG/Android Studio/Survy/Survy/app/src/main/res/menu/nav_menu_alumno.xml" value="0.31765711842667804" />

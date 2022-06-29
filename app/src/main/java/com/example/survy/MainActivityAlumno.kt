@@ -61,12 +61,6 @@ class MainActivityAlumno : AppCompatActivity()
                     cambiarFragment(MisAsignaturasFragmentAlumno(), idUsuario)
                     supportActionBar?.title = getString(R.string.titleMisAsignaturasProfesor)
                 }
-                R.id.itemNuevaEncuestaAlumno ->
-                {
-                    cambiarFragment(NuevaEncuestaFragmentAlumno(), idUsuario)
-                    supportActionBar?.title = getString(R.string.titleMisAsignaturasProfesor)
-                }
-                R.id.itemMisResultadosAlumno -> cambiarFragment(ResultadosFragmentProfesor(), idUsuario)
                 R.id.itemMiPerfilAlumno ->
                 {
                     cambiarFragment(MiPerfilFragmentAlumno(), idUsuario)

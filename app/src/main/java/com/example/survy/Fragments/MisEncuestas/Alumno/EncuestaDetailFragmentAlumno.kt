@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.survy.Fragments.Resultados.VerResultadosEncuestaFragmentAlumno
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
@@ -34,7 +35,7 @@ class EncuestaDetailFragmentAlumno : Fragment()
         val tvDescripcion = view.findViewById<TextView>(R.id.tvDescripcionEncuestaDetailAlumno)
 
         val btHacerEncuesta = view.findViewById<Button>(R.id.btResolverEncuestaDetailAlumno)
-        val btVerResultados = view.findViewById<Button>(R.id.btVerResultadosEncuestaAlumno)
+        val btVerResultados = view.findViewById<Button>(R.id.btVerResultadosEncuestaDetailAlumno)
         val btCancelar = view.findViewById<Button>(R.id.btCancelarEncuestaDetailAlumno)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
@@ -56,7 +57,7 @@ class EncuestaDetailFragmentAlumno : Fragment()
                         }
 
                         btVerResultados.setOnClickListener {
-
+                            cambiarFragment(VerResultadosEncuestaFragmentAlumno(), idUsuario, idEncuesta, idAsignatura, 0)
                         }
 
                         btCancelar.setOnClickListener {

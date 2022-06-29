@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Adapters.EncuestaAdapter
 import com.example.survy.Clases.Encuesta
+import com.example.survy.Fragments.MisAsignaturas.Alumno.AsignaturaDetailFragmentAlumno
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
@@ -37,7 +38,7 @@ class MisEncuestasFragmentAlumno : Fragment()
         val searchView          = view.findViewById<SearchView>(R.id.searchViewMisEncuestasAlumno)
         val tvEmpty             = view.findViewById<TextView>(R.id.tvEmptyMisEncuestasAlumno)
         val rvListaEncuestas    = view.findViewById<RecyclerView>(R.id.recyclerViewMisEncuestasAlumno)
-        val btNuevaEncuesta     = view.findViewById<Button>(R.id.btNuevaEncuestaMisEncuestasAlumno)
+        val btCancelar     = view.findViewById<Button>(R.id.btCancelarMisEncuestasAlumno)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
         val idAsignatura = arguments?.getString("idAsignatura") ?: ""
@@ -127,9 +128,13 @@ class MisEncuestasFragmentAlumno : Fragment()
                     }
                 })
             }
+
+        btCancelar.setOnClickListener {
+            cambiarFragment(AsignaturaDetailFragmentAlumno(), idUsuario, null, idAsignatura)
+        }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idEncuesta: String, idAsignatura: String?)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idEncuesta: String?, idAsignatura: String?)
     {
         var args = Bundle()
         args.putString("idUsuario", idUsuario)

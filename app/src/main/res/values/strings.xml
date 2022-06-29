@@ -87,6 +87,7 @@
 
     <!--> ASIGNATURA DETAIL PROFESOR <!-->
     <string name="btVerEncuestasAsignaturaDetailProfesor">Ver Encuestas</string>
+    <string name="btVerResultadosAsignaturaDetailProfesor">Ver Resultados</string>
     <string name="btCancelarAsignaturaDetailProfesor">Cancelar</string>
     <string name="btEditarAsignaturaDetailProfesor">Editar Asignatura</string>
 
@@ -162,6 +163,24 @@
     <!--> NUEVA PREGUNTA PROFESOR <!-->
     <string name="btCrearPreguntaNuevaPreguntaProfesor">Crear Pregunta</string>
     <string name="btCancelarNuevaPreguntaProfesor">Cancelar</string>
+
+    <!--> RESULTADO ENCUESTA ALUMNO <!-->
+    <string name="tv1ResultadoEncuestaAlumno">Tu resultado ha sido:</string>
+
+    <string name="tvMensaje10ResultadoEncuestaAlumno">¡Perfecto! ¡Sigue así!</string>
+    <string name="tvMensaje89ResultadoEncuestaAlumno">¡Genial!</string>
+    <string name="tvMensaje7ResultadoEncuestaAlumno">¡Muy Bien!</string>
+    <string name="tvMensaje6ResultadoEncuestaAlumno">¡Bien hecho!</string>
+    <string name="tvMensaje5ResultadoEncuestaAlumno">¡Por los pelos...!</string>
+    <string name="tvMensaje4ResultadoEncuestaAlumno">¡Casi lo tienes!</string>
+    <string name="tvMensaje23ResultadoEncuestaAlumno">Vaya...</string>
+    <string name="tvMensaje01ResultadoEncuestaAlumno">Tienes que esforzarte más...</string>
+
+    <string name="btVolverAAsignaturaResultadoEncuestaAlumno">Volver a la Asignatura</string>
+    <string name="btMisResultadosResultadoEncuestaAlumno">Mis Resultados</string>
+
+    <!--> RESULTADO ASIGNATURA ALUMNO <!-->
+    <string name="tvEmptyResultadoAsignaturaAlumno">Aún no hay ningun resultado</string>
 
 
 </resources>

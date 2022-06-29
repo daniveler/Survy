@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.survy.Fragments.MisEncuestas.Alumno.MisEncuestasFragmentAlumno
+import com.example.survy.Fragments.Resultados.VerResultadosAsignaturaFragmentAlumno
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
@@ -35,10 +36,11 @@ class AsignaturaDetailFragmentAlumno : Fragment()
         val tvCurso         = view.findViewById<TextView>(R.id.tvCursoAsignaturaDetailAlumno)
 
         val btVerEncuestas  = view.findViewById<Button>(R.id.btVerEncuestasAsignaturaDetailAlumno)
+        val btVerResultados = view.findViewById<Button>(R.id.btVerResultadosAsignaturaDetailAlumno)
         val btCancelar      = view.findViewById<Button>(R.id.btCancelarAsignaturaDetailAlumno)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
-        val idAsignatura = arguments?.getString("asignatura") ?: ""
+        val idAsignatura = arguments?.getString("idAsignatura") ?: ""
 
         db.collection("asignaturas").document(idAsignatura)
             .get().addOnSuccessListener {
@@ -49,6 +51,10 @@ class AsignaturaDetailFragmentAlumno : Fragment()
 
         btVerEncuestas.setOnClickListener {
             cambiarFragment(MisEncuestasFragmentAlumno(), idUsuario, idAsignatura)
+        }
+
+        btVerResultados.setOnClickListener {
+            cambiarFragment(VerResultadosAsignaturaFragmentAlumno(), idUsuario, idAsignatura)
         }
 
         btCancelar.setOnClickListener {

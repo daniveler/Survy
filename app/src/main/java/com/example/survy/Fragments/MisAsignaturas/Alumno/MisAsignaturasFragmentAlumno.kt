@@ -32,6 +32,8 @@ class MisAsignaturasFragmentAlumno : Fragment()
     private val db = FirebaseFirestore.getInstance()
     private lateinit var auth: FirebaseAuth
 
+    private lateinit var idUsuario: String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,7 +49,7 @@ class MisAsignaturasFragmentAlumno : Fragment()
 
         auth = FirebaseAuth.getInstance()
 
-        var idUsuario = arguments?.getString("idUsuario", "") ?: ""
+        idUsuario = arguments?.getString("idUsuario", "") ?: ""
 
         val searchView = view.findViewById<SearchView>(R.id.searchViewVerAsignaturasAlumnoProfesor)
         val tvNoHayAsignaturas = view.findViewById<TextView>(R.id.tvEmptyVerAsignaturasAlumnoProfesor)
@@ -177,9 +179,17 @@ class MisAsignaturasFragmentAlumno : Fragment()
 
                 db.collection("asignaturas").document(result.contents)
                     .get().addOnSuccessListener {
-                        val nombre = it.getString("nombre") as String
+                        if (it.exists())
+                        {
+                            val nombre = it.getString("nombre") as String
 
-                        mostrarAlerta(nombre, result.contents)
+                            mostrarAlerta(nombre, result.contents)
+                        }
+                        else
+                        {
+                            Toast.makeText(context, "El código leído no es válido, inténtelo de nuevo", Toast.LENGTH_LONG).show()
+                            cambiarFragment(MisAsignaturasFragmentAlumno(), idUsuario, null)
+                        }
                     }
             }
         }
@@ -193,7 +203,7 @@ class MisAsignaturasFragmentAlumno : Fragment()
     {
         var args = Bundle()
         args.putString("idUsuario", idUsuario)
-        args.putString("asignatura", idAsignatura ?: "")
+        args.putString("idAsignatura", idAsignatura ?: "")
 
         var fragment = fragmentCambiar
 
