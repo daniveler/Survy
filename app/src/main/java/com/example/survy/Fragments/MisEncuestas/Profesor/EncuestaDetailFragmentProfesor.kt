@@ -9,10 +9,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.survy.Fragments.Preguntas.PreguntasFragmentProfesor
+import com.example.survy.Fragments.Resultados.Profesor.VerResultadosEncuestaFragmentProfesor
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
-import org.w3c.dom.Text
 
 class EncuestaDetailFragmentProfesor : Fragment()
 {
@@ -31,13 +31,14 @@ class EncuestaDetailFragmentProfesor : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val ivIcono = view.findViewById<ImageView>(R.id.ivIconoEncuestaDetailProfesor)
-        val tvNombre = view.findViewById<TextView>(R.id.tvNombreEncuestaDetailProfesor)
-        val tvDescripcion = view.findViewById<TextView>(R.id.tvDescripcionEncuestaDetailProfesor)
+        val ivIcono             = view.findViewById<ImageView>(R.id.ivIconoEncuestaDetailProfesor)
+        val tvNombre            = view.findViewById<TextView>(R.id.tvNombreEncuestaDetailProfesor)
+        val tvDescripcion       = view.findViewById<TextView>(R.id.tvDescripcionEncuestaDetailProfesor)
 
-        val btVerPreguntas = view.findViewById<Button>(R.id.btVerPreguntasEncuestaDetailProfesor)
-        val btEditarEncuesta = view.findViewById<Button>(R.id.btEditarEncuestaDetailProfesor)
-        val btCancelar = view.findViewById<Button>(R.id.btCancelarEncuestaDetailProfesor)
+        val btVerPreguntas      = view.findViewById<Button>(R.id.btVerPreguntasEncuestaDetailProfesor)
+        val btverResultados     = view.findViewById<Button>(R.id.btVerResultadosEncuestaDetailProfesor)
+        val btEditarEncuesta    = view.findViewById<Button>(R.id.btEditarEncuestaDetailProfesor)
+        val btCancelar          = view.findViewById<Button>(R.id.btCancelarEncuestaDetailProfesor)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
         val idAsignatura = arguments?.getString("idAsignatura") ?: ""
@@ -52,6 +53,10 @@ class EncuestaDetailFragmentProfesor : Fragment()
 
         btVerPreguntas.setOnClickListener {
             cambiarFragment(PreguntasFragmentProfesor(), idUsuario, idEncuesta, idAsignatura)
+        }
+
+        btverResultados.setOnClickListener {
+            cambiarFragment(VerResultadosEncuestaFragmentProfesor(), idUsuario, idEncuesta, idAsignatura)
         }
 
         btEditarEncuesta.setOnClickListener {

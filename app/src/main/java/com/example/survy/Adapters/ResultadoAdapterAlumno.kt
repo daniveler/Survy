@@ -1,29 +1,22 @@
 package com.example.survy.Adapters
 
 import android.graphics.Color
-import android.net.Uri
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat.createDeviceProtectedStorageContext
-import androidx.core.content.ContextCompat.getColor
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.survy.Clases.Asignatura
 import com.example.survy.Clases.Encuesta
 import com.example.survy.Clases.Resultado
 import com.example.survy.R
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.currentCoroutineContext
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class ResultadoAdapter (val mapaResultados : Map<Resultado, Encuesta>) : RecyclerView.Adapter<ResultadoAdapter.ResultadoViewHolder>()
+class ResultadoAdapterAlumno (val mapaResultados : Map<Resultado, Encuesta>) : RecyclerView.Adapter<ResultadoAdapterAlumno.ResultadoViewHolder>()
 {
     private lateinit var mListener : onItemClickListener
 
@@ -39,7 +32,7 @@ class ResultadoAdapter (val mapaResultados : Map<Resultado, Encuesta>) : Recycle
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultadoViewHolder
     {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.resultado_list_view, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.resultado_list_view_alumno, parent, false)
         return ResultadoViewHolder(itemView, mListener)
     }
 

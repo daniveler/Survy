@@ -124,7 +124,7 @@
 
     <!--> VER ASIGNATURAS ALUMNO PROFESOR <!-->
     <string name="alertTitleVerAsingnaturasAlumnoProfesor">¿Desea desmatricular al alumno de la asignatura</string>
-    <string name="alertTextVerAsingnaturasAlumnoProfesor">Se eliminarán todos los datos del alumno relacionados con la asignatura, incluyendo sus encuestas</string>
+    <string name="alertTextVerAsingnaturasAlumnoProfesor">Se eliminarán todos los datos del alumno relacionados con la asignatura, incluyendo sus resultados</string>
 
     <!--> NUEVA ENCUESTA ALUMNO <!-->
     <string name="titleNuevaEncuestaAlumno">Nueva Encuesta</string>
@@ -142,6 +142,7 @@
 
     <!--> ENCUESTA DETAIL PROFESOR <!-->
     <string name="btVerPreguntasEncuestaDetailProfesor">Ver Preguntas</string>
+    <string name="btVerResultadosEncuestaDetailProfesor">Ver Resultados</string>
     <string name="btCancelarEncuestaDetailProfesor">Cancelar</string>
     <string name="btEditarEncuestaDetailProfesor">Editar Encuesta</string>
 
@@ -163,6 +164,9 @@
     <!--> NUEVA PREGUNTA PROFESOR <!-->
     <string name="btCrearPreguntaNuevaPreguntaProfesor">Crear Pregunta</string>
     <string name="btCancelarNuevaPreguntaProfesor">Cancelar</string>
+
+    <!--> MIS RESULTADOS ALUMNO <!-->
+    <string name="titleMisResultadosAlumno">Mis Resultados</string>
 
     <!--> RESULTADO ENCUESTA ALUMNO <!-->
     <string name="tv1ResultadoEncuestaAlumno">Tu resultado ha sido:</string>

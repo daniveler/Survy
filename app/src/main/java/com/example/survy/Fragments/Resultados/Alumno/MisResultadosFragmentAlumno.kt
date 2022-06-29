@@ -1,4 +1,4 @@
-package com.example.survy.Fragments.Resultados
+package com.example.survy.Fragments.Resultados.Alumno
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,16 +9,17 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.survy.Adapters.ResultadoAdapter
+import com.example.survy.Adapters.ResultadoAdapterAlumno
 import com.example.survy.Clases.Encuesta
 import com.example.survy.Clases.Resultado
-import com.example.survy.Fragments.MisEncuestas.Alumno.EncuestaDetailFragmentAlumno
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 
-class VerResultadosEncuestaFragmentAlumno : Fragment()
+class MisResultadosFragmentAlumno : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()
+
+    private lateinit var idEncuesta: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +27,7 @@ class VerResultadosEncuestaFragmentAlumno : Fragment()
     ): View?
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ver_resultados_encuesta_alumno, container, false)
+        return inflater.inflate(R.layout.fragment_mis_resultados_alumno, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
@@ -34,30 +35,27 @@ class VerResultadosEncuestaFragmentAlumno : Fragment()
         super.onViewCreated(view, savedInstanceState)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
-        val idAsignatura = arguments?.getString("idAsignatura") ?: ""
-        val idEncuesta = arguments?.getString("idEncuesta") ?: ""
 
-        val tvEmpty             = view.findViewById<TextView>(R.id.tvEmptyVerResultadosEncuestaAlumno)
-        val rvListaResultados   = view.findViewById<RecyclerView>(R.id.recyclerViewVerResultadosEncuestaAlumno)
-        val btCancelar          = view.findViewById<Button>(R.id.btCancelarVerResultadosEncuestaAlumno)
+        val tvEmpty = view.findViewById<TextView>(R.id.tvEmptyMisResultadosEncuestaAlumno)
+        val rvListaResultados =
+            view.findViewById<RecyclerView>(R.id.recyclerViewMisResultadosEncuestaAlumno)
+
+        val listaResultados = mutableListOf<Resultado>()
 
         val mapaResultadosFinal = mutableMapOf<Resultado, Encuesta>()
 
-        val listaResultados = mutableListOf<Resultado>()
-        val listaEncuesta = mutableListOf<Encuesta>()
-
         db.collection("resultados")
             .whereEqualTo("idUsuario", idUsuario)
-            .whereEqualTo("idEncuesta", idEncuesta)
             .get().addOnSuccessListener { task ->
                 for (resultadosDoc in task)
                 {
                     val id = resultadosDoc.id
-                    val idEncuesta = idEncuesta
+                    idEncuesta = resultadosDoc.data.get("idEncuesta").toString()
+                    val idAsignatura = resultadosDoc.data.get("idAsignatura").toString()
                     val fecha = resultadosDoc.data.get("fecha").toString()
                     val nota = resultadosDoc.data.get("nota").toString()
 
-                    val resultado = Resultado(id, idUsuario, idEncuesta, fecha, nota)
+                    val resultado = Resultado(id, idUsuario, idAsignatura, idEncuesta, fecha, nota)
 
                     listaResultados.add(resultado)
                 }
@@ -76,15 +74,20 @@ class VerResultadosEncuestaFragmentAlumno : Fragment()
 
                             mapaResultadosFinal.put(resultado, encuesta)
 
-                            if (!mapaResultadosFinal.isEmpty()) { tvEmpty.visibility = View.GONE }
+                            if (mapaResultadosFinal.isEmpty())
+                            {
+                                tvEmpty.visibility = View.VISIBLE
+                            }
 
-                            var adapter = ResultadoAdapter(mapaResultadosFinal)
+                            var adapter = ResultadoAdapterAlumno(mapaResultadosFinal)
 
                             rvListaResultados.layoutManager = LinearLayoutManager(context)
                             rvListaResultados.setHasFixedSize(true)
                             rvListaResultados.adapter = adapter
 
-                            adapter.setOnItemClickListener(object: ResultadoAdapter.onItemClickListener {
+                            adapter.setOnItemClickListener(object :
+                                ResultadoAdapterAlumno.onItemClickListener
+                            {
                                 override fun onItemClick(position: Int)
                                 {
 
@@ -93,26 +96,5 @@ class VerResultadosEncuestaFragmentAlumno : Fragment()
                         }
                 }
             }
-
-        btCancelar.setOnClickListener {
-            cambiarFragment(EncuestaDetailFragmentAlumno(), idUsuario, idAsignatura, idEncuesta)
-        }
-    }
-
-    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idAsignatura: String, idEncuesta: String)
-    {
-        var args = Bundle()
-        args.putString("idUsuario", idUsuario)
-        args.putString("idAsignatura", idAsignatura)
-        args.putString("idEncuesta", idEncuesta)
-
-        var fragment = framentCambiar
-        fragment.arguments = args
-
-        var fragmentManager = requireActivity().supportFragmentManager
-
-        fragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerAlumno, fragment)
-            .commit()
     }
 }

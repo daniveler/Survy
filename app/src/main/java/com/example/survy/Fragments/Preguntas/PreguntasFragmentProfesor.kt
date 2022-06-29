@@ -66,7 +66,7 @@ class PreguntasFragmentProfesor : Fragment()
 
                     listaPreguntas.add(pregunta)
                 }
-                if (!task.isEmpty) { tvEmpty.visibility = View.GONE }
+                if (task.isEmpty) { tvEmpty.visibility = View.VISIBLE }
 
                 var adapter = PreguntaAdapterProfesor(listaPreguntas)
 

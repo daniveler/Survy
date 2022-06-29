@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.Resultados.Alumno.VerResultadosEncuestaFragmentAlumno"
+    tools:context=".Fragments.Resultados.Alumno.MisResultadosFragmentAlumno"
     android:background="@drawable/gradient_background">
 
     <TextView
-        android:id="@+id/tvEmptyVerResultadosEncuestaAlumno"
+        android:id="@+id/tvEmptyMisResultadosEncuestaAlumno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_semibold"
@@ -24,35 +24,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewVerResultadosEncuestaAlumno"
+        android:id="@+id/recyclerViewMisResultadosEncuestaAlumno"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/btCancelarVerResultadosEncuestaAlumno"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmptyVerResultadosEncuestaAlumno">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <Button
-        android:id="@+id/btCancelarVerResultadosEncuestaAlumno"
-        android:layout_width="250dp"
-        android:layout_height="64dp"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/lightGray"
-        android:fontFamily="@font/poppins_semibold"
-        android:letterSpacing="0"
-        android:text="@string/btCancelarNuevaPreguntaProfesor"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="16dp"
+        android:layout_marginRight="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="48dp"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/tvEmptyMisResultadosEncuestaAlumno"
+        android:layout_marginBottom="48dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

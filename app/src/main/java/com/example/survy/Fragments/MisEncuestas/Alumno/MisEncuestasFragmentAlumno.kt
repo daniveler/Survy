@@ -62,7 +62,7 @@ class MisEncuestasFragmentAlumno : Fragment()
 
                     listaEncuestas.add(encuesta)
                 }
-                if (!task.isEmpty) { tvEmpty.visibility = View.GONE }
+                if (task.isEmpty) { tvEmpty.visibility = View.VISIBLE }
 
                 var adapter = EncuestaAdapter(listaEncuestas)
 

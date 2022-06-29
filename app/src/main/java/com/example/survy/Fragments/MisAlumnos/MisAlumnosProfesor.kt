@@ -59,7 +59,7 @@ class MisAlumnosProfesor : Fragment()
 
                     listaAlumnos.add(alumno)
 
-                    if (!task.isEmpty) { tvEmpty.visibility = View.GONE }
+                    if (task.isEmpty) { tvEmpty.visibility = View.VISIBLE }
 
                     listaAlumnos.sortBy { it.curso }
                     var adapter = AlumnoAdapterProfesor(listaAlumnos)
@@ -73,7 +73,7 @@ class MisAlumnosProfesor : Fragment()
                         {
                             var alumnoActual = listaAlumnos.get(position)
 
-                            cambiarFragment(AlumnoDetailFragmentProfesor(), alumnoActual.id)
+                            cambiarFragment(AlumnoDetailFragmentProfesor(), idUsuario, alumnoActual.id)
                         }
                     })
 
@@ -110,7 +110,7 @@ class MisAlumnosProfesor : Fragment()
                                     {
                                         var alumnoActual = listaAlumnosBusqueda.get(position)
 
-                                        cambiarFragment(AlumnoDetailFragmentProfesor(), alumnoActual.id)
+                                        cambiarFragment(AlumnoDetailFragmentProfesor(), idUsuario, alumnoActual.id)
                                     }
                                 })
 
@@ -126,18 +126,18 @@ class MisAlumnosProfesor : Fragment()
                             return true
                         }
                     })
-
                 }
             }
 
         btMatricularAlumno.setOnClickListener {
-            cambiarFragment(AsignaturasMatricularAlumnoFragmentProfesor(), idUsuario)
+            cambiarFragment(AsignaturasMatricularAlumnoFragmentProfesor(), idUsuario, null)
         }
     }
 
-    fun cambiarFragment(fragmentCambiar: Fragment, idUsuario: String)
+    fun cambiarFragment(fragmentCambiar: Fragment, idUsuario: String, idAlumno: String?)
     {
         var args = Bundle()
+        args.putString("idAlumno", idAlumno)
         args.putString("idUsuario", idUsuario)
 
         var fragment = fragmentCambiar

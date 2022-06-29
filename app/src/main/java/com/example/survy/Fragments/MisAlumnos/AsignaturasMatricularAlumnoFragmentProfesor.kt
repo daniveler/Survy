@@ -39,7 +39,7 @@ class AsignaturasMatricularAlumnoFragmentProfesor : Fragment()
         super.onViewCreated(view, savedInstanceState)
 
         var user = FirebaseAuth.getInstance().currentUser
-        var idUsuario = arguments?.getString("idUsuario", "") ?: ""
+        var idUsuario = arguments?.getString("idUsuario") ?: ""
 
         val searchView = view.findViewById<SearchView>(R.id.searchViewAsignaturasMatricularAlumnoProfesor)
         val tvNoHayAsignaturas = view.findViewById<TextView>(R.id.tvAsignaturasMatricularAlumnoProfesor)
@@ -67,7 +67,7 @@ class AsignaturasMatricularAlumnoFragmentProfesor : Fragment()
                     listaAsignaturas.add(asignatura)
                 }
 
-                if (!task.isEmpty) { tvNoHayAsignaturas.visibility = View.GONE }
+                if (task.isEmpty) { tvNoHayAsignaturas.visibility = View.VISIBLE }
 
                 var adapter = AsignaturaAdapterProfesor(listaAsignaturas)
 

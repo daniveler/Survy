@@ -14,11 +14,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.survy.Authentication.LoginActivity
+import com.example.survy.Fragments.Home.HomeFragmentAlumno
 import com.example.survy.Fragments.Home.HomeFragmentProfesor
 import com.example.survy.Fragments.MiPerfil.Alumno.MiPerfilFragmentAlumno
 import com.example.survy.Fragments.MisAsignaturas.Alumno.MisAsignaturasFragmentAlumno
-import com.example.survy.Fragments.MisEncuestas.Alumno.NuevaEncuestaFragmentAlumno
-import com.example.survy.Fragments.Resultados.ResultadosFragmentProfesor
+import com.example.survy.Fragments.Resultados.Alumno.MisResultadosFragmentAlumno
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -53,13 +53,18 @@ class MainActivityAlumno : AppCompatActivity()
             {
                 R.id.itemHomeAlumno ->
                 {
-                    cambiarFragment(HomeFragmentProfesor(), idUsuario)
+                    cambiarFragment(HomeFragmentAlumno(), idUsuario)
                     supportActionBar?.title = getString(R.string.titleHome)
                 }
                 R.id.itemMisAsignaturasAlumno ->
                 {
                     cambiarFragment(MisAsignaturasFragmentAlumno(), idUsuario)
                     supportActionBar?.title = getString(R.string.titleMisAsignaturasProfesor)
+                }
+                R.id.itemMisResultadosAlumno ->
+                {
+                    cambiarFragment(MisResultadosFragmentAlumno(), idUsuario)
+                    supportActionBar?.title = getString(R.string.titleMisResultadosAlumno)
                 }
                 R.id.itemMiPerfilAlumno ->
                 {
@@ -84,7 +89,7 @@ class MainActivityAlumno : AppCompatActivity()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val fragment = supportFragmentManager.beginTransaction()
-        fragment.replace(R.id.fragmentContainerAlumno, HomeFragmentProfesor()).commit()
+        fragment.replace(R.id.fragmentContainerAlumno, HomeFragmentAlumno()).commit()
 
         supportActionBar?.title = getString(R.string.titleHome)
         supportActionBar!!.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.veryDarkPurple)))

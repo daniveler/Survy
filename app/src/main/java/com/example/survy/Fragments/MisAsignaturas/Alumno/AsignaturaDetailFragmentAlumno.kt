@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.survy.Fragments.MisEncuestas.Alumno.MisEncuestasFragmentAlumno
-import com.example.survy.Fragments.Resultados.VerResultadosAsignaturaFragmentAlumno
+import com.example.survy.Fragments.Resultados.Alumno.VerResultadosAsignaturaFragmentAlumno
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso

@@ -50,7 +50,7 @@
                     android:layout_marginTop="32dp"
                     android:fontFamily="@font/poppins_bold"
                     android:gravity="center"
-                    android:text="Nombre"
+                    android:text=""
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="28dp" />
@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
-                    android:text="Curso"
+                    android:text=""
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="28dp" />

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.Resultados.ResultadoEncuestaFragmentAlumno"
+    tools:context=".Fragments.Resultados.Alumno.ResultadoEncuestaFragmentAlumno"
     android:background="@drawable/gradient_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
                 android:gravity="center"
-                android:text="10"
+                android:text=""
                 android:textColor="@color/darkPurple"
                 android:textSize="124dp"
                 android:layout_marginTop="32dp"
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
                 android:gravity="center"
-                android:text="¡Perfecto!"
+                android:text=""
                 android:textColor="@color/darkPurple"
                 android:textSize="32dp"
                 android:layout_margin="8dp"

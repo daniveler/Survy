@@ -38,7 +38,8 @@ class AlumnoDetailFragmentProfesor : Fragment()
         var btVerAsignaturas     = view.findViewById<Button>(R.id.btVerAsignaturasDetailProfesor)
         var btCancelar           = view.findViewById<Button>(R.id.btCancelarAlumnoDetailProfesor)
 
-        val idAlumno = arguments?.getString("idUsuario") ?: ""
+        val idAlumno = arguments?.getString("idAlumno") ?: ""
+        val idUsuario = arguments?.getString("idUsuario") ?: ""
 
         db.collection("alumnos").document(idAlumno).get().addOnSuccessListener {
             Picasso.get().load(it.getString("fotoDePerfil")).into(civFotoDePerfil)
@@ -50,18 +51,19 @@ class AlumnoDetailFragmentProfesor : Fragment()
         }
 
         btVerAsignaturas.setOnClickListener {
-            cambiarFragment(VerAsignaturasAlumnoFragmentProfesor(), idAlumno)
+            cambiarFragment(VerAsignaturasAlumnoFragmentProfesor(), idUsuario, idAlumno)
         }
 
         btCancelar.setOnClickListener {
-            cambiarFragment(MisAlumnosProfesor(), null)
+            cambiarFragment(MisAlumnosProfesor(), idUsuario, null)
         }
     }
 
-    fun cambiarFragment(fragmentCambiar: Fragment, idAlumno: String?)
+    fun cambiarFragment(fragmentCambiar: Fragment, idUsuario: String, idAlumno: String?)
     {
         var args = Bundle()
         args.putString("idAlumno", idAlumno)
+        args.putString("idUsuario", idUsuario)
 
         var fragment = fragmentCambiar
 

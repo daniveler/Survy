@@ -14,8 +14,8 @@
     android:icon="@drawable/ic_chalkboard_user_solid">
 </item>
 <item
-    android:title="Mis Alumnos"
-    android:id="@+id/itemMisAlumnosProfesor"
+    android:title="Alumnos"
+    android:id="@+id/itemAlumnosProfesor"
     android:icon="@drawable/ic_users_solid">
 </item>
     <item
@@ -23,11 +23,6 @@
         android:id="@+id/itemMiPerfilProfesor"
         android:icon="@drawable/ic_user_solid">
     </item>
-<item
-    android:title="Resultados"
-    android:id="@+id/itemResultadosProfesor"
-    android:icon="@drawable/ic_chart_line_solid">
-</item>
 
 <item
     android:title="Cerrar Sesión"

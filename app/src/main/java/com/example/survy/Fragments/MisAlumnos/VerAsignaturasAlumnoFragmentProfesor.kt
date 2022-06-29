@@ -61,7 +61,7 @@ class VerAsignaturasAlumnoFragmentProfesor : Fragment()
                     db.collection("asignaturas")
                         .document(idAsignatura)
                         .get().addOnSuccessListener {
-                            if (!task.isEmpty) { tvNoHayAsignaturas.visibility = View.GONE }
+                            if (task.isEmpty) { tvNoHayAsignaturas.visibility = View.VISIBLE }
 
                             val id = it.id
                             val nombre = it.data?.get("nombre").toString()
@@ -176,8 +176,10 @@ class VerAsignaturasAlumnoFragmentProfesor : Fragment()
                 .get().addOnSuccessListener { task ->
                     for(document in task)
                     {
+                        // Desmatriculamos al alumno de la asignatura
                         db.collection("matriculado").document(document.id).delete()
 
+                        // Reducimos el número de alumnos matriculados
                         var numAlumnos = 0
                         db.collection("asignaturas").document(asignatura.id)
                             .get().addOnSuccessListener {
@@ -190,35 +192,33 @@ class VerAsignaturasAlumnoFragmentProfesor : Fragment()
                         // Borrar resultados del alumno
                         db.collection("resultados")
                             .whereEqualTo("idUsuario", idAlumno)
+                            .whereEqualTo("idAsignatura", asignatura.id)
                             .get().addOnSuccessListener { task ->
                                 val listaResultados = mutableListOf<Resultado>()
 
                                 for (resultadoDoc in task)
                                 {
                                     val id = resultadoDoc.id
+                                    val idAsignatura = resultadoDoc.data.get("idAsignatura").toString()
                                     val idEncuesta = resultadoDoc.data.get("idEncuesta").toString()
                                     val fecha = resultadoDoc.data.get("fecha").toString()
                                     val nota = resultadoDoc.data.get("nota").toString()
 
-                                    val resultado = Resultado(id, idAlumno, idEncuesta, fecha, nota)
+                                    val resultado = Resultado(id, idAlumno, idAsignatura, idEncuesta, fecha, nota)
 
                                     listaResultados.add(resultado)
                                 }
 
                                 for (resultado in listaResultados)
                                 {
-                                    db.collection("encuestas").document(resultado.idEncuesta)
+                                    db.collection("resultados").document(resultado.id).delete()
                                 }
-
-
                             }
                     }
 
                     cambiarFragment(VerAsignaturasAlumnoFragmentProfesor(), idAlumno)
                 }
         })
-
-        // FALTA ELIMINAR RESULTADOS
 
         dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialog, id ->
             dialog.cancel()

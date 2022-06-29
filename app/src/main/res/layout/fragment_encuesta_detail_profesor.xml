@@ -50,7 +50,7 @@
                     android:layout_marginTop="32dp"
                     android:fontFamily="@font/poppins_bold"
                     android:gravity="center"
-                    android:text="Nombre"
+                    android:text=""
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="28dp" />
@@ -85,6 +85,19 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:letterSpacing="0"
                     android:text="@string/btVerPreguntasEncuestaDetailProfesor"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/btVerResultadosEncuestaDetailProfesor"
+                    android:layout_width="240dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/yellowButton"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:letterSpacing="0"
+                    android:text="@string/btVerResultadosEncuestaDetailProfesor"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:textSize="16dp" />

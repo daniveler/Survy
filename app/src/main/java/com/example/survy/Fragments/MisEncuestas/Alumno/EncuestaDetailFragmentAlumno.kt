@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.survy.Fragments.Resultados.VerResultadosEncuestaFragmentAlumno
+import android.widget.Toast
+import com.example.survy.Fragments.Resultados.Alumno.VerResultadosEncuestaFragmentAlumno
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
@@ -53,7 +54,13 @@ class EncuestaDetailFragmentAlumno : Fragment()
                         val numPreguntas = it.documents.size
 
                         btHacerEncuesta.setOnClickListener {
-                            cambiarFragment(ResolverEncuestaFragmentAlumno(), idUsuario, idEncuesta, idAsignatura, numPreguntas)
+                            if (numPreguntas == 0)
+                            {
+                                Toast.makeText(context, "No se puede resolver la encuesta porque aún no tiene preguntas. Inténtelo más tarde",
+                                    Toast.LENGTH_LONG).show()
+                            }
+                            else
+                                cambiarFragment(ResolverEncuestaFragmentAlumno(), idUsuario, idEncuesta, idAsignatura, numPreguntas)
                         }
 
                         btVerResultados.setOnClickListener {

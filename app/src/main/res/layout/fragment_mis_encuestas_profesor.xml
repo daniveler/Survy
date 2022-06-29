@@ -30,6 +30,7 @@
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
         android:text="@string/tvEncuestasEmptyProfesor"
+        android:visibility="gone"
         android:textColor="@color/white"
         android:textSize="32dp"
         android:layout_marginTop="32dp"
@@ -61,10 +62,26 @@
         android:textColor="@color/black"
         android:textSize="16dp"
         android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/btCancelarMisEncuestasProfesor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btCancelarMisEncuestasProfesor"
+        android:layout_width="250dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/lightGray"
+        android:fontFamily="@font/poppins_semibold"
+        android:letterSpacing="0"
+        android:text="@string/btCancelarEncuestaDetailAlumno"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="48dp"
-        />
+        android:layout_marginBottom="48dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,7 +52,7 @@
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:gravity="center"
                     android:fontFamily="@font/poppins_bold"
-                    android:text="60"
+                    android:text=""
                     android:textColor="@color/darkPurple"
                     android:textSize="40dp"
                     android:layout_margin="4dp"/>
@@ -64,7 +64,7 @@
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:gravity="center"
                     android:fontFamily="@font/poppins_bold"
-                    android:text="seg"
+                    android:text=""
                     android:textColor="@color/darkPurple"
                     android:textSize="40dp"
                     android:layout_margin="8dp"/>

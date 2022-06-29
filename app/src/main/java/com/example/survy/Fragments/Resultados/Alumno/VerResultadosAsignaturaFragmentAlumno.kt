@@ -1,17 +1,15 @@
-package com.example.survy.Fragments.Resultados
+package com.example.survy.Fragments.Resultados.Alumno
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.SearchView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.survy.Adapters.ResultadoAdapter
+import com.example.survy.Adapters.ResultadoAdapterAlumno
 import com.example.survy.Clases.Encuesta
 import com.example.survy.Clases.Resultado
 import com.example.survy.Fragments.MisAsignaturas.Alumno.AsignaturaDetailFragmentAlumno
@@ -78,10 +76,11 @@ class VerResultadosAsignaturaFragmentAlumno : Fragment()
                         {
                             val id = resultadosDoc.id
                             val idEncuesta = resultadosDoc.data.get("idEncuesta").toString()
+                            val idAsignatura = resultadosDoc.data.get("idAsignatura").toString()
                             val fecha = resultadosDoc.data.get("fecha").toString()
                             val nota = resultadosDoc.data.get("nota").toString()
 
-                            val resultado = Resultado(id, idUsuario, idEncuesta, fecha, nota)
+                            val resultado = Resultado(id, idUsuario, idAsignatura, idEncuesta, fecha, nota)
 
                             listaResultadosUsuario.add(resultado)
                         }
@@ -97,15 +96,15 @@ class VerResultadosAsignaturaFragmentAlumno : Fragment()
                             }
                         }
 
-                        if (!mapaResultadosFinal.isEmpty()) { tvEmpty.visibility = View.GONE }
+                        if (mapaResultadosFinal.isEmpty()) { tvEmpty.visibility = View.VISIBLE }
 
-                        var adapter = ResultadoAdapter(mapaResultadosFinal)
+                        var adapter = ResultadoAdapterAlumno(mapaResultadosFinal)
 
                         rvListaResultados.layoutManager = LinearLayoutManager(context)
                         rvListaResultados.setHasFixedSize(true)
                         rvListaResultados.adapter = adapter
 
-                        adapter.setOnItemClickListener(object: ResultadoAdapter.onItemClickListener {
+                        adapter.setOnItemClickListener(object: ResultadoAdapterAlumno.onItemClickListener {
                             override fun onItemClick(position: Int)
                             {
 
@@ -135,7 +134,7 @@ class VerResultadosAsignaturaFragmentAlumno : Fragment()
             .commit()
     }
 
-    fun cargarEncuestas(firestoreCallback: FirestoreCallbackEncuestas)
+    /*fun cargarEncuestas(firestoreCallback: FirestoreCallbackEncuestas)
     {
         val listaEncuestas = mutableListOf<Encuesta>()
         val listaResultados = mutableListOf<Resultado>()
@@ -184,10 +183,10 @@ class VerResultadosAsignaturaFragmentAlumno : Fragment()
 
                 firestoreCallback.onCallBack(listaResultados)
             }
-    }
+    }*/
 
 
-    interface FirestoreCallbackResultados
+    /*interface FirestoreCallbackResultados
     {
         fun onCallBack(lista: List<Resultado>)
     }
@@ -195,5 +194,5 @@ class VerResultadosAsignaturaFragmentAlumno : Fragment()
     interface FirestoreCallbackEncuestas
     {
         fun onCallBack(lista: List<Resultado>)
-    }
+    }*/
 }

@@ -18,7 +18,6 @@ import com.example.survy.Fragments.Home.HomeFragmentProfesor
 import com.example.survy.Fragments.MiPerfil.Profesor.MiPerfilFragmentProfesor
 import com.example.survy.Fragments.MisAlumnos.MisAlumnosProfesor
 import com.example.survy.Fragments.MisAsignaturas.Profesor.MisAsignaturasFragmentProfesor
-import com.example.survy.Fragments.Resultados.ResultadosFragmentProfesor
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -61,12 +60,11 @@ class MainActivityProfesor : AppCompatActivity()
                     cambiarFragment(MisAsignaturasFragmentProfesor(), idUsuario)
                     supportActionBar?.title = getString(R.string.titleMisAsignaturasProfesor)
                 }
-                R.id.itemMisAlumnosProfesor ->
+                R.id.itemAlumnosProfesor ->
                 {
                     cambiarFragment(MisAlumnosProfesor(), idUsuario)
                     supportActionBar?.title = getString(R.string.titleMisAlumnosProfesor)
                 }
-                R.id.itemResultadosProfesor -> cambiarFragment(ResultadosFragmentProfesor(), idUsuario)
                 R.id.itemMiPerfilProfesor ->
                 {
                     cambiarFragment(MiPerfilFragmentProfesor(), idUsuario)

@@ -1,10 +1,8 @@
 package com.example.survy.Fragments.MisEncuestas.Alumno
 
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +11,9 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.example.survy.Fragments.Resultados.ResultadoEncuestaFragmentAlumno
+import com.example.survy.Fragments.Resultados.Alumno.ResultadoEncuestaFragmentAlumno
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
-import org.w3c.dom.Text
 import java.time.LocalDateTime
 import java.util.*
 import kotlin.concurrent.schedule
@@ -25,6 +22,8 @@ import kotlin.concurrent.schedule
 class ResolverEncuestaFragmentAlumno : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()
+
+    private lateinit var idAsignatura : String
 
     private lateinit var timer : CountDownTimer
     private var segundosRestantes = 0L
@@ -62,7 +61,7 @@ class ResolverEncuestaFragmentAlumno : Fragment()
         btD = view.findViewById<Button>(R.id.btRespuestaDResolverEncuestaAlumno)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
-        val idAsignatura = arguments?.getString("idAsignatura") ?: ""
+        idAsignatura = arguments?.getString("idAsignatura") ?: ""
         val idEncuesta = arguments?.getString("idEncuesta") ?: ""
 
         val numPreguntas = arguments?.getInt("numPreguntas") ?: -1
@@ -228,6 +227,7 @@ class ResolverEncuestaFragmentAlumno : Fragment()
                     val dataResultado = hashMapOf(
                         "idUsuario" to idUsuario,
                         "idEncuesta" to idEncuesta,
+                        "idAsignatura" to idAsignatura,
                         "nota" to puntuacionTotal,
                         "fecha" to fechaActual
                     )

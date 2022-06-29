@@ -63,7 +63,7 @@ class MisAsignaturasFragmentProfesor : Fragment()
 
                     listaAsignaturas.add(asignatura)
                 }
-                if (!task.isEmpty) { tvNoHayAsignaturas.visibility = View.GONE }
+                if (task.isEmpty) { tvNoHayAsignaturas.visibility = View.VISIBLE }
 
                 var adapter = AsignaturaAdapterProfesor(listaAsignaturas)
 

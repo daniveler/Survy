@@ -74,7 +74,7 @@ class MisAsignaturasFragmentAlumno : Fragment()
                     db.collection("asignaturas")
                         .document(idAsignatura)
                         .get().addOnSuccessListener {
-                            if (!task.isEmpty) { tvNoHayAsignaturas.visibility = View.GONE }
+                            if (task.isEmpty) { tvNoHayAsignaturas.visibility = View.VISIBLE }
 
                             val id = it.id
                             val nombre = it.data?.get("nombre").toString()

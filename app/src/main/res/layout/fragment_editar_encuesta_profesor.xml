@@ -46,7 +46,6 @@
                 android:gravity="start"
                 android:hint="Descripción"
                 android:maxLines="10"
-                android:text="@string/loremIpsunDescripcionEncuesta"
                 android:textColor="@color/black"
                 android:visibility="visible"
                 />
