@@ -1,17 +1,22 @@
 package com.example.survy.Fragments.Preguntas
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
+import com.example.survy.Fragments.MisEncuestas.Profesor.MisEncuestasFragmentProfesor
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 
 class EditarPreguntaFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()
+
+    private lateinit var titulo: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,22 +31,23 @@ class EditarPreguntaFragmentProfesor : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val etTitulo = view.findViewById<EditText>(R.id.etTituloEditarPreguntaProfesor)
+        val etTitulo    = view.findViewById<EditText>(R.id.etTituloEditarPreguntaProfesor)
 
-        val tvTiempo = view.findViewById<TextView>(R.id.tvTiempoEditarPreguntaProfesor)
-        val tvUnidad = view.findViewById<TextView>(R.id.tvUnidadEditarPreguntaProfesor)
-        val btPlus = view.findViewById<ImageButton>(R.id.btPlusEditarPreguntaProfesor)
-        val btMinus = view.findViewById<ImageButton>(R.id.btMinusEditarPreguntaProfesor)
+        val tvTiempo            = view.findViewById<TextView>(R.id.tvTiempoEditarPreguntaProfesor)
+        val tvUnidad            = view.findViewById<TextView>(R.id.tvUnidadEditarPreguntaProfesor)
+        val btPlus              = view.findViewById<ImageButton>(R.id.btPlusEditarPreguntaProfesor)
+        val btMinus             = view.findViewById<ImageButton>(R.id.btMinusEditarPreguntaProfesor)
 
-        val etA = view.findViewById<EditText>(R.id.etRespuestaAEditarPreguntaProfesor)
-        val etB = view.findViewById<EditText>(R.id.etRespuestaBEditarPreguntaProfesor)
-        val etC = view.findViewById<EditText>(R.id.etRespuestaCEditarPreguntaProfesor)
-        val etD = view.findViewById<EditText>(R.id.etRespuestaDEditarPreguntaProfesor)
+        val etA                 = view.findViewById<EditText>(R.id.etRespuestaAEditarPreguntaProfesor)
+        val etB                 = view.findViewById<EditText>(R.id.etRespuestaBEditarPreguntaProfesor)
+        val etC                 = view.findViewById<EditText>(R.id.etRespuestaCEditarPreguntaProfesor)
+        val etD                 = view.findViewById<EditText>(R.id.etRespuestaDEditarPreguntaProfesor)
 
-        val etCorrecta = view.findViewById<EditText>(R.id.etLetraCorrectaEditarPreguntaProfesor)
+        val etCorrecta          = view.findViewById<EditText>(R.id.etLetraCorrectaEditarPreguntaProfesor)
 
-        val btGuardarCambios = view.findViewById<Button>(R.id.btGuardarCambiosEditarPreguntaProfesor)
-        val btCancelar = view.findViewById<Button>(R.id.btCancelarEditarPreguntaProfesor)
+        val btGuardarCambios    = view.findViewById<Button>(R.id.btGuardarCambiosEditarPreguntaProfesor)
+        val btEliminar          = view.findViewById<Button>(R.id.btEliminarEditarPreguntaProfesor)
+        val btCancelar          = view.findViewById<Button>(R.id.btCancelarEditarPreguntaProfesor)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
         val idAsignatura = arguments?.getString("idAsignatura") ?: ""
@@ -52,7 +58,9 @@ class EditarPreguntaFragmentProfesor : Fragment()
             .get().addOnSuccessListener {
                 val correcta = it.data?.get("correcta").toString()
 
-                etTitulo.setText(it.data?.get("titulo").toString())
+                titulo = it.data?.get("titulo").toString()
+
+                etTitulo.setText(titulo)
 
                 tvTiempo.setText(it.data?.get("tiempo").toString())
 
@@ -170,6 +178,10 @@ class EditarPreguntaFragmentProfesor : Fragment()
             }
         }
 
+        btEliminar.setOnClickListener {
+            mostrarAlerta(idPregunta, titulo, idEncuesta, idUsuario, idAsignatura)
+        }
+
         btCancelar.setOnClickListener {
             cambiarFragment(PreguntasFragmentProfesor(), idUsuario, idEncuesta, idAsignatura, idPregunta)
         }
@@ -191,5 +203,28 @@ class EditarPreguntaFragmentProfesor : Fragment()
         fragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerProfesor, fragment)
             .commit()
+    }
+
+    fun mostrarAlerta(idPregunta: String, titulo: String, idEncuesta: String, idUsuario: String, idAsignatura: String)
+    {
+        val dialogBuilder = AlertDialog.Builder(requireContext())
+        dialogBuilder.setTitle(getString(R.string.alertTitlePreguntaDetailProfesor) + " " + titulo + "?")
+        dialogBuilder.setMessage(R.string.alertTextPreguntaDetailProfesor)
+
+        dialogBuilder.setPositiveButton("SÍ", DialogInterface.OnClickListener { dialog, id ->
+            // Eliminar pregunta
+            db.collection("preguntas").document(idPregunta).delete()
+
+            Toast.makeText(context, "Pregunta eliminada correctamente", Toast.LENGTH_LONG).show()
+
+            cambiarFragment(PreguntasFragmentProfesor(), idUsuario, idEncuesta, idAsignatura, idPregunta)
+        })
+
+        dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialog, id ->
+            dialog.cancel()
+        })
+
+        val alerta = dialogBuilder.create()
+        alerta.show()
     }
 }

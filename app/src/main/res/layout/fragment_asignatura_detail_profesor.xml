@@ -94,6 +94,19 @@
                     android:textSize="16dp" />
 
                 <Button
+                    android:id="@+id/btEliminarAsignaturaDetailProfesor"
+                    android:layout_width="240dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/redError"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:letterSpacing="0"
+                    android:text="@string/btEliminarAsignaturaDetailProfesor"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <Button
                     android:id="@+id/btCancelarAsignaturaDetailProfesor"
                     android:layout_width="240dp"
                     android:layout_height="64dp"

@@ -62,7 +62,7 @@ class MisResultadosFragmentAlumno : Fragment()
 
                 for (resultado in listaResultados)
                 {
-                    db.collection("encuestas").document(idEncuesta)
+                    db.collection("encuestas").document(resultado.idEncuesta)
                         .get().addOnSuccessListener {
                             val id = it.id
                             val idAsignatura = it.getString("idAsignatura").toString()

@@ -90,6 +90,10 @@
     <string name="btVerResultadosAsignaturaDetailProfesor">Ver Resultados</string>
     <string name="btCancelarAsignaturaDetailProfesor">Cancelar</string>
     <string name="btEditarAsignaturaDetailProfesor">Editar Asignatura</string>
+    <string name="btEliminarAsignaturaDetailProfesor">Eliminar Asignatura</string>
+    <string name="alertTitleAsignaturaDetailProfesor">¿Desea eliminar la asignatura</string>
+    <string name="alertTextAsignaturaDetailProfesor">Se eliminarán todos los datos de la asignatura, incluyendo las encuestas, sus preguntas, resultados y matrículas de alumnos</string>
+
 
     <!--> EDITAR ASIGNATURA PROFESOR <!-->
     <string name="btGuardarCambiosEditarAsignaturaProfesor">Guardar Cambios</string>
@@ -145,6 +149,11 @@
     <string name="btVerResultadosEncuestaDetailProfesor">Ver Resultados</string>
     <string name="btCancelarEncuestaDetailProfesor">Cancelar</string>
     <string name="btEditarEncuestaDetailProfesor">Editar Encuesta</string>
+    <string name="btEliminarEncuestaDetailProfesor">Eliminar Encuesta</string>
+    <string name="alertTitleEncuestaDetailProfesor">¿Desea eliminar la encuesta</string>
+    <string name="alertTextEncuestaDetailProfesor">Se eliminarán todos los datos de la encuesta, incluyendo sus preguntas y los resultados de los alumnos</string>
+
+
 
     <!--> EDITAR ENCUESTA PROFESOR <!-->
     <string name="btGuardarCambiosEditarEncuestaProfesor">Guardar Cambios</string>
@@ -155,6 +164,9 @@
     <string name="btNuevaPreguntaPreguntasProfesor">Nueva Pregunta</string>
     <string name="btCancelarPreguntasProfesor">Cancelar</string>
     <string name="tvEmptyPreguntasProfesor">Aún no hay ninguna pregunta en esta encuesta</string>
+    <string name="alertTitlePreguntaDetailProfesor">¿Desea eliminar la pregunta</string>
+    <string name="alertTextPreguntaDetailProfesor">Se eliminarán los datos de la pregunta, pero los resultados donde aparece se conservarán</string>
+
 
     <!--> ENCUESTA DETAIL ALUMNO <!-->
     <string name="btResolverEncuestaDetailAlumno">Resolver Encuesta</string>
@@ -163,6 +175,7 @@
 
     <!--> NUEVA PREGUNTA PROFESOR <!-->
     <string name="btCrearPreguntaNuevaPreguntaProfesor">Crear Pregunta</string>
+    <string name="btEliminarEditarPreguntaProfesor">Eliminar Pregunta</string>
     <string name="btCancelarNuevaPreguntaProfesor">Cancelar</string>
 
     <!--> MIS RESULTADOS ALUMNO <!-->
@@ -182,6 +195,11 @@
 
     <string name="btVolverAAsignaturaResultadoEncuestaAlumno">Volver a la Asignatura</string>
     <string name="btMisResultadosResultadoEncuestaAlumno">Mis Resultados</string>
+
+    <!--> VER RESULTADO ENCUESTA PROFESOR <!-->
+    <string name="alertTitlerResultadoEncuestaProfesor">¿Desea eliminar el resultado?</string>
+    <string name="alertTextResultadoEncuestaProfesor">Solo se eliminarán los datos de este resultado</string>
+
 
     <!--> RESULTADO ASIGNATURA ALUMNO <!-->
     <string name="tvEmptyResultadoAsignaturaAlumno">Aún no hay ningun resultado</string>

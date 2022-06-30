@@ -1,5 +1,6 @@
 package com.example.survy.Fragments.MisEncuestas.Profesor
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import com.example.survy.Fragments.MisEncuestas.Alumno.MisEncuestasFragmentAlumno
 import com.example.survy.Fragments.Preguntas.PreguntasFragmentProfesor
 import com.example.survy.Fragments.Resultados.Profesor.VerResultadosEncuestaFragmentProfesor
 import com.example.survy.R
@@ -17,6 +21,8 @@ import com.squareup.picasso.Picasso
 class EncuestaDetailFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()
+
+    private lateinit var nombre : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +44,7 @@ class EncuestaDetailFragmentProfesor : Fragment()
         val btVerPreguntas      = view.findViewById<Button>(R.id.btVerPreguntasEncuestaDetailProfesor)
         val btverResultados     = view.findViewById<Button>(R.id.btVerResultadosEncuestaDetailProfesor)
         val btEditarEncuesta    = view.findViewById<Button>(R.id.btEditarEncuestaDetailProfesor)
+        val btEliminarEncuesta  = view.findViewById<Button>(R.id.btEliminarEncuestaDetailProfesor)
         val btCancelar          = view.findViewById<Button>(R.id.btCancelarEncuestaDetailProfesor)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
@@ -47,7 +54,9 @@ class EncuestaDetailFragmentProfesor : Fragment()
         db.collection("encuestas").document(idEncuesta)
             .get().addOnSuccessListener {
                 Picasso.get().load(it.getString("icono")).into(ivIcono)
-                tvNombre.setText(it.getString("nombre"))
+
+                nombre = it.getString("nombre").toString()
+                tvNombre.setText(nombre)
                 tvDescripcion.setText(it.getString("descripcion"))
             }
 
@@ -63,12 +72,13 @@ class EncuestaDetailFragmentProfesor : Fragment()
             cambiarFragment(EditarEncuestaFragmentProfesor(), idUsuario, idEncuesta, idAsignatura)
         }
 
+        btEliminarEncuesta.setOnClickListener {
+            mostrarAlerta(idEncuesta, nombre, idUsuario, idAsignatura)
+        }
+
         btCancelar.setOnClickListener {
             cambiarFragment(MisEncuestasFragmentProfesor(), idUsuario, idEncuesta, idAsignatura)
         }
-
-
-
     }
 
     fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idEncuesta: String?, idAsignatura: String)
@@ -86,5 +96,48 @@ class EncuestaDetailFragmentProfesor : Fragment()
         fragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerProfesor, fragment)
             .commit()
+    }
+
+    fun mostrarAlerta(idEncuesta: String, nombreEncuesta: String, idUsuario: String, idAsignatura: String)
+    {
+        val dialogBuilder = AlertDialog.Builder(requireContext())
+        dialogBuilder.setTitle(getString(R.string.alertTitleEncuestaDetailProfesor) + " " + nombreEncuesta + "?")
+        dialogBuilder.setMessage(R.string.alertTextEncuestaDetailProfesor)
+
+        dialogBuilder.setPositiveButton("SÍ", DialogInterface.OnClickListener { dialog, id ->
+            // Eliminar preguntas
+            db.collection("preguntas")
+                .whereEqualTo("idEncuesta", idEncuesta)
+                .get().addOnSuccessListener { task ->
+                    for (preguntaDoc in task)
+                    {
+                        db.collection("preguntas").document(preguntaDoc.id).delete()
+                    }
+                }
+
+            // Eliminar resultados
+            db.collection("resultados")
+                .whereEqualTo("idEncuesta", idEncuesta)
+                .get().addOnSuccessListener { task ->
+                    for (resultadoDoc in task)
+                    {
+                        db.collection("resultados").document(resultadoDoc.id).delete()
+                    }
+                }
+
+            // Eliminar encuesta
+            db.collection("encuestas").document(idEncuesta).delete()
+
+            Toast.makeText(context, "Encuesta eliminada correctamente", Toast.LENGTH_LONG).show()
+
+            cambiarFragment(MisEncuestasFragmentProfesor(), idUsuario, idEncuesta, idAsignatura)
+        })
+
+        dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialog, id ->
+            dialog.cancel()
+        })
+
+        val alerta = dialogBuilder.create()
+        alerta.show()
     }
 }

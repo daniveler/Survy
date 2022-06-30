@@ -1,5 +1,6 @@
 package com.example.survy.Fragments.Resultados.Profesor
 
+import android.content.DialogInterface
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Adapters.ResultadoAdapterAlumno
@@ -17,6 +20,7 @@ import com.example.survy.Clases.Encuesta
 import com.example.survy.Clases.Resultado
 import com.example.survy.Fragments.MisEncuestas.Alumno.EncuestaDetailFragmentAlumno
 import com.example.survy.Fragments.MisEncuestas.Profesor.EncuestaDetailFragmentProfesor
+import com.example.survy.Fragments.Preguntas.PreguntasFragmentProfesor
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -95,7 +99,7 @@ class VerResultadosEncuestaFragmentProfesor : Fragment()
                             adapter.setOnItemClickListener(object: ResultadoAdapterProfesor.onItemClickListener {
                                 override fun onItemClick(position: Int)
                                 {
-
+                                    mostrarAlerta(resultado.id, idUsuario, idAsignatura, idEncuesta)
                                 }
                             })
                         }
@@ -122,5 +126,28 @@ class VerResultadosEncuestaFragmentProfesor : Fragment()
         fragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerProfesor, fragment)
             .commit()
+    }
+
+    fun mostrarAlerta(idResultado: String, idUsuario: String, idAsignatura: String, idEncuesta: String)
+    {
+        val dialogBuilder = AlertDialog.Builder(requireContext())
+        dialogBuilder.setTitle(getString(R.string.alertTitlerResultadoEncuestaProfesor))
+        dialogBuilder.setMessage(R.string.alertTextResultadoEncuestaProfesor)
+
+        dialogBuilder.setPositiveButton("SÍ", DialogInterface.OnClickListener { dialog, id ->
+            // Eliminar resultado
+            db.collection("resultados").document(idResultado).delete()
+
+            Toast.makeText(context, "Resultado eliminado correctamente", Toast.LENGTH_LONG).show()
+
+            cambiarFragment(EncuestaDetailFragmentProfesor(), idUsuario, idAsignatura, idEncuesta)
+        })
+
+        dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialog, id ->
+            dialog.cancel()
+        })
+
+        val alerta = dialogBuilder.create()
+        alerta.show()
     }
 }

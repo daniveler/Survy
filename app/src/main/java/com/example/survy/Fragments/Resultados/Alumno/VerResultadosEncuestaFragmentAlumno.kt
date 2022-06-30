@@ -1,5 +1,6 @@
 package com.example.survy.Fragments.Resultados.Alumno
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,12 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Adapters.ResultadoAdapterAlumno
 import com.example.survy.Clases.Encuesta
 import com.example.survy.Clases.Resultado
 import com.example.survy.Fragments.MisEncuestas.Alumno.EncuestaDetailFragmentAlumno
+import com.example.survy.Fragments.Preguntas.PreguntasFragmentProfesor
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 

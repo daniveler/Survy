@@ -1,5 +1,6 @@
 package com.example.survy.Fragments.MisEncuestas.Alumno
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,9 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import com.example.survy.Fragments.MisAsignaturas.Profesor.MisAsignaturasFragmentProfesor
+import com.example.survy.Fragments.MisEncuestas.Profesor.MisEncuestasFragmentProfesor
 import com.example.survy.Fragments.Resultados.Alumno.VerResultadosEncuestaFragmentAlumno
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
@@ -31,13 +35,13 @@ class EncuestaDetailFragmentAlumno : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val ivIcono = view.findViewById<ImageView>(R.id.ivIconoEncuestaDetailAlumno)
-        val tvNombre = view.findViewById<TextView>(R.id.tvNombreEncuestaDetailAlumno)
-        val tvDescripcion = view.findViewById<TextView>(R.id.tvDescripcionEncuestaDetailAlumno)
+        val ivIcono             = view.findViewById<ImageView>(R.id.ivIconoEncuestaDetailAlumno)
+        val tvNombre            = view.findViewById<TextView>(R.id.tvNombreEncuestaDetailAlumno)
+        val tvDescripcion       = view.findViewById<TextView>(R.id.tvDescripcionEncuestaDetailAlumno)
 
-        val btHacerEncuesta = view.findViewById<Button>(R.id.btResolverEncuestaDetailAlumno)
-        val btVerResultados = view.findViewById<Button>(R.id.btVerResultadosEncuestaDetailAlumno)
-        val btCancelar = view.findViewById<Button>(R.id.btCancelarEncuestaDetailAlumno)
+        val btHacerEncuesta     = view.findViewById<Button>(R.id.btResolverEncuestaDetailAlumno)
+        val btVerResultados     = view.findViewById<Button>(R.id.btVerResultadosEncuestaDetailAlumno)
+        val btCancelar          = view.findViewById<Button>(R.id.btCancelarEncuestaDetailAlumno)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
         val idAsignatura = arguments?.getString("idAsignatura") ?: ""
@@ -66,10 +70,6 @@ class EncuestaDetailFragmentAlumno : Fragment()
                         btVerResultados.setOnClickListener {
                             cambiarFragment(VerResultadosEncuestaFragmentAlumno(), idUsuario, idEncuesta, idAsignatura, 0)
                         }
-
-                        btCancelar.setOnClickListener {
-                            cambiarFragment(MisEncuestasFragmentAlumno(), idUsuario, idEncuesta, idAsignatura, 0)
-                        }
                     }
             }
     }
@@ -91,4 +91,5 @@ class EncuestaDetailFragmentAlumno : Fragment()
             .replace(R.id.fragmentContainerAlumno, fragment)
             .commit()
     }
+
 }

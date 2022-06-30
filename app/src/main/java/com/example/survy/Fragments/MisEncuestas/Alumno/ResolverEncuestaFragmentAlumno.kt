@@ -142,6 +142,10 @@ class ResolverEncuestaFragmentAlumno : Fragment()
                                 "Lo siento, se acabó el tiempo",
                                 Toast.LENGTH_LONG
                             ).show()
+
+                            Timer().schedule(2000) {
+                                cargarPregunta(index + 1, idEncuesta, numPreguntas, idUsuario)
+                            }
                         }
                     }
 

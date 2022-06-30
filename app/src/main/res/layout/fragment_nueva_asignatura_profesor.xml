@@ -7,118 +7,123 @@
     tools:context=".Fragments.MisAsignaturas.Profesor.NuevaAsignaturaFragmentProfesor"
     android:background="@drawable/gradient_background">
 
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/etNombreNuevaAsignaturaProfesor"
-            android:layout_width="264dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="32dp"
-            android:background="@color/lightPurple"
-            android:hint="Nombre"
-            android:textColor="@color/black"
-            />
-
-        <Spinner
-            android:id="@+id/spinnerCursoNuevaAsignaturaProfesor"
-            android:layout_width="264dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:background="@color/lightPurple" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ivFotoNuevaAsignaturaProfesor"
-            android:layout_width="264dp"
-            android:layout_height="264dp"
-            android:layout_gravity="center"
-            android:src="@drawable/survy_logo"
-            android:layout_marginTop="16dp"
-            app:civ_border_width="2dp"
-            app:civ_border_color="@color/darkPurple"
-            app:civ_circle_background_color="@color/white"
-
-            />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvIconosNuevaAsignaturaProfesor"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="264dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="3"
-            android:layout_marginTop="16dp"
-            android:visibility="gone"
-            />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btCrearNuevaAsignaturaProfesor"
-            android:layout_width="250dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/yellowButton"
-            android:fontFamily="@font/poppins_semibold"
-            android:letterSpacing="0"
-            android:text="@string/btCrearNuevaAsignaturaProfesor"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:layout_marginTop="32dp"
-            android:textSize="16dp" />
+            <EditText
+                android:id="@+id/etNombreNuevaAsignaturaProfesor"
+                android:layout_width="264dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:background="@color/lightPurple"
+                android:hint="Nombre"
+                android:textColor="@color/black" />
 
-        <Button
-            android:id="@+id/btCancelarNuevaAsignaturaProfesor"
-            android:layout_width="250dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="32dp"
-            android:backgroundTint="@color/lightGray"
-            android:fontFamily="@font/poppins_semibold"
-            android:letterSpacing="0"
-            android:text="@string/btCancelarNuevaAsignaturaProfesor"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            android:layout_marginTop="8dp"
-            />
+            <Spinner
+                android:id="@+id/spinnerCursoNuevaAsignaturaProfesor"
+                android:layout_width="264dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:background="@color/lightPurple" />
 
-        <Button
-            android:id="@+id/btGuardarIconoNuevaAsignaturaProfesor"
-            android:layout_width="250dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/yellowButton"
-            android:fontFamily="@font/poppins_semibold"
-            android:letterSpacing="0"
-            android:text="@string/btGuardarIconoEditarAsignaturaProfesor"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:visibility="gone"
-            />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivFotoNuevaAsignaturaProfesor"
+                android:layout_width="264dp"
+                android:layout_height="264dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/survy_logo"
+                app:civ_border_color="@color/darkPurple"
+                app:civ_border_width="2dp"
+                app:civ_circle_background_color="@color/white"
 
-        <Button
-            android:id="@+id/btCancelarGuardarIconoNuevaAsignaturaProfesor"
-            android:layout_width="250dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/lightGray"
-            android:fontFamily="@font/poppins_semibold"
-            android:letterSpacing="0"
-            android:text="@string/btCancelarNuevaAsignaturaProfesor"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            android:visibility="gone"
-            />
-    </LinearLayout>
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvIconosNuevaAsignaturaProfesor"
+                android:layout_width="match_parent"
+                android:layout_height="264dp"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3" />
+
+            <Button
+                android:id="@+id/btCrearNuevaAsignaturaProfesor"
+                android:layout_width="250dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@color/yellowButton"
+                android:fontFamily="@font/poppins_semibold"
+                android:letterSpacing="0"
+                android:text="@string/btCrearNuevaAsignaturaProfesor"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/btCancelarNuevaAsignaturaProfesor"
+                android:layout_width="250dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:backgroundTint="@color/lightGray"
+                android:fontFamily="@font/poppins_semibold"
+                android:letterSpacing="0"
+                android:text="@string/btCancelarNuevaAsignaturaProfesor"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/btGuardarIconoNuevaAsignaturaProfesor"
+                android:layout_width="250dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/yellowButton"
+                android:fontFamily="@font/poppins_semibold"
+                android:letterSpacing="0"
+                android:text="@string/btGuardarIconoEditarAsignaturaProfesor"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btCancelarGuardarIconoNuevaAsignaturaProfesor"
+                android:layout_width="250dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/lightGray"
+                android:fontFamily="@font/poppins_semibold"
+                android:letterSpacing="0"
+                android:text="@string/btCancelarNuevaAsignaturaProfesor"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

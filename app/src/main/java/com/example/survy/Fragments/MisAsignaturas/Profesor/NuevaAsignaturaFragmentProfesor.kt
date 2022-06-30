@@ -187,8 +187,7 @@ class NuevaAsignaturaFragmentProfesor : Fragment()
         }
 
         btCancelar.setOnClickListener {
-            var email = FirebaseAuth.getInstance().currentUser?.email ?: ""
-            cambiarFragment(MisAsignaturasFragmentProfesor(), email)
+            cambiarFragment(MisAsignaturasFragmentProfesor(), idUsuario)
         }
     }
 

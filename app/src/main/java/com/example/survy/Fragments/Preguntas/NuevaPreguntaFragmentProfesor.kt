@@ -157,6 +157,10 @@ class NuevaPreguntaFragmentProfesor : Fragment()
             }
         }
 
+        btCancelar.setOnClickListener {
+            cambiarFragment(PreguntasFragmentProfesor(), idUsuario, idEncuesta, idAsignatura)
+        }
+
     }
 
     fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idEncuesta: String, idAsignatura: String)
