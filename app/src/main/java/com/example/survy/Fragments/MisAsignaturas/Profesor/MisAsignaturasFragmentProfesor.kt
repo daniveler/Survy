@@ -18,6 +18,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
+/**
+ * Vista en forma de lista de las asignaturas de un usuario Profesor.
+ */
 class MisAsignaturasFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

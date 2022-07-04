@@ -17,6 +17,9 @@ import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
+/**
+ * Vista en forma de lista de los diferentes usuarios Alumno registrados en el sistema para un usuario Profesor.
+ */
 class MisAlumnosProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

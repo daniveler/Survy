@@ -14,6 +14,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
+/**
+ * Formulario de inicio de sesión con email en la aplicación.
+ */
 class LoginEmailActivity : AppCompatActivity()
 {
     private lateinit var auth: FirebaseAuth

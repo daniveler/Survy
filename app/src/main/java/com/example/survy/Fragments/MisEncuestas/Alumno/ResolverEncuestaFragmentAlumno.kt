@@ -18,7 +18,9 @@ import java.time.LocalDateTime
 import java.util.*
 import kotlin.concurrent.schedule
 
-
+/**
+ * Activity de resolución de una encuesta de un usuario Alumno.
+ */
 class ResolverEncuestaFragmentAlumno : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

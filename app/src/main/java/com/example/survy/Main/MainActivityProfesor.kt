@@ -26,6 +26,11 @@ import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
+/**
+ * Activity principal de un usuario Profesor.
+ *
+ * Incluye un menú desplegable para navegar entre los diferentes Fragments.
+ */
 class MainActivityProfesor : AppCompatActivity()
 {
     lateinit var toggle : ActionBarDrawerToggle

@@ -11,6 +11,9 @@ import com.example.survy.R
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
+/**
+ * Adaptador de asignaturas para el menú Home del usuario Alumno.
+ */
 class AlumnoAdapterProfesor (var listaAlumnos: List<Alumno>) : RecyclerView.Adapter<AlumnoAdapterProfesor.AlumnoViewHolder>()
 {
     private lateinit var mListener : onItemClickListener

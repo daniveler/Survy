@@ -22,6 +22,9 @@ import com.google.firebase.storage.ktx.storage
 import com.squareup.picasso.Picasso
 import kotlin.collections.ArrayList
 
+/**
+ * Activity de edición de una asignatura de un usuario Profesor.
+ */
 class EditarAsignaturaFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

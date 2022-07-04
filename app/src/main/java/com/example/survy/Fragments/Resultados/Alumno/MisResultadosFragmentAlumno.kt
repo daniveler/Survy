@@ -15,6 +15,9 @@ import com.example.survy.Clases.Resultado
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Vista en forma de lista de los resultados de un usuario Alumno.
+ */
 class MisResultadosFragmentAlumno : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

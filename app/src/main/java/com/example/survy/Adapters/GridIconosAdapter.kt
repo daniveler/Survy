@@ -9,6 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.R
 import com.squareup.picasso.Picasso
 
+/**
+ * Adaptador de iconos para ser mostrados en un desplegable.
+ *
+ * Esto servirá como un selector de iconos en diferentes partes de la aplicación.
+ *
+ */
 class GridIconosAdapter(val listaIconos : List<Uri>) : RecyclerView.Adapter<GridIconosAdapter.GridIconosViewHolder>()
 {
     private lateinit var mListener : onItemClickListener

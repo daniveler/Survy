@@ -22,6 +22,9 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.squareup.picasso.Picasso
 
+/**
+ * Activity de creación de una asignatura de un usuario Profesor.
+ */
 class NuevaAsignaturaFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

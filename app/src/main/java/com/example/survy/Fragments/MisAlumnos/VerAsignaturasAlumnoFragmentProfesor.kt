@@ -19,6 +19,9 @@ import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
+/**
+ * Vista de lista para ver las asignaturas en las que está matriculado un usuario Alumno por un usuario Profesor.
+ */
 class VerAsignaturasAlumnoFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

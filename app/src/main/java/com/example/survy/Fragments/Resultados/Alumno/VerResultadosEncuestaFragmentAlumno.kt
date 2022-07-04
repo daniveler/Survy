@@ -20,6 +20,9 @@ import com.example.survy.Fragments.Preguntas.PreguntasFragmentProfesor
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Vista en forma de lista de los resultados en una encuesta de un usuario Alumno.
+ */
 class VerResultadosEncuestaFragmentAlumno : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

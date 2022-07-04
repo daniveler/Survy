@@ -10,6 +10,9 @@ import android.widget.Toast
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Vista en forma de detallada de un resultado de una encuesta de un usuario Alumno.
+ */
 class ResultadoEncuestaFragmentAlumno : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

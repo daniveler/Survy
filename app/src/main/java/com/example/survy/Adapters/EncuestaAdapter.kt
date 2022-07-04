@@ -11,6 +11,9 @@ import com.example.survy.Clases.Encuesta
 import com.example.survy.R
 import com.squareup.picasso.Picasso
 
+/**
+ * Adaptador de encuestas, tanto para el usuario Alumno como Profesor.
+ */
 class EncuestaAdapter (var listaEncuestas: List<Encuesta>) : RecyclerView.Adapter<EncuestaAdapter.EncuestaViewHolderProfesor>()
 {
     private lateinit var mListener : onItemClickListener

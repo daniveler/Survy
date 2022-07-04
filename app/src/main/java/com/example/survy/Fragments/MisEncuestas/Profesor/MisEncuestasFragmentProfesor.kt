@@ -17,6 +17,9 @@ import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
+/**
+ * Vista en forma de lista de las encuesta de una asignatura de un usuario Profesor.
+ */
 class MisEncuestasFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

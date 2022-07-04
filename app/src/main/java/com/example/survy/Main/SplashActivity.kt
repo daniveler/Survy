@@ -10,6 +10,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 import kotlin.concurrent.schedule
 
+/**
+ * Actividad Splash.
+ *
+ * Su función es comprobar en segundo plano si existe o no una sesión iniciada.
+ * En caso de existir, se lleva al Main Activity correspondiente del usuario.
+ * En caso de no existir, el usuario se dirige al Activity de Login.
+ *
+ *
+ */
 class SplashActivity : AppCompatActivity()
 {
     private val db = FirebaseFirestore.getInstance()

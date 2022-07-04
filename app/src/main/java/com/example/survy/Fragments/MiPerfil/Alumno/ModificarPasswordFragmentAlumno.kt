@@ -12,6 +12,9 @@ import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Fragment de edición de perfil de los usuarios Alumno.
+ */
 class ModificarPasswordFragmentAlumno : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

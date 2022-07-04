@@ -12,6 +12,9 @@ import com.example.survy.Fragments.MisEncuestas.Profesor.MisEncuestasFragmentPro
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Activity de edición de una pregunta en una encuesta de un usuario Profesor.
+ */
 class EditarPreguntaFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

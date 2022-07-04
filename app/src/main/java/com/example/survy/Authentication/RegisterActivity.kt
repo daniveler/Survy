@@ -9,6 +9,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
+/**
+ * Activity de registro en la aplicación.
+ */
 class RegisterActivity : AppCompatActivity()
 {
     private lateinit var auth: FirebaseAuth

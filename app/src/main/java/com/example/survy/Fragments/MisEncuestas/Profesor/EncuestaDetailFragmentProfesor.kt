@@ -18,6 +18,9 @@ import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 
+/**
+ * Vista detallada de una encuesta de una asignatura de un usuario Profesor.
+ */
 class EncuestaDetailFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

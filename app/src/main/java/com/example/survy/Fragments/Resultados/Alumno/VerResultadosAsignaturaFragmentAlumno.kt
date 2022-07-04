@@ -16,7 +16,9 @@ import com.example.survy.Fragments.MisAsignaturas.Alumno.AsignaturaDetailFragmen
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 
-
+/**
+ * Vista en forma de lista de los resultados en una asignatura de un usuario Alumno.
+ */
 class VerResultadosAsignaturaFragmentAlumno : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

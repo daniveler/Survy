@@ -24,6 +24,9 @@ import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import java.io.ByteArrayOutputStream
 
+/**
+ * Vista de detalle de una asignatura para matricular a usuarios Alumno.
+ */
 class MatricularAlumnoFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

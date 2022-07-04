@@ -11,6 +11,9 @@ import com.example.survy.Clases.Asignatura
 import com.example.survy.R
 import com.squareup.picasso.Picasso
 
+/**
+ * Adaptador de asignaturas para el menú Home del usuario Profesor.
+ */
 class AsignaturaAdapterHome (val listaAsignaturas : List<Asignatura>) : RecyclerView.Adapter<AsignaturaAdapterHome.AsignaturaViewHolder>()
 {
     private lateinit var mListener : onItemClickListener

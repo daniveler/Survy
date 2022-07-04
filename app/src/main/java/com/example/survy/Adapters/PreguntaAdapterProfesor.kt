@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.survy.Clases.Pregunta
 import com.example.survy.R
 
+/**
+ * Adaptador de preguntas para el usuario Profesor.
+ */
 class PreguntaAdapterProfesor(var listaPreguntas: List<Pregunta>) : RecyclerView.Adapter<PreguntaAdapterProfesor.PreguntaViewHolder>()
 {
     private lateinit var mListener : onItemClickListener

@@ -9,6 +9,9 @@ import androidx.appcompat.app.AlertDialog
 import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 
+/**
+ * Activity de inicio de sesión en la aplicación.
+ */
 class LoginActivity : AppCompatActivity()
 {
     private lateinit var auth: FirebaseAuth

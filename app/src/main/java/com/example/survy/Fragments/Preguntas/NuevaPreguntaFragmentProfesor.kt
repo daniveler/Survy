@@ -9,6 +9,9 @@ import android.widget.*
 import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Activity de creación de una pregunta en una encuesta de un usuario Profesor.
+ */
 class NuevaPreguntaFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

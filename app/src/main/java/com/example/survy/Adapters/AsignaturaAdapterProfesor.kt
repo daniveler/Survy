@@ -11,6 +11,9 @@ import com.example.survy.Clases.Asignatura
 import com.example.survy.R
 import com.squareup.picasso.Picasso
 
+/**
+ * Adaptador de asignaturas para el usuario Profesor.
+ */
 class AsignaturaAdapterProfesor(val listaAsignaturas : List<Asignatura>) : RecyclerView.Adapter<AsignaturaAdapterProfesor.AsignaturaViewHolder>()
 {
     private lateinit var mListener : onItemClickListener

@@ -20,6 +20,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import kotlin.concurrent.timerTask
 
+/**
+ * Vista detallada de una asignatura de un usuario Profesor.
+ */
 class AsignaturaDetailFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

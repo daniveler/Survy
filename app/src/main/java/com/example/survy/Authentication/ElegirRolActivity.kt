@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.survy.R
 
+/**
+ * Selección de rol (Alumno o Profesor) antes del registro o inicio de sesión.
+ */
 class ElegirRolActivity : AppCompatActivity()
 {
     override fun onCreate(savedInstanceState: Bundle?)

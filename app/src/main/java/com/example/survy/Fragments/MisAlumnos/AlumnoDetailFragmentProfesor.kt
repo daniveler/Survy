@@ -12,6 +12,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
+/**
+ * Vista de detalle del perfil de un usuario Alumno para un usuario Profesor.
+ */
 class AlumnoDetailFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

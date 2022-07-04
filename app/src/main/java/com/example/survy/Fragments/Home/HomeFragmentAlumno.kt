@@ -19,7 +19,9 @@ import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-
+/**
+ * Página principal de los usuarios Alumno.
+ */
 class HomeFragmentAlumno : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

@@ -17,6 +17,9 @@ import com.squareup.picasso.Picasso
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
+/**
+ * Adaptador de resultados para el usuario Profesor.
+ */
 class ResultadoAdapterProfesor (val mapaResultados : Map<Resultado, Alumno>) : RecyclerView.Adapter<ResultadoAdapterProfesor.ResultadoViewHolder>()
 {
     private lateinit var mListener : onItemClickListener

@@ -1,5 +1,8 @@
 package com.example.survy.Clases
 
+/**
+ * Clase que representa las diferentes preguntas de la aplicación.
+ */
 data class Pregunta(
     val id : String,
     val titulo : String,

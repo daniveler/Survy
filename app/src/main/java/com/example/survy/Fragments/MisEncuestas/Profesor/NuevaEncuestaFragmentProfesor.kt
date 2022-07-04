@@ -24,6 +24,9 @@ import com.google.firebase.storage.ktx.storage
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
+/**
+ * Activity de creación de una encuesta por un usuario Profesor.
+ */
 class NuevaEncuestaFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

@@ -14,6 +14,9 @@ import com.example.survy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 
+/**
+ * Vista detallada de una asignatura en la que está matriculado un usuario Alumno.
+ */
 class AsignaturaDetailFragmentAlumno : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

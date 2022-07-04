@@ -17,7 +17,9 @@ import com.google.firebase.storage.ktx.storage
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
-
+/**
+ * Fragment de edición de contraseña de los usuarios Profesor.
+ */
 class ModificarPerfilFragmentProfesor : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

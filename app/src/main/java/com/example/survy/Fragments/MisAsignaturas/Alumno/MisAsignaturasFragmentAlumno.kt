@@ -27,6 +27,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.zxing.integration.android.IntentIntegrator
 import java.util.*
 
+/**
+ * Vista en forma de lista de las asignaturas de un usuario Alumno.
+ */
 class MisAsignaturasFragmentAlumno : Fragment()
 {
     private val db = FirebaseFirestore.getInstance()

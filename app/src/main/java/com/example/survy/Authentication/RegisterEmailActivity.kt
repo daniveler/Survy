@@ -15,6 +15,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
+/**
+ * Formulario de registro con email en la aplicación.
+ */
 class RegisterEmailActivity : AppCompatActivity()
 {
     private lateinit var auth: FirebaseAuth
