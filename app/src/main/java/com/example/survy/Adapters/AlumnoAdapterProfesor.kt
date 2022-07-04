@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
 /**
- * Adaptador de asignaturas para el menú Home del usuario Alumno.
+ * Adaptador de alumnos para el menú Mis Alumnos del usuario Profesor.
  */
 class AlumnoAdapterProfesor (var listaAlumnos: List<Alumno>) : RecyclerView.Adapter<AlumnoAdapterProfesor.AlumnoViewHolder>()
 {
