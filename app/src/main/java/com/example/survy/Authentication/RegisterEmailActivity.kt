@@ -1,6 +1,5 @@
 package com.example.survy.Authentication
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
@@ -9,13 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
-import com.example.survy.Clases.Alumno
-import com.example.survy.Clases.Profesor
-import com.example.survy.MainActivityAlumno
-import com.example.survy.MainActivityProfesor
 import com.example.survy.R
-import com.example.survy.Utils.Funciones
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore

@@ -1,4 +1,4 @@
-package com.example.survy
+package com.example.survy.Main
 
 import android.content.DialogInterface
 import android.content.Intent
@@ -18,6 +18,7 @@ import com.example.survy.Fragments.Home.HomeFragmentProfesor
 import com.example.survy.Fragments.MiPerfil.Profesor.MiPerfilFragmentProfesor
 import com.example.survy.Fragments.MisAlumnos.MisAlumnosProfesor
 import com.example.survy.Fragments.MisAsignaturas.Profesor.MisAsignaturasFragmentProfesor
+import com.example.survy.R
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore

@@ -1,14 +1,10 @@
-package com.example.survy
+package com.example.survy.Main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.PersistableBundle
-import android.util.Log
-import android.widget.Toast
 import com.example.survy.Authentication.LoginActivity
+import com.example.survy.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*

@@ -16,10 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
         <activity
-            android:name=".Fragments.MisAsignaturas.Alumno.LeerQrActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SplashActivity"
+            android:name=".Main.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
@@ -55,12 +52,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
         <activity
-            android:name=".MainActivityAlumno"
+            android:name=".Main.MainActivityAlumno"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Survy" />
         <activity
-            android:name=".MainActivityProfesor"
+            android:name=".Main.MainActivityProfesor"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Survy" />
