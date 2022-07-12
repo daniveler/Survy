@@ -18,15 +18,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="48dp">
 
             <EditText
                 android:id="@+id/etTituloEditarPreguntaProfesor"
                 android:layout_width="264dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="32dp"
                 android:background="@color/lightPurple"
                 android:gravity="start"
                 android:hint="Título"
@@ -166,7 +166,7 @@
                 android:backgroundTint="@color/yellowButton"
                 android:fontFamily="@font/poppins_semibold"
                 android:letterSpacing="0"
-                android:text="@string/btCrearPreguntaNuevaPreguntaProfesor"
+                android:text="@string/btGuardarCambiosEditarPreguntaProfesor"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="16dp"

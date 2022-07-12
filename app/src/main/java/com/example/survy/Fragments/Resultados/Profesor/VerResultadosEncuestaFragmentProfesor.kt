@@ -78,7 +78,7 @@ class VerResultadosEncuestaFragmentProfesor : Fragment()
 
                 for (resultado in listaResultados)
                 {
-                    db.collection("alumnos").document(idAlumno)
+                    db.collection("alumnos").document(resultado.idUsuario)
                         .get().addOnSuccessListener {
                             val id = it.id
                             val nombre = it.getString("nombre").toString()
@@ -102,7 +102,14 @@ class VerResultadosEncuestaFragmentProfesor : Fragment()
                             adapter.setOnItemClickListener(object: ResultadoAdapterProfesor.onItemClickListener {
                                 override fun onItemClick(position: Int)
                                 {
-                                    mostrarAlerta(resultado.id, idUsuario, idAsignatura, idEncuesta)
+                                    var listaResultados = mutableListOf<Resultado>()
+
+                                    for (elemento in mapaResultadosFinal)
+                                    {
+                                        listaResultados.add(elemento.key)
+                                    }
+
+                                    mostrarAlerta(listaResultados[position].id, idUsuario, idAsignatura, idEncuesta)
                                 }
                             })
                         }
@@ -143,7 +150,7 @@ class VerResultadosEncuestaFragmentProfesor : Fragment()
 
             Toast.makeText(context, "Resultado eliminado correctamente", Toast.LENGTH_LONG).show()
 
-            cambiarFragment(EncuestaDetailFragmentProfesor(), idUsuario, idAsignatura, idEncuesta)
+            cambiarFragment(VerResultadosEncuestaFragmentProfesor(), idUsuario, idAsignatura, idEncuesta)
         })
 
         dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialog, id ->

@@ -56,6 +56,7 @@ class EditarEncuestaFragmentProfesor : Fragment()
         val btCancelarIcono      = view.findViewById<Button>(R.id.btCancelarGuardarIconoEditarEncuestaProfesor)
 
         val idUsuario = arguments?.getString("idUsuario") ?: ""
+        val idAsignatura = arguments?.getString("idAsignatura") ?: ""
         val idEncuesta = arguments?.getString("idEncuesta") ?: ""
 
         var iconoActual = Uri.parse("")
@@ -79,11 +80,11 @@ class EditarEncuestaFragmentProfesor : Fragment()
             db.collection("encuestas").document(idEncuesta).update("descripcion", curso)
             db.collection("encuestas").document(idEncuesta).update("icono", icono)
 
-            cambiarFragment(EncuestaDetailFragmentProfesor(), idEncuesta)
+            cambiarFragment(EncuestaDetailFragmentProfesor(), idUsuario, idEncuesta, idAsignatura)
         }
 
         btCancelar.setOnClickListener {
-            cambiarFragment(EncuestaDetailFragmentProfesor(), idEncuesta)
+            cambiarFragment(EncuestaDetailFragmentProfesor(), idUsuario, idEncuesta, idAsignatura)
         }
 
         civIcono.setOnClickListener {
@@ -154,10 +155,12 @@ class EditarEncuestaFragmentProfesor : Fragment()
         }
     }
 
-    fun cambiarFragment(framentCambiar: Fragment, idEncuesta: String?)
+    fun cambiarFragment(framentCambiar: Fragment, idUsuario: String, idEncuesta: String?, idAsignatura: String)
     {
         var args = Bundle()
         args.putString("idEncuesta", idEncuesta)
+        args.putString("idUsuario", idUsuario)
+        args.putString("idAsignatura", idAsignatura)
 
         var fragment = framentCambiar
         fragment.arguments = args

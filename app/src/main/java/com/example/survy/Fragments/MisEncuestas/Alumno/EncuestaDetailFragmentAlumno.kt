@@ -73,6 +73,10 @@ class EncuestaDetailFragmentAlumno : Fragment()
                         btVerResultados.setOnClickListener {
                             cambiarFragment(VerResultadosEncuestaFragmentAlumno(), idUsuario, idEncuesta, idAsignatura, 0)
                         }
+
+                        btCancelar.setOnClickListener {
+                            cambiarFragment(MisEncuestasFragmentAlumno(), idUsuario, idEncuesta, idAsignatura, 0)
+                        }
                     }
             }
     }

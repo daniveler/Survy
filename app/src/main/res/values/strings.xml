@@ -178,6 +178,9 @@
     <string name="btEliminarEditarPreguntaProfesor">Eliminar Pregunta</string>
     <string name="btCancelarNuevaPreguntaProfesor">Cancelar</string>
 
+    <!--> EDITAR PREGUNTA PROFESOR <!-->
+    <string name="btGuardarCambiosEditarPreguntaProfesor">Guardar Cambios</string>
+
     <!--> MIS RESULTADOS ALUMNO <!-->
     <string name="titleMisResultadosAlumno">Mis Resultados</string>
 

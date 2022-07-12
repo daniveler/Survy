@@ -38,16 +38,6 @@ class LoginEmailActivity : AppCompatActivity()
         val bundle = intent.extras
         val rol = bundle?.getString("rol")
 
-        if (rol == "Alumno")
-        {
-            etEmail.setText("daniel01velerdas@gmail.com")
-        } else
-        {
-            etEmail.setText("daniveler@usal.es")
-        }
-
-        etPassword.setText("dani2000")
-
         btLogin.setOnClickListener {
             if (etEmail.text.isBlank())
             {

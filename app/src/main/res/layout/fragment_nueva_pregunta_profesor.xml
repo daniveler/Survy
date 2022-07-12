@@ -10,7 +10,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,8 +18,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="48dp"
             android:orientation="vertical"
-            android:layout_marginTop="48dp"
             >
 
             <EditText
@@ -28,7 +28,6 @@
                 android:layout_width="264dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="32dp"
                 android:background="@color/lightPurple"
                 android:gravity="start"
                 android:hint="Título"
@@ -193,7 +192,8 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16dp"
-                android:visibility="visible" />
+                android:visibility="visible"
+                />
         </LinearLayout>
 
     </ScrollView>
